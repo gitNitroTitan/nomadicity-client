@@ -1,4 +1,5 @@
 import React from 'react';
+import { Button } from 'react-bootstrap';
 import { signIn } from '../utils/auth';
 
 function Signin() {
@@ -12,11 +13,11 @@ function Signin() {
         margin: '0 auto',
       }}
     >
-      <h1>Hi there!</h1>
-      <p>Click the button below to login!</p>
-      <button type="button" className="btn btn-primary btn-lg copy-btn" onClick={signIn}>
+      <h1>Hello</h1>
+      <p>Log in to Nomadicity!</p>
+      <Button type="button" className="btn btn-primary btn-lg copy-btn" onClick={signIn}>
         Sign In
-      </button>
+      </Button>
     </div>
   );
 }
