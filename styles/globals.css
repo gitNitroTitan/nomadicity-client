@@ -19,4 +19,9 @@ a {
 
 body {
   background-color: #88effd;
+  background-image: url(../public/NomadicityStatic.png);
+  background-size: 100% 100%;
+}
+.navbar{
+  background-color: #d68181;
 }
