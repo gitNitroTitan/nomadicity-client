@@ -5,7 +5,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import Link from 'next/link';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 
-function BasicExample() {
+function NomadNavBar() {
   return (
     <Navbar expand="lg">
       <Container>
@@ -24,16 +24,15 @@ function BasicExample() {
             <Link passHref href="/hikes">
               <Nav.Link href="#">Hikes</Nav.Link>
             </Link>
-            <NavDropdown title="Dropdown" id="basic-nav-dropdown">
-              <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.2">
-                Another action
-              </NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item href="#action/3.4">
-                Separated link
-              </NavDropdown.Item>
+            <NavDropdown title="Create" id="basic-nav-dropdown">
+              <Link passHref href="/board/new">
+                <NavDropdown.Item href="#action/3.1">Create Board</NavDropdown.Item>
+              </Link>
+              <Link passHref href="/hike/new">
+                <NavDropdown.Item href="#action/3.2">
+                  Create Hike
+                </NavDropdown.Item>
+              </Link>
             </NavDropdown>
           </Nav>
         </Navbar.Collapse>
@@ -42,4 +41,4 @@ function BasicExample() {
   );
 }
 
-export default BasicExample;
+export default NomadNavBar;

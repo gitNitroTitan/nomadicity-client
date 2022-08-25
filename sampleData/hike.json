@@ -1,0 +1,20 @@
+{
+  "-NgBygsfljguJHJGT1234" : {
+    "firebaseKey" : "-NgBygsfljguJHJGT1234",
+    "name" : "Trillium Lake Trail",
+    "date" : "07/07/2021",
+    "image" : "https://www.bestfishinginamerica.com/wp-content/uploads/2018/06/TrilliumDSC_9047.jpg",
+    "description" : "Hike around Trillium Lake Trail",
+    "board_id" : "-MayyhdkKKHHLLakk124",
+    "uid" : ""
+  },
+  "-NTYBygsfljguJjkajkd34" : {
+    "firebaseKey" : "-NTYBygsfljguJjkajkd34",
+    "name" : "Cape Meares",
+    "date" : "07/09/2021",
+    "image" : "https://agage.mit.edu/sites/default/files/styles/station_slideshow_image/public/stations/rand02287_1024web.jpg?itok=JVViDN4s",
+    "description" : "Hike by a cliff",
+    "board_id" : "-MayyjajjasYYh367",
+    "uid" : ""
+  }
+}
