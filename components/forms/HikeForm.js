@@ -35,14 +35,15 @@ function HikeForm({ hikeObj }) {
     e.preventDefault();
     if (hikeObj.firebaseKey) {
       updateHike(formInput)
-        .then(() => router.push(`/hikes/${hikeObj.firebaseKey}`));
+        .then(() => router.push(`/hike/${hikeObj.firebaseKey}`));
     } else {
-      const payload = { ...formInput, user: user.uid };
+      const payload = { ...formInput, uid: user.uid, time: new Date().toLocaleString({ timeZone: 'UTC' }) };
       createHike(payload).then(() => {
         router.push('/');
       });
     }
   };
+  // console.warn(formInput.name);
   return (
     <div className="card text-center text-dark bg-light mb-3">
       <div className="card-header">

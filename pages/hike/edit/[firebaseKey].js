@@ -15,6 +15,8 @@ export default function EditHike() {
   console.warn(editHikes);
 
   return (
-    <HikeForm obj={editHikes} />
+    <>
+      <HikeForm hikeObj={editHikes} />
+    </>
   );
 }

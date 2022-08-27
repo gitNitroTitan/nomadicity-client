@@ -5,7 +5,6 @@ import { useRouter } from 'next/router';
 import Link from 'next/link';
 import Button from 'react-bootstrap/Button';
 import { deleteHike } from '../api/hikesData';
-import { renderAbsoluteTime, renderRelativeTime } from '../utils/time';
 // import { useAuth } from '../utils/context/authContext';
 
 function HikeCard({ hikeObj }) {
@@ -30,11 +29,8 @@ function HikeCard({ hikeObj }) {
           {hikeObj.description}
         </Card.Text>
       </Card.Body>
-      <Card.Body className="time-created">
-        <sup
-          className="pin-date"
-        >... on {renderAbsoluteTime(hikeObj.time)}, {renderRelativeTime(hikeObj.time)}
-        </sup>
+      <Card.Body className="date-created">
+        {hikeObj.time}
       </Card.Body>
       <Card.Body className="hike-link">{hikeObj.link}</Card.Body>
       <Card.Body>
