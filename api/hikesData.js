@@ -2,7 +2,7 @@
 import axios from 'axios';
 import { clientCredentials } from '../utils/client';
 import getUserByHandle from './userData';
-import getBoardsThatContainGivenHike from './mergedData';
+// import getBoardsThatContainGivenHike from './mergedData';
 
 const dbUrl = clientCredentials.databaseURL;
 
@@ -18,9 +18,9 @@ const getSingleHike = (firebaseKey) => new Promise((resolve, reject) => {
     .catch((error) => reject(error));
 });
 
-const updateHike = (hikeObj) => new Promise((resolve, reject) => {
-  axios.patch(`${dbUrl}/hikes/${hikeObj.firebaseKey}.json`, hikeObj)
-    .then(() => getAllHikes(hikeObj.uid).then(resolve))
+const updateHike = (hikeObjs) => new Promise((resolve, reject) => {
+  axios.patch(`${dbUrl}/hikes/${hikeObjs.firebaseKey}.json`, hikeObjs)
+    .then(() => getAllHikes(hikeObjs.uid).then(resolve))
     .catch((error) => reject(error));
 });
 
@@ -33,20 +33,20 @@ const createHike = (hikeObj) => new Promise((resolve, reject) => {
     }).catch(reject);
 });
 
-const getSingleHikeDetails = (hikeFirebaseKey) => new Promise((resolve, reject) => {
-  axios.get(`${dbUrl}/hikes/${hikeFirebaseKey}.json`)
-    .then((originalHikeObject) => {
-      getBoardsThatContainGivenHike(hikeFirebaseKey).then((arrayOfBoardObjects) => {
-        getUserByHandle(originalHikeObject.data.user).then((userObj) => {
-          const newHikeObject = originalHikeObject.data;
-          newHikeObject.user = userObj;
-          newHikeObject.boards = arrayOfBoardObjects;
-          resolve(newHikeObject);
-        });
-      });
-    })
-    .catch((error) => reject(error));
-});
+// const getSingleHikeDetails = (hikeFirebaseKey) => new Promise((resolve, reject) => {
+//   axios.get(`${dbUrl}/hikes/${hikeFirebaseKey}.json`)
+//     .then((originalHikeObject) => {
+//       getBoardsThatContainGivenHike(hikeFirebaseKey).then((arrayOfBoardObjects) => {
+//         getUserByHandle(originalHikeObject.data.user).then((userObj) => {
+//           const newHikeObject = originalHikeObject.data;
+//           newHikeObject.user = userObj;
+//           newHikeObject.boards = arrayOfBoardObjects;
+//           resolve(newHikeObject);
+//         });
+//       });
+//     })
+//     .catch((error) => reject(error));
+// });
 
 const deleteHike = (firebaseKey, uid) => new Promise((resolve, reject) => {
   axios.delete(`${dbUrl}/hikes/${firebaseKey}.json`, uid)
@@ -57,5 +57,5 @@ const deleteHike = (firebaseKey, uid) => new Promise((resolve, reject) => {
 });
 
 export {
-  getAllHikes, updateHike, getSingleHike, deleteHike, createHike, getSingleHikeDetails,
+  getAllHikes, updateHike, getSingleHike, deleteHike, createHike,
 };

@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import PropTypes from 'prop-types';
+import FloatingLabel from 'react-bootstrap/FloatingLabel';
+import Form from 'react-bootstrap/Form';
+import { Button } from 'react-bootstrap';
 import { useAuth } from '../../utils/context/authContext';
 import { createHike, updateHike } from '../../api/hikesData';
 
@@ -11,14 +14,14 @@ const initialState = {
   link: '',
 };
 
-function HikeForm({ obj, board }) {
+function HikeForm({ hikeObj }) {
   const [formInput, setFormInput] = useState(initialState);
   const router = useRouter();
   const { user } = useAuth();
 
   useEffect(() => {
-    if (obj.firebaseKey) setFormInput(obj);
-  }, [obj, user]);
+    if (hikeObj.firebaseKey) setFormInput(hikeObj);
+  }, [hikeObj, user]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -30,12 +33,12 @@ function HikeForm({ obj, board }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (obj.firebaseKey) {
+    if (hikeObj.firebaseKey) {
       updateHike(formInput)
-        .then(() => router.push(`/hike/${obj.firebaseKey}`));
+        .then(() => router.push(`/hikes/${hikeObj.firebaseKey}`));
     } else {
-      const payload = { ...formInput, user: user.handle, time: new Date().getTime() };
-      createHike(payload, board).then(() => {
+      const payload = { ...formInput, user: user.uid };
+      createHike(payload).then(() => {
         router.push('/');
       });
     }
@@ -46,31 +49,25 @@ function HikeForm({ obj, board }) {
         Hike Form
       </div>
       <div className="card-body">
-        <form onSubmit={handleSubmit}>
-          <div className="input-group mb-3">
-            <label htmlFor="exampleFormControlInput1" className="form-label mb-3">Hike Title
-              <input type="text" id="hike-name" className="form-control" placeholder="Title of Hike" name="name" value={formInput.name} onChange={handleChange} required />
-            </label>
-          </div>
-          <div className="input-group mb-3">
-            <label htmlFor="exampleFormControlInput1" className="form-label mb-3">Hike Image or Video
-              <input type="url" id="image-url" className="form-control" placeholder="Enter an image url" name="image" value={formInput.image} onChange={handleChange} required />
-            </label>
-          </div>
-          <div className="input-group mb-3">
-            <label htmlFor="exampleFormControlInput1" className="form-label mb-3">Hike Description
-              <input type="text" id="hike-desc" className="form-control" placeholder="Describe your hike" name="description" value={formInput.description} onChange={handleChange} required />
-            </label>
-          </div>
-          <div className="input-group mb-3">
-            <label htmlFor="exampleFormControlInput1" className="form-label mb-3">Destination link
-              <input type="url" id="dest-url" className="form-control" placeholder="Enter a destination url" name="link" value={formInput.link} onChange={handleChange} required />
-            </label>
-          </div>
-          <div className="btn-group-vertical">
-            <button type="submit" className="btn btn-dark">{obj.firebaseKey ? 'Update' : 'Create'} Hike</button>
-          </div>
-        </form>
+        <Form onSubmit={handleSubmit}>
+          <FloatingLabel controlId="floatingInput1" label="Hike Title" className="mb-3">
+            <Form.Control type="text" placeholder="Enter Hike Title" name="name" value={formInput.name} onChange={handleChange} required />
+          </FloatingLabel>
+
+          <FloatingLabel controlId="floatingInput2" label="Hike Image or Video" className="mb-3">
+            <Form.Control type="url" placeholder="Enter hike image Url" name="image" value={formInput.image} onChange={handleChange} required />
+          </FloatingLabel>
+
+          <FloatingLabel controlId="floatingInput3" label="Hike Description" className="mb-3">
+            <Form.Control type="text" placeholder="Enter description" name="description" value={formInput.description} onChange={handleChange} required />
+          </FloatingLabel>
+
+          <FloatingLabel controlId="floatingInput3" label="Link for more info" className="mb-3">
+            <Form.Control type="url" placeholder="Enter Url" name="link" value={formInput.link} onChange={handleChange} required />
+          </FloatingLabel>
+
+          <Button variant="secondary" type="submit">{hikeObj.firebaseKey ? 'Update' : 'Create'} Hike</Button>
+        </Form>
       </div>
       <div className="card-footer text-muted">
         NOMADICITY &#8482;
@@ -79,19 +76,19 @@ function HikeForm({ obj, board }) {
   );
 }
 HikeForm.propTypes = {
-  obj: PropTypes.shape({
+  hikeObj: PropTypes.shape({
     name: PropTypes.string,
     description: PropTypes.string,
     image: PropTypes.string,
     link: PropTypes.string,
     firebaseKey: PropTypes.string,
   }),
-  board: PropTypes.string,
+  // board: PropTypes.string,
 };
 
 HikeForm.defaultProps = {
-  obj: initialState,
-  board: '',
+  hikeObj: initialState,
+  // board: '',
 };
 
 export default HikeForm;
