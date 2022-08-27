@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
-import { getBoardByFirebaseKey } from '../../../api/mergedData';
+import { getSingleHike } from '../../../api/hikesData';
 import HikeForm from '../../../components/forms/HikeForm';
 
 export default function EditHike() {
@@ -10,8 +10,11 @@ export default function EditHike() {
   const { firebaseKey } = router.query;
 
   useEffect(() => {
-    getBoardByFirebaseKey(firebaseKey).then(setEditHikes);
+    getSingleHike(firebaseKey).then(setEditHikes);
   }, [firebaseKey]);
+  console.warn(editHikes);
 
-  return (<HikeForm obj={editHikes} />);
+  return (
+    <HikeForm obj={editHikes} />
+  );
 }

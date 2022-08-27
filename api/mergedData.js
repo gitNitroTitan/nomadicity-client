@@ -11,7 +11,7 @@ const getBoardByFirebaseKey = (boardFirebaseKey) => new Promise((resolve, reject
     .catch((error) => reject(error));
 });
 
-const getBoardsThatContainHike = (hikeFirebaseKey) => new Promise((resolve, reject) => {
+const getBoardHikes = (hikeFirebaseKey) => new Promise((resolve, reject) => {
   axios.get(`${dbUrl}/merged.json?orderBy="$value"&equalTo="${hikeFirebaseKey}"`)
     .then((response) => {
       const getBoardsFromKeys = Object.keys(response.data).map((string) => string.split('==')[0]).map((firebaseKey) => getBoardByFirebaseKey(firebaseKey));
@@ -21,7 +21,7 @@ const getBoardsThatContainHike = (hikeFirebaseKey) => new Promise((resolve, reje
 });
 
 const deleteHikefromBoard = (hikeFirebaseKey) => new Promise((resolve, reject) => {
-  getBoardsThatContainHike(hikeFirebaseKey).then((response) => {
+  getBoardHikes(hikeFirebaseKey).then((response) => {
     const deleteThisHikeFromBoard = response.map((board) => deleteThisHikeFromBoard(hikeFirebaseKey, board.firebaseKey));
     Promise.all(deleteThisHikeFromBoard).then(() => {
       deleteHike(hikeFirebaseKey).then(resolve);
@@ -29,4 +29,4 @@ const deleteHikefromBoard = (hikeFirebaseKey) => new Promise((resolve, reject) =
   });
 });
 
-export { getBoardsThatContainHike, getBoardByFirebaseKey, deleteHikefromBoard };
+export { getBoardHikes, getBoardByFirebaseKey, deleteHikefromBoard };

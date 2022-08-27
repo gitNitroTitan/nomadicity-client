@@ -2,7 +2,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Link from 'next/link';
-import { deleteHikeFromBoards } from '../api/mergedData';
+import { deleteHikefromBoard } from '../api/mergedData';
 
 function HikeGridCard({ hikeObject, remHike, onUpdate }) {
   return (
@@ -18,7 +18,7 @@ function HikeGridCard({ hikeObject, remHike, onUpdate }) {
                 style={{
                   backgroundColor: 'black', color: 'hotpink', width: '40px', height: '40px', display: 'flex',
                 }}
-                onClick={() => deleteHikeFromBoards(hikeObject.firebaseKey).then(onUpdate)}
+                onClick={() => deleteHikefromBoard(hikeObject.firebaseKey).then(onUpdate)}
               >X
               </button>
             )
