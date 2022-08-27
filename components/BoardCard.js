@@ -1,21 +1,63 @@
 import React from 'react';
 import Card from 'react-bootstrap/Card';
+import PropTypes from 'prop-types';
+import { useRouter } from 'next/router';
+import Link from 'next/link';
+import Button from 'react-bootstrap/Button';
+import { deleteBoard } from '../api/boardsData';
 
-function BoardCard() {
+function BoardCard({ boardObj }) {
+  const router = useRouter();
+  const deleteThisBoard = () => {
+    if (window.confirm(`Delete ${boardObj.boardName}?`)) {
+      deleteBoard(boardObj.firebaseKey).then(() => router.push('/'));
+    }
+  };
   return (
-    <Card style={{ width: '18rem' }}>
+    <Card
+      className="boardContainer"
+      style={{
+        width: '700px', margin: '10px', borderRadius: '2%', display: 'flex', alignContent: 'center',
+      }}
+    >
+      <Card.Img variant="top" src={boardObj.boardImage} />
       <Card.Body>
-        <Card.Title>Card Title</Card.Title>
-        <Card.Subtitle className="mb-2 text-muted">Card Subtitle</Card.Subtitle>
+        <Card.Title>{boardObj.boardName}</Card.Title>
         <Card.Text>
-          Some quick example text to build on the card title and make up the
-          bulk of the cards content.
+          {boardObj.boardDescription}
         </Card.Text>
-        <Card.Link href="#">Card Link</Card.Link>
-        <Card.Link href="#">Another Link</Card.Link>
+      </Card.Body>
+      <Card.Body>
+        <Link href={`/board/edit/${boardObj.firebaseKey}`} passHref>
+          <Button className="edit-btn" variant="info">EDIT</Button>
+        </Link>
+        <Button
+          style={{
+            display: 'flex', alignSelf: 'flex-end', width: '70px', margin: '10px', background: 'lightgrey', borderRadius: '20%/50%', boxShadow: 'rgba(0, 0, 0, 0.35) 0px 5px 15px',
+          }}
+          type="button"
+          className="btn btn-"
+          onClick={deleteThisBoard}
+        >Delete
+        </Button>
       </Card.Body>
     </Card>
   );
 }
-
+BoardCard.propTypes = {
+  boardObj: PropTypes.shape({
+    boardName: PropTypes.string,
+    boardImage: PropTypes.string,
+    boardDescription: PropTypes.string,
+    firebaseKey: PropTypes.string,
+  }),
+};
+BoardCard.defaultProps = {
+  boardObj: {
+    name: '',
+    image: '',
+    description: '',
+    firebaseKey: '',
+  },
+};
 export default BoardCard;

@@ -51,6 +51,7 @@ const getBoardHikes = (boardId) => new Promise((resolve, reject) => {
     .then((response) => resolve(Object.values(response.data)))
     .catch((error) => reject(error));
 });
+
 export {
   getBoards, deleteBoard, createBoard, updateBoard, getSingleBoard, getBoardHikes,
 };

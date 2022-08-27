@@ -7,7 +7,7 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 
 function NomadNavBar() {
   return (
-    <Navbar expand="lg">
+    <Navbar expand="lg" fixed="top">
       <Container>
         <Link passHref href="/">
           <Navbar.Brand href="#home">Nomadicity</Navbar.Brand>

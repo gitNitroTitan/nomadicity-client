@@ -37,7 +37,7 @@ function HikeForm({ hikeObj }) {
       updateHike(formInput)
         .then(() => router.push(`/hike/${hikeObj.firebaseKey}`));
     } else {
-      const payload = { ...formInput, uid: user.uid, time: new Date().toLocaleString({ timeZone: 'UTC' }) };
+      const payload = { ...formInput, uid: user.uid, time: new Date().toLocaleString() };
       createHike(payload).then(() => {
         router.push('/');
       });

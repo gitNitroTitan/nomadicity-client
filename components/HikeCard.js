@@ -30,7 +30,7 @@ function HikeCard({ hikeObj }) {
         </Card.Text>
       </Card.Body>
       <Card.Body className="date-created">
-        {hikeObj.time}
+        Hike created on: {hikeObj.time}
       </Card.Body>
       <Card.Body className="hike-link">{hikeObj.link}</Card.Body>
       <Card.Body>
@@ -58,7 +58,7 @@ HikeCard.propTypes = {
     description: PropTypes.string,
     link: PropTypes.string,
     firebaseKey: PropTypes.string,
-    time: PropTypes.number,
+    time: PropTypes.string,
   }),
 };
 HikeCard.defaultProps = {

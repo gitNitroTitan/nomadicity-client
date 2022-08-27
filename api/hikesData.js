@@ -62,6 +62,17 @@ const deleteHike = (firebaseKey, uid) => new Promise((resolve, reject) => {
     .catch((error) => reject(error));
 });
 
+const getHikes = () => new Promise((resolve, reject) => {
+  axios.get(`${dbUrl}/hikes.json`)
+    .then((response) => {
+      if (response.data) {
+        resolve(Object.values(response.data));
+      } else {
+        resolve([]);
+      }
+    })
+    .catch((error) => reject(error));
+});
 export {
-  getAllHikes, updateHike, getSingleHike, deleteHike, createHike,
+  getHikes, getAllHikes, updateHike, getSingleHike, deleteHike, createHike,
 };
