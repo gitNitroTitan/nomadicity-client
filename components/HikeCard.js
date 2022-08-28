@@ -12,7 +12,7 @@ function HikeCard({ hikeObj }) {
   const router = useRouter();
   const deleteThisHike = () => {
     if (window.confirm(`Delete ${hikeObj.name}?`)) {
-      deleteHike(hikeObj.firebaseKey).then(() => router.push('/'));
+      deleteHike(hikeObj.firebaseKey).then(() => router.push('/hikes'));
     }
   };
   return (
