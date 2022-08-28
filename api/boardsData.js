@@ -15,14 +15,6 @@ const getBoards = (uid) => new Promise((resolve, reject) => {
     .catch((error) => reject(error));
 });
 
-const deleteBoard = (firebaseKey) => new Promise((resolve, reject) => {
-  axios.delete(`${dbUrl}/boards/${firebaseKey}.json`)
-    .then(() => {
-      getBoards().then((boardsArray) => resolve(boardsArray));
-    })
-    .catch((error) => reject(error));
-});
-
 const getSingleBoard = (firebaseKey) => new Promise((resolve, reject) => {
   axios.get(`${dbUrl}/boards/${firebaseKey}.json`)
     .then((response) => resolve(response.data))
@@ -46,11 +38,29 @@ const updateBoard = (boardDetails) => new Promise((resolve, reject) => {
     .catch((error) => reject(error));
 });
 
+const deleteSingleBoard = (firebaseKey, uid) => new Promise((resolve, reject) => {
+  axios.delete(`${dbUrl}/boards/${firebaseKey}.json`, uid)
+    .then(() => {
+      getBoards(uid).then((boardsArray) => resolve(boardsArray));
+    })
+    .catch((error) => reject(error));
+});
+
 const getBoardHikes = (boardId) => new Promise((resolve, reject) => {
-  axios.get(`${dbUrl}/hikes.json?orderBy= "boardId" &equalTo="${boardId}"`)
+  axios.get(`${dbUrl}/hikes.json?orderBy= "board_id" &equalTo="${boardId}"`)
     .then((response) => resolve(Object.values(response.data)))
     .catch((error) => reject(error));
 });
+
+const getMultipleBoardDetails = (uid) => new Promise((resolve, reject) => {
+  axios.get(`${dbUrl}/boards.json?orderBy="user"&equalTo="${uid}"`)
+    .then((arrayOfBoards) => {
+      const boardPromises = (Object.values(arrayOfBoards.data)).map((board) => getSingleBoard(board.firebaseKey));
+      Promise.all(boardPromises).then(resolve).catch(reject);
+    })
+    .catch((error) => reject(error));
+});
+
 export {
-  getBoards, deleteBoard, createBoard, updateBoard, getSingleBoard, getBoardHikes,
+  getBoards, createBoard, updateBoard, getSingleBoard, getBoardHikes, getMultipleBoardDetails, deleteSingleBoard,
 };

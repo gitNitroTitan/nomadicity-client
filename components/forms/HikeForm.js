@@ -6,6 +6,7 @@ import Form from 'react-bootstrap/Form';
 import { Button } from 'react-bootstrap';
 import { useAuth } from '../../utils/context/authContext';
 import { createHike, updateHike } from '../../api/hikesData';
+import { getBoards } from '../../api/boardsData';
 
 const initialState = {
   name: '',
@@ -16,10 +17,12 @@ const initialState = {
 
 function HikeForm({ hikeObj }) {
   const [formInput, setFormInput] = useState(initialState);
+  const [board, setBoard] = useState([]);
   const router = useRouter();
   const { user } = useAuth();
 
   useEffect(() => {
+    getBoards(user.uid).then(setBoard);
     if (hikeObj.firebaseKey) setFormInput(hikeObj);
   }, [hikeObj, user]);
 
@@ -37,8 +40,8 @@ function HikeForm({ hikeObj }) {
       updateHike(formInput)
         .then(() => router.push(`/hike/${hikeObj.firebaseKey}`));
     } else {
-      const payload = { ...formInput, uid: user.uid, time: new Date().toLocaleString({ timeZone: 'UTC' }) };
-      createHike(payload).then(() => {
+      const payload = { ...formInput, uid: user.uid, time: new Date().toLocaleString() };
+      createHike(payload, board).then(() => {
         router.push('/');
       });
     }
@@ -62,11 +65,31 @@ function HikeForm({ hikeObj }) {
           <FloatingLabel controlId="floatingInput3" label="Hike Description" className="mb-3">
             <Form.Control type="text" placeholder="Enter description" name="description" value={formInput.description} onChange={handleChange} required />
           </FloatingLabel>
-
           <FloatingLabel controlId="floatingInput3" label="Link for more info" className="mb-3">
             <Form.Control type="url" placeholder="Enter Url" name="link" value={formInput.link} onChange={handleChange} required />
           </FloatingLabel>
 
+          <FloatingLabel controlId="floatingSelect" label="Select Board" className="mb-3">
+            <Form.Select
+              className="boardSelector"
+              aria-label="Board"
+              name="board_id"
+              onChange={handleChange}
+              required
+            >
+              <option value="">Save to which board?</option>
+              {
+            board?.map((boards) => (
+              <option
+                key={boards.firebaseKey}
+                value={boards.firebaseKey}
+              >
+                {boards.boardName}
+              </option>
+            ))
+          }
+            </Form.Select>
+          </FloatingLabel>
           <Button variant="secondary" type="submit">{hikeObj.firebaseKey ? 'Update' : 'Create'} Hike</Button>
         </Form>
       </div>
@@ -84,12 +107,10 @@ HikeForm.propTypes = {
     link: PropTypes.string,
     firebaseKey: PropTypes.string,
   }),
-  // board: PropTypes.string,
 };
 
 HikeForm.defaultProps = {
   hikeObj: initialState,
-  // board: '',
 };
 
 export default HikeForm;

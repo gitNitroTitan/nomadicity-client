@@ -12,7 +12,7 @@ export default function EditHike() {
   useEffect(() => {
     getSingleHike(firebaseKey).then(setEditHikes);
   }, [firebaseKey]);
-  console.warn(editHikes);
+  // console.warn(editHikes);
 
   return (
     <>
