@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { getAllHikes } from '../api/hikesData';
+import { getHikes } from '../api/hikesData';
 // import { signOut } from '../utils/auth';
 import { useAuth } from '../utils/context/authContext';
 import HikeCard from '../components/HikeCard';
@@ -11,7 +11,7 @@ function Hikes() {
   const { user } = useAuth();
 
   const getAllTheHikes = () => {
-    getAllHikes(user.uid).then((hikesArray) => {
+    getHikes(user.uid).then((hikesArray) => {
       setHikes(hikesArray);
     });
   };
@@ -39,11 +39,8 @@ function Hikes() {
     // </div>
     <div className="mainContainer">
       {hike.map((hikes) => (
-        <HikeCard hikeObj={hikes} key={hikes.firebaseKey} onUpdate={getAllHikes} />
+        <HikeCard hikeObj={hikes} key={hikes.firebaseKey} onUpdate={getHikes} />
       ))}
-      {/* <button type="button" size="lg" className="btn signBtn btn-primary btn-large" onClick={() => addPinToBoard('-N9Kj_rtAvEH6nVyJbxY', '-N93JBVBPQjDjh3A_YVR')}>
-      Test Button
-    </button> */}
     </div>
   );
 }

@@ -4,13 +4,13 @@ import PropTypes from 'prop-types';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import Button from 'react-bootstrap/Button';
-import { deleteBoard } from '../api/boardsData';
+import { deleteBoardsHikes } from '../api/mergedData';
 
 function BoardCard({ boardObj }) {
   const router = useRouter();
   const deleteThisBoard = () => {
     if (window.confirm(`Delete ${boardObj.boardName}?`)) {
-      deleteBoard(boardObj.firebaseKey).then(() => router.push('/'));
+      deleteBoardsHikes(boardObj.firebaseKey).then(() => router.push('/'));
     }
   };
   return (
@@ -30,6 +30,11 @@ function BoardCard({ boardObj }) {
       <Card.Body>
         <Link href={`/board/edit/${boardObj.firebaseKey}`} passHref>
           <Button className="edit-btn" variant="info">EDIT</Button>
+        </Link>
+      </Card.Body>
+      <Card.Body>
+        <Link href={`/board/${boardObj.firebaseKey}`} passHref>
+          <Button className="hikes-btn" variant="info">View Hikes</Button>
         </Link>
         <Button
           style={{

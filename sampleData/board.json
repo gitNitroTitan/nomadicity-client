@@ -1,16 +1,23 @@
 {
-  "-N8V2ildZc3NmomMsuSF": {
-    "description": "Some weird stuff my girl would dig",
-    "firebaseKey": "-N8V2ildZc3NmomMsuSF",
-    "name": "For Yoko",
-    "time": 1237489,
-    "user": "jleno"
+  "-NAX2uGWKLj-ZmZpAPd0": {
+    "boardDescription": "Lots of water to enjoy while hiking",
+    "boardImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Salto_del_Angel-Canaima-Venezuela08.JPG/1200px-Salto_del_Angel-Canaima-Venezuela08.JPG",
+    "boardName": "Waterfall Hikes",
+    "firebaseKey": "-NAX2uGWKLj-ZmZpAPd0",
+    "uid": "EUSU86iwRFg35Gn0dQ3LKE9FOHY2"
   },
-  "-N4V3GjLr43nZGeB1dx1": {
-    "description": "I have none, can't you imagine it?",
-    "firebaseKey": "N4V3GjLr43nZGeB1dx1",
-    "name": "Possessions",
-    "time": 1237481,
-    "user": "jleno"
+  "-NAX37cF25Omt7Vppw4O": {
+    "boardDescription": "Lots of rough terrain and foliage",
+    "boardImage": "https://www.travelandleisure.com/thmb/EbsDQMUxU1JqFHaherXmf_9YpKw=/1800x1012/smart/filters:no_upscale()/grand-teton-rocky-mountains-USMNTNS0720-52499caea565471a8571acdfc3dfd9fe.jpg",
+    "boardName": "Mountain Hikes",
+    "firebaseKey": "-NAX37cF25Omt7Vppw4O",
+    "uid": "EUSU86iwRFg35Gn0dQ3LKE9FOHY2"
+  },
+  "-NAX3KXZCQBSLjF826AQ": {
+    "boardDescription": "Enjoy the peacefulness",
+    "boardImage": "https://imagesvc.meredithcorp.io/v3/jumpstartpure/image?url=https://cf-images.us-east-1.prod.boltdns.net/v1/static/3281700261001/4bb39137-8ca5-41de-81f8-d74b590d599b/31731d39-b91a-4457-9296-6662b26b1ab4/1280x720/match/image.jpg&w=640&h=360&q=90&c=cc",
+    "boardName": "Lake Hikes",
+    "firebaseKey": "-NAX3KXZCQBSLjF826AQ",
+    "uid": "EUSU86iwRFg35Gn0dQ3LKE9FOHY2"
   }
 }

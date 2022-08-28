@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { getHikes } from '../api/hikesData';
+import { getAllHikes } from '../api/hikesData';
 // import { signOut } from '../utils/auth';
 // import { useAuth } from '../utils/context/authContext';
 import HikeCard from '../components/HikeCard';
@@ -8,7 +8,7 @@ function Home() {
   const [hike, setHikes] = useState([]);
 
   const getAllTheHikes = () => {
-    getHikes().then((hikesArray) => {
+    getAllHikes().then((hikesArray) => {
       setHikes(hikesArray);
     });
   };
@@ -21,7 +21,7 @@ function Home() {
   return (
     <div className="mainContainer">
       {hike.map((hikes) => (
-        <HikeCard hikeObj={hikes} key={hikes.firebaseKey} onUpdate={getHikes} />
+        <HikeCard hikeObj={hikes} key={hikes.firebaseKey} onUpdate={getAllHikes} />
       ))}
     </div>
   );

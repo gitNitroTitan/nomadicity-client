@@ -7,7 +7,7 @@ import getUserByHandle from './userData';
 const dbUrl = clientCredentials.databaseURL;
 
 const getAllHikes = (uid) => new Promise((resolve, reject) => {
-  axios.get(`${dbUrl}/hikes.json?orderBy="uid"&equalTo="${uid}"`)
+  axios.get(`${dbUrl}/hikes.json`)
     .then((response) => {
       if (response.data) {
         resolve(Object.values(response.data));
@@ -39,31 +39,8 @@ const createHike = (hikeObj) => new Promise((resolve, reject) => {
     }).catch(reject);
 });
 
-// const getSingleHikeDetails = (hikeFirebaseKey) => new Promise((resolve, reject) => {
-//   axios.get(`${dbUrl}/hikes/${hikeFirebaseKey}.json`)
-//     .then((originalHikeObject) => {
-//       getBoardsThatContainGivenHike(hikeFirebaseKey).then((arrayOfBoardObjects) => {
-//         getUserByHandle(originalHikeObject.data.user).then((userObj) => {
-//           const newHikeObject = originalHikeObject.data;
-//           newHikeObject.user = userObj;
-//           newHikeObject.boards = arrayOfBoardObjects;
-//           resolve(newHikeObject);
-//         });
-//       });
-//     })
-//     .catch((error) => reject(error));
-// });
-
-const deleteHike = (firebaseKey, uid) => new Promise((resolve, reject) => {
-  axios.delete(`${dbUrl}/hikes/${firebaseKey}.json`, uid)
-    .then(() => {
-      getAllHikes(uid).then((hikesArray) => resolve(hikesArray));
-    })
-    .catch((error) => reject(error));
-});
-
-const getHikes = () => new Promise((resolve, reject) => {
-  axios.get(`${dbUrl}/hikes.json`)
+const getHikes = (uid) => new Promise((resolve, reject) => {
+  axios.get(`${dbUrl}/hikes.json?orderBy="uid"&equalTo="${uid}"`)
     .then((response) => {
       if (response.data) {
         resolve(Object.values(response.data));
@@ -73,6 +50,13 @@ const getHikes = () => new Promise((resolve, reject) => {
     })
     .catch((error) => reject(error));
 });
+
+const deleteHike = (firebaseKey) => new Promise((resolve, reject) => {
+  axios.delete(`${dbUrl}/hikes/${firebaseKey}.json`)
+    .then(() => resolve('deleted'))
+    .catch((error) => reject(error));
+});
+
 export {
   getHikes, getAllHikes, updateHike, getSingleHike, deleteHike, createHike,
 };
