@@ -10,7 +10,7 @@ function BoardCard({ boardObj }) {
   const router = useRouter();
   const deleteThisBoard = () => {
     if (window.confirm(`Delete ${boardObj.boardName}?`)) {
-      deleteBoardsHikes(boardObj.firebaseKey).then(() => router.push('/'));
+      deleteBoardsHikes(boardObj.firebaseKey).then(() => router.push('/boards'));
     }
   };
   return (

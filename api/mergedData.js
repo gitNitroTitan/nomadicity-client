@@ -19,7 +19,7 @@ const viewHikeDetails = (boardFirebaseKey) => new Promise((resolve, reject) => {
 const viewBoardDetails = (boardFirebaseKey) => new Promise((resolve, reject) => {
   Promise.all([getSingleBoard(boardFirebaseKey), getBoardHikes(boardFirebaseKey)])
     .then(([boardObject, boardHikesArray]) => {
-      resolve({ ...boardObject, players: boardHikesArray });
+      resolve({ ...boardObject, hikes: boardHikesArray });
     }).catch((error) => reject(error));
 });
 
