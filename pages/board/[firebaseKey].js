@@ -28,7 +28,7 @@ function ViewBoard() {
           <Button
             className="boards-btn"
             style={{
-              display: 'flex', alignSelf: 'flex-end', width: '70px', margin: '10px', marginTop: '25rem', background: '#F8C7CC', borderRadius: '20%/50%', boxShadow: 'rgba(0, 0, 0, 0.35) 0px 5px 15px',
+              display: 'flex', alignSelf: 'flex-end', width: '70px', margin: '10px', marginTop: '40rem', background: '#F8C7CC', borderRadius: '20%/50%', boxShadow: 'rgba(0, 0, 0, 0.35) 0px 5px 15px',
             }}
           >Boards
           </Button>
