@@ -1,5 +1,7 @@
+/* eslint-disable @next/next/no-img-element */
+/* eslint-disable react/prop-types */
 import React from 'react';
-import Card from 'react-bootstrap/Card';
+// import Card from 'react-bootstrap/Card';
 import PropTypes from 'prop-types';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
@@ -14,39 +16,57 @@ function BoardCard({ boardObj }) {
     }
   };
   return (
-    <Card
-      className="boardContainer"
-      style={{
-        width: '700px', margin: '10px', borderRadius: '2%', display: 'flex', alignContent: 'center',
-      }}
-    >
-      <Card.Img variant="top" src={boardObj.boardImage} />
-      <Card.Body>
-        <Card.Title>{boardObj.boardName}</Card.Title>
-        <Card.Text>
-          {boardObj.boardDescription}
-        </Card.Text>
-      </Card.Body>
-      <Card.Body>
-        <Link href={`/board/edit/${boardObj.firebaseKey}`} passHref>
-          <Button className="edit-btn" variant="info">EDIT</Button>
-        </Link>
-      </Card.Body>
-      <Card.Body>
-        <Link href={`/board/${boardObj.firebaseKey}`} passHref>
-          <Button className="hikes-btn" variant="info">View Hikes</Button>
-        </Link>
-        <Button
-          style={{
-            display: 'flex', alignSelf: 'flex-end', width: '70px', margin: '10px', background: 'lightgrey', borderRadius: '20%/50%', boxShadow: 'rgba(0, 0, 0, 0.35) 0px 5px 15px',
-          }}
-          type="button"
-          className="btn btn-"
-          onClick={deleteThisBoard}
-        >Delete
-        </Button>
-      </Card.Body>
-    </Card>
+    <div className="boardContainer">
+      <div
+        style={{
+          width: '690px', height: '400px', borderRadius: '2%', background: '#FFFFFF', display: 'flex', alignContent: 'center',
+        }}
+      >
+        <div className="columnOne">
+          <img src={boardObj.boardImage} className="card-img-top" alt={boardObj.link} />
+        </div>
+        <div className="columnTwo">
+          <div
+            className="card-body"
+            style={{
+              height: '110px',
+            }}
+          >
+            <h5 className="card-title">{boardObj.boardName}</h5>
+            <div className="card-description">{boardObj.boardDescription}</div>
+          </div>
+          <div className="cardBtns">
+            <Link href={`/board/edit/${boardObj.firebaseKey}`} passHref>
+              <Button
+                className="edit-btn"
+                style={{
+                  display: 'flex', justifyContent: 'center', alignSelf: 'flex-end', width: '70px', margin: '10px', background: '#81A684', borderRadius: '20%/50%', boxShadow: 'rgba(0, 0, 0, 0.35) 0px 5px 15px',
+                }}
+              >Edit
+              </Button>
+            </Link>
+            <Link href={`/board/${boardObj.firebaseKey}`} passHref>
+              <Button
+                className="hikes-btn"
+                style={{
+                  display: 'flex', justifyContent: 'center', alignSelf: 'flex-end', width: '70px', margin: '10px', background: '#81A684', borderRadius: '20%/50%', boxShadow: 'rgba(0, 0, 0, 0.35) 0px 5px 15px',
+                }}
+              >Hikes
+              </Button>
+            </Link>
+            <Button
+              style={{
+                display: 'flex', justifyContent: 'center', alignSelf: 'flex-end', width: '70px', margin: '10px', background: '#81A684', borderRadius: '20%/50%', boxShadow: 'rgba(0, 0, 0, 0.35) 0px 5px 15px',
+              }}
+              type="button"
+              className="btn btn-"
+              onClick={deleteThisBoard}
+            >Delete
+            </Button>
+          </div>
+        </div>
+      </div>
+    </div>
   );
 }
 BoardCard.propTypes = {

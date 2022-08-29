@@ -17,10 +17,12 @@ export default function IndHikePage(onUpdate) {
 
   return (
     <>
-      <HikeCard
-        hikeObj={hikeDetails}
-        onUpdate={onUpdate}
-      />
+      <div className="hike-card">
+        <HikeCard
+          hikeObj={hikeDetails}
+          onUpdate={onUpdate}
+        />
+      </div>
     </>
   );
 }

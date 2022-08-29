@@ -2,12 +2,14 @@
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
+import Button from 'react-bootstrap/Button';
 import Link from 'next/link';
 import NavDropdown from 'react-bootstrap/NavDropdown';
+import { signOut } from '../utils/auth';
 
 function NomadNavBar() {
   return (
-    <Navbar expand="lg" fixed="top">
+    <Navbar expand="lg" variant="dark" fixed="top">
       <Container>
         <Link passHref href="/">
           <Navbar.Brand href="#home">Nomadicity</Navbar.Brand>
@@ -37,6 +39,9 @@ function NomadNavBar() {
           </Nav>
         </Navbar.Collapse>
       </Container>
+      <Button className="signOutBtn btn-med copy-btn" type="button" onClick={signOut}>
+        Sign Out
+      </Button>
     </Navbar>
   );
 }

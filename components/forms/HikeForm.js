@@ -46,11 +46,10 @@ function HikeForm({ hikeObj }) {
       });
     }
   };
-  // console.warn(formInput.name);
   return (
-    <div className="card text-center text-dark bg-light mb-3">
+    <div className="formContainer text-center text-dark bg-light mb-3">
       <div className="card-header">
-        Hike Form
+        <h3>Hike Form</h3>
       </div>
       <div className="card-body">
         <Form onSubmit={handleSubmit}>
@@ -69,16 +68,15 @@ function HikeForm({ hikeObj }) {
             <Form.Control type="url" placeholder="Enter Url" name="link" value={formInput.link} onChange={handleChange} required />
           </FloatingLabel>
 
-          <FloatingLabel controlId="floatingSelect" label="Select Board" className="mb-3">
-            <Form.Select
-              className="boardSelector"
-              aria-label="Board"
-              name="board_id"
-              onChange={handleChange}
-              required
-            >
-              <option value="">Save to which board?</option>
-              {
+          <Form.Select
+            className="mb-3"
+            aria-label="Board"
+            name="board_id"
+            onChange={handleChange}
+            required
+          >
+            <option value="">Save to which board?</option>
+            {
             board?.map((boards) => (
               <option
                 key={boards.firebaseKey}
@@ -88,8 +86,7 @@ function HikeForm({ hikeObj }) {
               </option>
             ))
           }
-            </Form.Select>
-          </FloatingLabel>
+          </Form.Select>
           <Button variant="secondary" type="submit">{hikeObj.firebaseKey ? 'Update' : 'Create'} Hike</Button>
         </Form>
       </div>

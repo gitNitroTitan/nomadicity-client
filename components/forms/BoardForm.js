@@ -43,9 +43,9 @@ function BoardForm({ boardObj }) {
     }
   };
   return (
-    <div className="card text-center text-dark bg-light mb-3">
+    <div className="formContainer text-center text-dark bg-light mb-3">
       <div className="card-header">
-        Board Form
+        <h3>Board Form</h3>
       </div>
       <div className="card-body">
         <Form onSubmit={handleSubmit}>
