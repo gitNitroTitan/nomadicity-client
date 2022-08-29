@@ -22,9 +22,7 @@ This project is for users who wish to add hikes to their board for saving conten
 
 You can start testing the product by logging in with your respective Google account or using the guest login button if you only wish to view the project without exploring all functions. If authenticated, use the home page buttons to view all the pins created in a random fashion. The best way to begin is to:
 
-* Create a profile on the profile page 
-
-* Click the plus icon to create a board to store your hikes under 
+* Create a board on the board form page 
 
 * Create hikes under the board to have a collection of hikes based on your thought process or inspiration you wish to display. 
 
@@ -38,7 +36,7 @@ You can start testing the product by logging in with your respective Google acco
 
 * **Help**
 
-Users can get help with this project, if needed, by sending a discussion message on our team discussions page! Click [here](https://github.com/)
+Users can get help with this project, if needed, by sending a discussion message on the discussions page! Click [here](https://github.com/)
 
 
 
@@ -64,7 +62,7 @@ Jeremiah King
 
 * **Nomadicity Postman Collection**
 
-[Postman Collection for Nomadicity Link](https://)
+[Postman Collection for Nomadicity Link](https://](https://gold-flare-64538.postman.co/workspace/Nomadicity~e2939e11-689b-487c-a031-82c0735bbd78/collection/21027394-0043796c-963e-4cf9-89e8-a97a67896f4b?ctx=documentation))
 
 
 
@@ -115,7 +113,7 @@ Jeremiah King
 
 * **LOOM Videos**
 
-[Loom Link](https://www.loom.com/)
+[Loom Link]([https://www.loom.com/](https://www.loom.com/share/af6ea40493324154b59a5f5fdb7f70b9))
 
 * **Netlify Deployment Link**
 
