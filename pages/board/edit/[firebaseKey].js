@@ -12,7 +12,6 @@ export default function EditBOard() {
   useEffect(() => {
     getSingleBoard(firebaseKey).then(setEditBoards);
   }, [firebaseKey]);
-  console.warn(editBoards);
 
   return (
     <>
