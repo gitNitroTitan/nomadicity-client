@@ -103,7 +103,7 @@ Jeremiah King
 
 * **Nomadicity Project Board**
 
-[Project Board Link](https://github.com/users/gitNitroTitan/projects/5)
+[Project Board Link](https://github.com/users/gitNitroTitan/projects/5](https://github.com/users/gitNitroTitan/projects/7)
 
 
 
