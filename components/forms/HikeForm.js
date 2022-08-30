@@ -77,10 +77,11 @@ function HikeForm({ hikeObj }) {
           >
             <option value="">Save to which board?</option>
             {
-            board?.map((boards) => (
+            board.map((boards) => (
               <option
                 key={boards.firebaseKey}
                 value={boards.firebaseKey}
+                selected={boards.firebaseKey === hikeObj.board_id}
               >
                 {boards.boardName}
               </option>
@@ -96,6 +97,7 @@ function HikeForm({ hikeObj }) {
     </div>
   );
 }
+
 HikeForm.propTypes = {
   hikeObj: PropTypes.shape({
     name: PropTypes.string,
@@ -103,6 +105,7 @@ HikeForm.propTypes = {
     image: PropTypes.string,
     link: PropTypes.string,
     firebaseKey: PropTypes.string,
+    board_id: PropTypes.string,
   }),
 };
 
