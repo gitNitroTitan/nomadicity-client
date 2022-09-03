@@ -25,9 +25,11 @@ a {
 
 body {
   background-color: #88effd;
-  background-image: url(../public/NomadicityStatic.png);
+  background-image: url(../public/Nomadicity3.png);
   background-position: center;
-  background-size: 105em;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 .Navbar {
   display: flex;
@@ -37,13 +39,15 @@ body {
   z-index: 1;
 }
 .mainContainer {
-  display: flex;
-  gap: 1em;
-  align-content: space-around;
+  display: grid;
+  grid-template-columns: auto auto auto;
+  align-content: center;
+  gap: 2em;
+  /* align-content: space-around; */
   box-shadow: rgba(99, 98, 98, 0.35) 0px 5px 15px;
   border-radius: 2%;
   width: 690px;
-  margin-top: 200px;
+  margin-top: 5rem;
 }
 .signOutPage {
   display: flex;
@@ -57,7 +61,7 @@ body {
   display: flex;
   align-self: center;
   margin-top: 1em;
-  margin-bottom: 25rem;
+  margin-bottom: 7rem;
   border-radius: 8px;
 }
 .signBtn {
@@ -73,10 +77,6 @@ body {
   height: 2.5rem;
   margin-left: 1rem;
 }
-/* .mainContainer {
-  display: flex;
-  flex-wrap: wrap;
-} */
 .card-img-top{
   height: 390px;
   width: 300px;
@@ -114,14 +114,16 @@ img {
 }
 .card-title {
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   justify-content: center;
-  margin: auto;
+  margin: 10px;
 }
 .card-description{
   display: flex;
-  align-items: flex-end;
+  flex-wrap: wrap;
+  align-items: center;
   justify-content: center;
+  margin: 10px;
 }
 .columnOne {
   display: flex;
@@ -140,7 +142,7 @@ img {
   justify-content: center;
 }
 .signOutBtn:hover {
-  background: hotpink;
+  background: #D68181;
 }
 .formContainer{
   margin: 150px 30rem;
@@ -148,15 +150,19 @@ img {
   align-items: center;
 }
 .card-body{
+  display:flex;
+  flex-wrap: wrap;
+  justify-content: center;
   align-items: center;
 }
 .signOutBtn{
-  background: #F8C7CC;
+  background: #D68181;
 }
 .date-created{
   display: flex;
   align-content: flex-end;
   justify-content: center;
+  margin-top: 10px;
 }
 .hike-card{
   margin: 150px;
@@ -168,4 +174,18 @@ img {
 .mapContainer{
   display: flex;
   margin: 10px;
+}
+.icons {
+  border-radius: 50%;
+  background: transparent;
+  border: hidden;
+}
+.icons:hover{
+  background: #D68181;
+}
+a:hover{
+  background: #D68181;
+}
+.container{
+  margin: 0px;
 }

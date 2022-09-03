@@ -19,7 +19,7 @@ function BoardCard({ boardObj }) {
     <div className="boardContainer">
       <div
         style={{
-          width: '690px', height: '400px', borderRadius: '2%', background: '#FFFFFF', display: 'flex', alignContent: 'center',
+          width: '570px', height: '400px', borderRadius: '2%', background: '#FFFFFF', display: 'flex', alignContent: 'center',
         }}
       >
         <div className="columnOne">
@@ -32,7 +32,7 @@ function BoardCard({ boardObj }) {
               height: '110px',
             }}
           >
-            <h5 className="card-title">{boardObj.boardName}</h5>
+            <h5 className="card-title">{boardObj.boardName}</h5><br />
             <div className="card-description">{boardObj.boardDescription}</div>
           </div>
           <div className="cardBtns">
@@ -40,7 +40,7 @@ function BoardCard({ boardObj }) {
               <Button
                 className="edit-btn"
                 style={{
-                  display: 'flex', justifyContent: 'center', alignSelf: 'flex-end', width: '70px', margin: '10px', background: '#81A684', borderRadius: '20%/50%', boxShadow: 'rgba(0, 0, 0, 0.35) 0px 5px 15px',
+                  display: 'flex', justifyContent: 'center', alignSelf: 'flex-end', width: '70px', marginTop: '150px', marginLeft: '-15px', background: '#EBFBDA', color: 'black', borderRadius: '20%/50%', boxShadow: 'rgba(0, 0, 0, 0.35) 0px 5px 15px',
                 }}
               >Edit
               </Button>
@@ -49,14 +49,14 @@ function BoardCard({ boardObj }) {
               <Button
                 className="hikes-btn"
                 style={{
-                  display: 'flex', justifyContent: 'center', alignSelf: 'flex-end', width: '70px', margin: '10px', background: '#81A684', borderRadius: '20%/50%', boxShadow: 'rgba(0, 0, 0, 0.35) 0px 5px 15px',
+                  display: 'flex', justifyContent: 'center', alignSelf: 'flex-end', width: '70px', marginTop: '150px', marginLeft: '10px', background: '#EBFBDA', color: 'black', borderRadius: '20%/50%', boxShadow: 'rgba(0, 0, 0, 0.35) 0px 5px 15px',
                 }}
               >Hikes
               </Button>
             </Link>
             <Button
               style={{
-                display: 'flex', justifyContent: 'center', alignSelf: 'flex-end', width: '70px', margin: '10px', background: '#81A684', borderRadius: '20%/50%', boxShadow: 'rgba(0, 0, 0, 0.35) 0px 5px 15px',
+                display: 'flex', justifyContent: 'center', alignSelf: 'flex-end', width: '70px', marginTop: '150px', marginLeft: '10px', marginRight: '10px', background: '#EBFBDA', color: 'black', borderRadius: '20%/50%', boxShadow: 'rgba(0, 0, 0, 0.35) 0px 5px 15px',
               }}
               type="button"
               className="btn btn-"

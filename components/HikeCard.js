@@ -20,7 +20,7 @@ function HikeCard({ hikeObj }) {
     <div className="hikeContainer">
       <div
         style={{
-          width: '690px', height: '400px', borderRadius: '2%', background: '#FFFFFF', display: 'flex', alignContent: 'center',
+          width: '605px', height: '400px', borderRadius: '2%', background: '#FFFFFF', display: 'flex', alignContent: 'center',
         }}
       >
         <div className="columnOne">
@@ -33,31 +33,31 @@ function HikeCard({ hikeObj }) {
               height: '110px',
             }}
           >
-            <h5 className="card-title">{hikeObj.name}</h5>
-            <div className="card-description">{hikeObj.description}</div>
-            <div className="date-created">
-              Hike created on: {hikeObj.time}
-            </div>
+            <h5 className="card-title">{hikeObj.name}</h5><br />
+            <div className="card-description">{hikeObj.description}</div><br />
           </div>
           <div className="cardBtns">
             <Link href={`/hike/edit/${hikeObj.firebaseKey}`} passHref>
               <Button
                 className="edit-btn"
                 style={{
-                  display: 'flex', justifyContent: 'center', alignSelf: 'flex-end', width: '70px', margin: '10px', testAlign: 'center', background: '#81A684', borderRadius: '20%/50%', boxShadow: 'rgba(0, 0, 0, 0.35) 0px 5px 15px',
+                  display: 'flex', justifyContent: 'center', alignSelf: 'flex-end', width: '70px', marginTop: '150px', marginLeft: '-25px', background: '#EBFBDA', color: 'black', borderRadius: '20%/50%', boxShadow: 'rgba(0, 0, 0, 0.35) 0px 5px 15px',
                 }}
               >Edit
               </Button>
             </Link>
             <Button
               style={{
-                display: 'flex', justifyContent: 'center', alignSelf: 'center', width: '70px', margin: '10px', background: '#81A684', borderRadius: '20%/50%', boxShadow: 'rgba(0, 0, 0, 0.35) 0px 5px 15px',
+                display: 'flex', justifyContent: 'center', alignSelf: 'flex-end', width: '70px', marginTop: '150px', marginLeft: '10px', background: '#EBFBDA', color: 'black', borderRadius: '20%/50%', boxShadow: 'rgba(0, 0, 0, 0.35) 0px 5px 15px',
               }}
               type="button"
               className="btn btn-delete"
               onClick={deleteThisHike}
             >Delete
             </Button>
+          </div>
+          <div className="date-created">
+            Hike created on: {hikeObj.time}
           </div>
         </div>
       </div>
