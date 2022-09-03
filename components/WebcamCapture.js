@@ -12,18 +12,12 @@ export default function WebcamCapture() {
     setImgSrc(imageSrc);
   }, [webcamRef, setImgSrc]);
 
+  const reset = () => {
+    setImgSrc(undefined);
+  };
+
   return (
     <>
-      <Webcam
-        audio={false}
-        ref={webcamRef}
-        screenshotFormat="image/jpeg"
-      />
-      <Button
-        className="cam-btn"
-        onClick={capture}
-      >Capture
-      </Button>
       {imgSrc && (
         <img
           className="imageCapture"
@@ -31,6 +25,22 @@ export default function WebcamCapture() {
           alt="webcam capture"
         />
       )}
+      {!imgSrc && (
+      <Webcam
+        ref={webcamRef}
+        screenshotFormat="image/jpeg"
+      />
+      )}
+      <Button
+        className="cam-btn"
+        onClick={capture}
+      >Capture
+      </Button>
+      <Button
+        className="reset-btn"
+        onClick={reset}
+      >Reset
+      </Button>
     </>
   );
 }
