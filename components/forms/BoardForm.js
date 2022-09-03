@@ -34,7 +34,7 @@ function BoardForm({ boardObj }) {
     e.preventDefault();
     if (boardObj.firebaseKey) {
       updateBoard(formInput)
-        .then(() => router.push('/boards'));
+        .then(() => router.push(`/boards/${boardObj.firebaseKey}`));
     } else {
       const payload = { ...formInput, uid: user.uid };
       createBoard(payload).then(() => {

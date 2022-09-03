@@ -42,7 +42,7 @@ function HikeForm({ hikeObj }) {
     } else {
       const payload = { ...formInput, uid: user.uid, time: new Date().toLocaleString() };
       createHike(payload, board).then(() => {
-        router.push('/hikes');
+        router.push('/boards');
       });
     }
   };
