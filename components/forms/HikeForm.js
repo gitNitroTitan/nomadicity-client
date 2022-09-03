@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import Form from 'react-bootstrap/Form';
 import { Button } from 'react-bootstrap';
+import WebcamCapture from '../WebcamCapture';
 import { useAuth } from '../../utils/context/authContext';
 import { createHike, updateHike } from '../../api/hikesData';
 import { getBoards } from '../../api/boardsData';
@@ -50,7 +51,9 @@ function HikeForm({ hikeObj }) {
     <div className="formContainer text-center text-dark bg-light mb-3">
       <div className="card-header">
         <h3>Hike Form</h3>
+        <div className="liveCam" id="cam"><WebcamCapture /></div>
       </div>
+
       <div className="card-body">
         <Form onSubmit={handleSubmit}>
           <FloatingLabel controlId="floatingInput1" label="Hike Title" className="mb-3">

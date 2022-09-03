@@ -189,3 +189,28 @@ a:hover{
 .container{
   margin: 0px;
 }
+button {
+  display: block;
+}
+img,
+video{
+  display: flex;
+  align-self: center;
+  justify-content: center;
+  width: 270px;
+  margin: 10px auto;
+  color: black;
+  border-radius: 20%;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+.cam-btn{
+  display: flex;
+  justify-content: center;
+  align-items: center; 
+  width: 70px;
+  margin: 10px auto;
+  background-color: #EBFBDA; 
+  color: black; 
+  border-radius: 20%/50%; 
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
