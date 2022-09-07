@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import React from 'react';
-// import Card from 'react-bootstrap/Card';
+import Card from 'react-bootstrap/Card';
 import PropTypes from 'prop-types';
 // import { useAuth } from '../utils/context/authContext';
 
@@ -11,7 +11,7 @@ function HikeCardLite({ hikeObj }) {
     <div className="hikeContainer">
       <div
         style={{
-          width: '690px', height: '400px', borderRadius: '2%', background: '#FFFFFF', display: 'flex', alignContent: 'center',
+          width: '570px', height: '400px', borderRadius: '2%', background: '#FFFFFF', display: 'flex', alignContent: 'center',
         }}
       >
         <div className="columnOne">
@@ -24,11 +24,14 @@ function HikeCardLite({ hikeObj }) {
               height: '110px',
             }}
           >
-            <h5 className="card-title">{hikeObj.name}</h5>
-            <div className="card-description">{hikeObj.description}</div>
-            <div className="date-created">
+            <Card.Body>
+              <Card.Title>{hikeObj.name}</Card.Title>
+              <Card.Text className="card-description">{hikeObj.description}
+              </Card.Text>
+            </Card.Body>
+            <Card.Body className="date-created">
               Hike created on: {hikeObj.time}
-            </div>
+            </Card.Body>
           </div>
         </div>
       </div>

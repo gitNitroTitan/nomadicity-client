@@ -39,14 +39,14 @@ body {
   z-index: 1;
 }
 .mainContainer {
-  display: grid;
-  grid-template-columns: auto auto auto;
+  display: flex;
+  flex-wrap: wrap;
+  columns: auto auto auto;
   align-content: center;
   gap: 2em;
   /* align-content: space-around; */
   box-shadow: rgba(99, 98, 98, 0.35) 0px 5px 15px;
   border-radius: 2%;
-  width: 690px;
   margin-top: 5rem;
 }
 .signOutPage {
@@ -114,40 +114,45 @@ img {
 }
 .card-title {
   display: flex;
-  align-items: center;
+  text-align: center;
   justify-content: center;
   margin: 10px;
 }
 .card-description{
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
+  text-align: center;
   justify-content: center;
   margin: 10px;
 }
 .columnOne {
   display: flex;
-  margin-right: 20px;
+  margin: 5px 5px;
 }
 .columnTwo {
   display: flex;
   flex-direction: column;
   align-content: center;
   margin: auto;
-  width: 40rem;
+  width: 15rem;
 }
 .cardBtns{
   display: flex;
-  align-items: flex-end;
   justify-content: center;
-}
+  }
 .signOutBtn:hover {
   background: #D68181;
 }
 .formContainer{
   margin: 150px 30rem;
-  width: 60rem;
-  align-items: center;
+  width: 40rem;
+  /* align-items: center; */
+}
+.form-control{
+  width: 30rem;
+}
+.form-select{
+  text-align: center;
 }
 .card-body{
   display:flex;
@@ -160,7 +165,7 @@ img {
 }
 .date-created{
   display: flex;
-  align-content: flex-end;
+  text-align: center;
   justify-content: center;
   margin-top: 10px;
 }
@@ -214,14 +219,3 @@ video{
   border-radius: 20%/50%; 
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
-/* .reset-btn{
-  display: flex;
-  justify-content: center;
-  align-items: center; 
-  width: 70px;
-  margin: 10px auto;
-  background-color: #EBFBDA; 
-  color: black; 
-  border-radius: 20%/50%; 
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-} */
