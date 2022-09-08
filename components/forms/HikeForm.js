@@ -14,6 +14,7 @@ const initialState = {
   image: '',
   description: '',
   link: '',
+  defaultValue: '',
 };
 
 function HikeForm({ hikeObj }) {
@@ -78,13 +79,13 @@ function HikeForm({ hikeObj }) {
             onChange={handleChange}
             required
           >
-            <option value="">Save to which board?</option>
+            <option value="default">Save to which board?</option>
             {
             board.map((boards) => (
               <option
                 key={boards.firebaseKey}
                 value={boards.firebaseKey}
-                selected={boards.firebaseKey === hikeObj.board_id}
+                defaultValue={boards.firebaseKey === hikeObj.board_id}
               >
                 {boards.boardName}
               </option>

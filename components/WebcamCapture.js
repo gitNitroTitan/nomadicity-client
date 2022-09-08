@@ -1,31 +1,50 @@
 /* eslint-disable @next/next/no-img-element */
-import React from 'react';
+import React, {
+  useRef, useEffect, useState, useCallback,
+} from 'react';
 import { Button } from 'react-bootstrap';
 import Webcam from 'react-webcam';
 
 export default function WebcamCapture() {
-  const webcamRef = React.useRef(null);
-  const [imgSrc, setImgSrc] = React.useState(null);
+  const webcamRef = useRef();
+  const [imgSrc, setImgSrc] = useState();
+  const [cldData, setCldData] = useState();
+  const src = cldData?.secure_url || imgSrc;
 
-  const capture = React.useCallback(() => {
-    const imageSrc = webcamRef.current.getScreenshot();
-    setImgSrc(imageSrc);
+  const handleCapture = useCallback(() => {
+    const image = webcamRef.current.getScreenshot();
+    console.warn(image);
+    setImgSrc(image);
   }, [webcamRef, setImgSrc]);
 
   const reset = () => {
     setImgSrc(undefined);
   };
 
+  useEffect(() => {
+    if (!imgSrc) return;
+    (async function Run() {
+      const response = fetch('../api/cloudinary/upload', {
+        method: 'POST',
+        body: JSON.stringify({
+          image: imgSrc,
+        }),
+      }).then((r) => r.json());
+      setCldData(response);
+      console.warn('response', response);
+    }());
+  }, [imgSrc]);
+
   return (
     <>
-      {imgSrc && (
+      {src && (
         <img
           className="imageCapture"
-          src={imgSrc}
+          src={src}
           alt="webcam capture"
         />
       )}
-      {!imgSrc && (
+      {!src && (
       <Webcam
         ref={webcamRef}
         screenshotFormat="image/jpeg"
@@ -33,7 +52,7 @@ export default function WebcamCapture() {
       )}
       <Button
         className="cam-btn"
-        onClick={capture}
+        onClick={handleCapture}
       >Capture
       </Button>
       <Button
