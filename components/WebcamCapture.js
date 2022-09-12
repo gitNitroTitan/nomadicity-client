@@ -15,7 +15,6 @@ export default function WebcamCapture() {
   const reset = () => {
     setImgSrc(undefined);
   };
-
   return (
     <>
       <Webcam
@@ -43,3 +42,4 @@ export default function WebcamCapture() {
     </>
   );
 }
+
