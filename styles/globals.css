@@ -39,14 +39,14 @@ body {
   z-index: 1;
 }
 .mainContainer {
-  display: flex;
-  flex-wrap: wrap;
-  columns: auto auto auto;
+  display: grid;
+  grid-template-columns: auto auto auto;
   align-content: center;
   gap: 2em;
   /* align-content: space-around; */
   box-shadow: rgba(99, 98, 98, 0.35) 0px 5px 15px;
   border-radius: 2%;
+  width: 670px;
   margin-top: 5rem;
 }
 .signOutPage {
@@ -81,6 +81,7 @@ body {
   height: 390px;
   width: 300px;
   border-radius: 8px;
+  margin-left: 5px;
 }
 .gridCard {
   margin: 10px;
@@ -117,42 +118,42 @@ img {
   text-align: center;
   justify-content: center;
   margin: 10px;
-}
-.card-description{
-  display: flex;
-  flex-wrap: wrap;
-  text-align: center;
-  justify-content: center;
-  margin: 10px;
-}
-.columnOne {
-  display: flex;
-  margin: 5px 5px;
+  padding: 0.5em;
 }
 .columnTwo {
   display: flex;
   flex-direction: column;
   align-content: center;
+  text-align: center;
   margin: auto;
-  width: 15rem;
+  width: 40rem;
 }
+.card-body {
+  display: flex;
+  flex-wrap: wrap;
+  text-align: center;
+  align-items: flex-end;
+  justify-content: center;
+  margin: 10px;
+}
+.columnOne {
+  display: flex;
+  margin-right: 20px;
+}
+
 .cardBtns{
   display: flex;
+  align-items: flex-end;
+  margin:20px 10px;
   justify-content: center;
-  }
+}
 .signOutBtn:hover {
   background: #D68181;
 }
 .formContainer{
   margin: 150px 30rem;
-  width: 40rem;
-  /* align-items: center; */
-}
-.form-control{
-  width: 30rem;
-}
-.form-select{
-  text-align: center;
+  width: 60rem;
+  align-items: center;
 }
 .card-body{
   display:flex;
@@ -163,11 +164,12 @@ img {
 .signOutBtn{
   background: #D68181;
 }
-.date-created{
+.date-created, .location-created{
   display: flex;
-  text-align: center;
+  align-content: flex-end;
   justify-content: center;
-  margin-top: 10px;
+  text-align: center;
+  margin: 5px 5px;
 }
 .hike-card{
   margin: 150px;
@@ -219,3 +221,14 @@ video{
   border-radius: 20%/50%; 
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
+#geo-btn{
+  display: flex;
+  justify-content: center;
+  align-items: center; 
+  width: 110px;
+  margin: 10px auto;
+  background-color: #EBFBDA; 
+  color: black; 
+  border-radius: 20%/50%; 
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}  

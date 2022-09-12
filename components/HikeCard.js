@@ -16,6 +16,7 @@ function HikeCard({ hikeObj }) {
       deleteHike(hikeObj.firebaseKey).then(() => router.push('/hikes'));
     }
   };
+
   return (
     <div className="hikeContainer">
       <div
@@ -28,27 +29,34 @@ function HikeCard({ hikeObj }) {
         </div>
         <div className="columnTwo">
           <div
-            className="card-body"
+            className="card-title"
             style={{
-              height: '110px',
+              height: '40px',
             }}
           >
-            <h5 className="card-title">{hikeObj.name}</h5><br />
-            <div className="card-description">{hikeObj.description}</div><br />
+            <h5>{hikeObj.name}</h5><br />
+          </div>
+          <div
+            className="card-body"
+            style={{
+              height: '50px',
+            }}
+          >
+            <h6>{hikeObj.description}</h6><br />
           </div>
           <div className="cardBtns">
             <Link href={`/hike/edit/${hikeObj.firebaseKey}`} passHref>
               <Button
                 className="edit-btn"
                 style={{
-                  display: 'flex', justifyContent: 'center', alignSelf: 'flex-end', width: '70px', marginTop: '150px', marginLeft: '-25px', background: '#EBFBDA', color: 'black', borderRadius: '20%/50%', boxShadow: 'rgba(0, 0, 0, 0.35) 0px 5px 15px',
+                  display: 'flex', justifyContent: 'center', alignSelf: 'flex-end', width: '70px', marginTop: '130px', margin: '5px', background: '#EBFBDA', color: 'black', borderRadius: '20%/50%', boxShadow: 'rgba(0, 0, 0, 0.35) 0px 5px 15px',
                 }}
               >Edit
               </Button>
             </Link>
             <Button
               style={{
-                display: 'flex', justifyContent: 'center', alignSelf: 'flex-end', width: '70px', marginTop: '150px', marginLeft: '10px', background: '#EBFBDA', color: 'black', borderRadius: '20%/50%', boxShadow: 'rgba(0, 0, 0, 0.35) 0px 5px 15px',
+                display: 'flex', justifyContent: 'center', alignSelf: 'flex-end', width: '70px', marginTop: '130px', margin: '5px', background: '#EBFBDA', color: 'black', borderRadius: '20%/50%', boxShadow: 'rgba(0, 0, 0, 0.35) 0px 5px 15px',
               }}
               type="button"
               className="btn btn-delete"
@@ -58,6 +66,9 @@ function HikeCard({ hikeObj }) {
           </div>
           <div className="date-created">
             Hike created on: {hikeObj.time}
+          </div>
+          <div className="location-created">
+            Hike location: {hikeObj.latitude}/{hikeObj.longitude}
           </div>
         </div>
       </div>
@@ -73,6 +84,8 @@ HikeCard.propTypes = {
     link: PropTypes.string,
     firebaseKey: PropTypes.string,
     time: PropTypes.string,
+    latitude: PropTypes.string,
+    longitude: PropTypes.string,
   }),
 };
 HikeCard.defaultProps = {
@@ -83,6 +96,8 @@ HikeCard.defaultProps = {
     link: '',
     firebaseKey: '',
     time: '',
+    latitude: '',
+    longitude: '',
   },
 };
 export default HikeCard;
