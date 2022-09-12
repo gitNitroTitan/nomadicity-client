@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import PropTypes from 'prop-types';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
+// import InputGroup from 'react-bootstrap/InputGroup';
 import Form from 'react-bootstrap/Form';
 import { Button } from 'react-bootstrap';
 import WebcamCapture from '../WebcamCapture';
@@ -19,6 +20,9 @@ const initialState = {
 function HikeForm({ hikeObj }) {
   const [formInput, setFormInput] = useState(initialState);
   const [board, setBoard] = useState([]);
+  const [latitude, setLatitude] = useState();
+  const [longitude, setLongitude] = useState();
+  const [status, setStatus] = useState();
   const router = useRouter();
   const { user } = useAuth();
 
@@ -35,13 +39,32 @@ function HikeForm({ hikeObj }) {
     }));
   };
 
+  const getLocation = (e) => {
+    e.preventDefault();
+    if (!navigator.geolocation) {
+      setStatus('Geolocation is not supported by your browser');
+    } else {
+      setStatus('Located...');
+      navigator.geolocation.getCurrentPosition((position) => {
+        setStatus('ready to party');
+        setLatitude(position.coords.latitude);
+        setLongitude(position.coords.longitude);
+      }, () => {
+        setStatus('Unable to retrieve your location');
+      });
+    }
+  };
+  console.warn({ status, latitude, longitude });
+
   const handleSubmit = (e) => {
     e.preventDefault();
     if (hikeObj.firebaseKey) {
       updateHike(formInput)
         .then(() => router.push(`/hike/${hikeObj.firebaseKey}`));
     } else {
-      const payload = { ...formInput, uid: user.uid, time: new Date().toLocaleString() };
+      const payload = {
+        ...formInput, uid: user.uid, time: new Date().toLocaleString(), latitude, longitude,
+      };
       createHike(payload, board).then(() => {
         router.push('/boards');
       });
@@ -67,10 +90,16 @@ function HikeForm({ hikeObj }) {
           <FloatingLabel controlId="floatingInput3" label="Hike Description" className="mb-3">
             <Form.Control type="text" placeholder="Enter description" name="description" value={formInput.description} onChange={handleChange} required />
           </FloatingLabel>
-          <FloatingLabel controlId="floatingInput3" label="Link for more info" className="mb-3">
+          <FloatingLabel controlId="floatingInput4" label="Link for more info" className="mb-3">
             <Form.Control type="url" placeholder="Enter Url" name="link" value={formInput.link} onChange={handleChange} required />
           </FloatingLabel>
-
+          {/* <FloatingLabel controlId="floatingInput5" label="Location" className="mb-3">
+            <Form.Control type="text" placeholder="latitude" name="latitude" value={latitude} onChange={handleChange} required />
+          </FloatingLabel> */}
+          {latitude}, {longitude}
+          <Button variant="secondary" id="geo-btn" onClick={getLocation}>
+            GeoLocation
+          </Button>
           <Form.Select
             className="mb-3"
             aria-label="Board"
@@ -108,6 +137,8 @@ HikeForm.propTypes = {
     image: PropTypes.string,
     link: PropTypes.string,
     firebaseKey: PropTypes.string,
+    latitude: PropTypes.string,
+    longitude: PropTypes.string,
     board_id: PropTypes.string,
   }),
 };

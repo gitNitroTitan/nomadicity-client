@@ -11,7 +11,7 @@ function HikeCardLite({ hikeObj }) {
     <div className="hikeContainer">
       <div
         style={{
-          width: '690px', height: '400px', borderRadius: '2%', background: '#FFFFFF', display: 'flex', alignContent: 'center',
+          width: '570px', height: '400px', borderRadius: '2%', background: '#FFFFFF', display: 'flex', alignContent: 'center',
         }}
       >
         <div className="columnOne">

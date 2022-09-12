@@ -1,16 +1,20 @@
 /* eslint-disable @next/next/no-img-element */
-import React from 'react';
+import React, { useRef, useState } from 'react';
 import { Button } from 'react-bootstrap';
 import Webcam from 'react-webcam';
 
 export default function WebcamCapture() {
-  const webcamRef = React.useRef(null);
-  const [imgSrc, setImgSrc] = React.useState(null);
+  const webcamRef = useRef();
+  const [imgSrc, setImgSrc] = useState();
 
-  const capture = React.useCallback(() => {
+  const handleCapture = () => {
     const imageSrc = webcamRef.current.getScreenshot();
     setImgSrc(imageSrc);
-  }, [webcamRef, setImgSrc]);
+  };
+
+  const reset = () => {
+    setImgSrc(undefined);
+  };
 
   return (
     <>
@@ -21,8 +25,13 @@ export default function WebcamCapture() {
       />
       <Button
         className="cam-btn"
-        onClick={capture}
+        onClick={handleCapture}
       >Capture
+      </Button>
+      <Button
+        className="reset-btn"
+        onClick={reset}
+      >Reset
       </Button>
       {imgSrc && (
         <img
