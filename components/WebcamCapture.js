@@ -11,7 +11,6 @@ export default function WebcamCapture() {
     const imageSrc = webcamRef.current.getScreenshot();
     setImgSrc(imageSrc);
   };
-
   const reset = () => {
     setImgSrc(undefined);
   };
