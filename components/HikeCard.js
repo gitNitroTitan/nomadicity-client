@@ -30,11 +30,8 @@ function HikeCard({ hikeObj }) {
         <div className="columnTwo">
           <div
             className="card-title"
-            style={{
-              height: '40px',
-            }}
           >
-            <h5>{hikeObj.name}</h5><br />
+            <h5>{hikeObj.name}</h5>
           </div>
           <div
             className="card-body"
@@ -42,7 +39,7 @@ function HikeCard({ hikeObj }) {
               height: '50px',
             }}
           >
-            <h6>{hikeObj.description}</h6><br />
+            <h6>{hikeObj.description}</h6>
           </div>
           <div className="cardBtns">
             <Link href={`/hike/edit/${hikeObj.firebaseKey}`} passHref>
@@ -68,7 +65,7 @@ function HikeCard({ hikeObj }) {
             Hike created on: {hikeObj.time}
           </div>
           <div className="location-created">
-            Hike location: {hikeObj.latitude}/{hikeObj.longitude}
+            Hike location at: {hikeObj.latitude}/{hikeObj.longitude}
           </div>
         </div>
       </div>
