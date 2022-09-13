@@ -162,11 +162,12 @@ img {
   align-items: center;
 }
 .signOutBtn{
+  display:flex;
   background: #D68181;
 }
 .date-created, .location-created{
   display: flex;
-  align-content: flex-end;
+  flex-wrap: wrap;
   justify-content: center;
   text-align: center;
   margin: 5px 5px;
@@ -213,7 +214,6 @@ video{
 .cam-btn, .reset-btn{
   display: flex;
   justify-content: center;
-  align-items: center; 
   width: 70px;
   margin: 10px auto;
   background-color: #EBFBDA; 

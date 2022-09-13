@@ -94,10 +94,7 @@ function HikeForm({ hikeObj }) {
           <FloatingLabel controlId="floatingInput4" label="Link for more info" className="mb-3">
             <Form.Control type="url" placeholder="Enter Url" name="link" value={formInput.link} onChange={handleChange} required />
           </FloatingLabel>
-          {/* <FloatingLabel controlId="floatingInput5" label="Location" className="mb-3">
-            <Form.Control type="text" placeholder="latitude" name="latitude" value={latitude} onChange={handleChange} required />
-          </FloatingLabel> */}
-          {latitude}, {longitude}
+          <h5>Latitude: {latitude}, Longitude: {longitude}</h5>
           <Button variant="secondary" id="geo-btn" onClick={getLocation}>
             GeoLocation
           </Button>
@@ -138,8 +135,8 @@ HikeForm.propTypes = {
     image: PropTypes.string,
     link: PropTypes.string,
     firebaseKey: PropTypes.string,
-    latitude: PropTypes.string,
-    longitude: PropTypes.string,
+    latitude: PropTypes.number,
+    longitude: PropTypes.number,
     board_id: PropTypes.string,
   }),
 };
