@@ -78,7 +78,6 @@ function HikeForm({ hikeObj }) {
       );
     }
   };
-  console.warn({ status, latitude, longitude });
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -139,6 +138,7 @@ function HikeForm({ hikeObj }) {
             <Form.Control type="url" placeholder="Enter Url" name="link" value={formInput.link} onChange={handleChange} required />
           </FloatingLabel>
           <h5>
+            <p>{status}</p>
             Latitude: {formInput.latitude}, Longitude: {formInput.longitude}
           </h5>
           <Form.Select className="mb-3" aria-label="Board" name="board_id" onChange={handleChange} required>
