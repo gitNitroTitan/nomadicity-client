@@ -2,10 +2,8 @@ import React, { useState, useEffect, useRef } from 'react';
 import { useRouter } from 'next/router';
 import PropTypes from 'prop-types';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
-// import InputGroup from 'react-bootstrap/InputGroup';
 import Form from 'react-bootstrap/Form';
 import { Button } from 'react-bootstrap';
-// import WebcamCapture from '../WebcamCapture';
 import Webcam from 'react-webcam';
 import { useAuth } from '../../utils/context/authContext';
 import { createHike, updateHike } from '../../api/hikesData';
@@ -140,36 +138,17 @@ function HikeForm({ hikeObj }) {
           <FloatingLabel controlId="floatingInput4" label="Link for more info" className="mb-3">
             <Form.Control type="url" placeholder="Enter Url" name="link" value={formInput.link} onChange={handleChange} required />
           </FloatingLabel>
-<<<<<<< HEAD
           <h5>
             Latitude: {formInput.latitude}, Longitude: {formInput.longitude}
           </h5>
           <Form.Select className="mb-3" aria-label="Board" name="board_id" onChange={handleChange} required>
             <option value="">Save to which board?</option>
-=======
-          <h5>Latitude: {latitude}, Longitude: {longitude}</h5>
-          <Button variant="secondary" id="geo-btn" onClick={getLocation}>
-            GeoLocation
-          </Button>
-          <Form.Select
-            className="mb-3"
-            aria-label="Board"
-            name="board_id"
-            onChange={handleChange}
-            required
-          >
-            <option value="default">Save to which board?</option>
->>>>>>> main
             {
             board.map((boards) => (
               <option
                 key={boards.firebaseKey}
                 value={boards.firebaseKey}
-<<<<<<< HEAD
                 selected={hikeObj.board_id === boards.firebaseKey}
-=======
-                defaultValue={boards.firebaseKey === hikeObj.board_id}
->>>>>>> main
               >
                 {boards.boardName}
               </option>
