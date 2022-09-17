@@ -22,20 +22,9 @@ function Hikes() {
   }, []);
 
   return (
-  // <>
-  //     <div className="hikesPage">
-  //   <div
-  //     className="text-center d-flex flex-column justify-content-center align-content-center"
-  //     style={{
-  //       height: '90vh',
-  //       padding: '30px',
-  //       maxWidth: '400px',
-  //       margin: '0 auto',
-  //     }}
-  //   />
     <div className="mainContainer">
       {hike.map((hikes) => (
-        <HikeCard hikeObj={hikes} key={hikes.firebaseKey} onUpdate={getHikes} />
+        <HikeCard hikeObj={hikes} key={hikes.firebaseKey} onUpdate={getAllTheHikes} />
       ))}
     </div>
   );

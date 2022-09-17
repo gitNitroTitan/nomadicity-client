@@ -20,6 +20,9 @@ function NomadNavBar() {
             <Link passHref href="/">
               <Nav.Link href="#">Home</Nav.Link>
             </Link>
+            <Link passHref href="/profile">
+              <Nav.Link href="#">Profile</Nav.Link>
+            </Link>
             <Link passHref href="/boards">
               <Nav.Link href="#">Boards</Nav.Link>
             </Link>

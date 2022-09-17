@@ -6,7 +6,7 @@ import getUserByHandle from './userData';
 
 const dbUrl = clientCredentials.databaseURL;
 
-const getAllHikes = (uid) => new Promise((resolve, reject) => {
+const getAllHikes = () => new Promise((resolve, reject) => {
   axios.get(`${dbUrl}/hikes.json`)
     .then((response) => {
       if (response.data) {

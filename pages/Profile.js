@@ -1,11 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { getBoards } from '../api/boardsData';
-// import { signOut } from '../utils/auth';
-import { useAuth } from '../utils/context/authContext';
 import BoardCard from '../components/BoardCard';
+import { useAuth } from '../utils/context/authContext';
 
-function Boards() {
-  // eslint-disable-next-line no-unused-vars
+export default function Profile() {
   const [board, setBoards] = useState([]);
 
   const { user } = useAuth();
@@ -22,12 +20,15 @@ function Boards() {
   }, []);
 
   return (
-    <div className="mainContainer">
-      {board.map((boards) => (
-        <BoardCard boardObj={boards} key={boards.firebaseKey} onUpdate={getAllTheBoards} />
-      ))}
-    </div>
+    <>
+      <div className="profile-head">
+        Head of Profile
+      </div>
+      <div className="mainContainer">
+        {board.map((boards) => (
+          <BoardCard boardObj={boards} key={boards.firebaseKey} onUpdate={getBoards} />
+        ))}
+      </div>
+    </>
   );
 }
-
-export default Boards;

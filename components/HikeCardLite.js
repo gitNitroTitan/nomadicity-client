@@ -15,7 +15,7 @@ function HikeCardLite({ hikeObj }) {
         }}
       >
         <div className="columnOne">
-          <img src={hikeObj.image} className="card-img-top" alt={hikeObj.link} />
+          <img src={hikeObj.url} className="card-img-top" alt={hikeObj.link} />
         </div>
         <div className="columnTwo">
           <div
@@ -42,7 +42,7 @@ function HikeCardLite({ hikeObj }) {
 HikeCardLite.propTypes = {
   hikeObj: PropTypes.shape({
     name: PropTypes.string,
-    image: PropTypes.string,
+    url: PropTypes.string,
     description: PropTypes.string,
     link: PropTypes.string,
     firebaseKey: PropTypes.string,
@@ -52,7 +52,7 @@ HikeCardLite.propTypes = {
 HikeCardLite.defaultProps = {
   hikeObj: {
     name: '',
-    image: '',
+    url: '',
     description: '',
     link: '',
     firebaseKey: '',

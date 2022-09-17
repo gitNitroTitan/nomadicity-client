@@ -1,11 +1,4 @@
 {
-  "-NAX2uGWKLj-ZmZpAPd0": {
-    "boardDescription": "Lots of water to enjoy while hiking",
-    "boardImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Salto_del_Angel-Canaima-Venezuela08.JPG/1200px-Salto_del_Angel-Canaima-Venezuela08.JPG",
-    "boardName": "Waterfall Hikes",
-    "firebaseKey": "-NAX2uGWKLj-ZmZpAPd0",
-    "uid": "EUSU86iwRFg35Gn0dQ3LKE9FOHY2"
-  },
   "-NAX37cF25Omt7Vppw4O": {
     "boardDescription": "Lots of rough terrain and foliage",
     "boardImage": "https://www.travelandleisure.com/thmb/EbsDQMUxU1JqFHaherXmf_9YpKw=/1800x1012/smart/filters:no_upscale()/grand-teton-rocky-mountains-USMNTNS0720-52499caea565471a8571acdfc3dfd9fe.jpg",
@@ -13,11 +6,32 @@
     "firebaseKey": "-NAX37cF25Omt7Vppw4O",
     "uid": "EUSU86iwRFg35Gn0dQ3LKE9FOHY2"
   },
-  "-NAX3KXZCQBSLjF826AQ": {
-    "boardDescription": "Enjoy the peacefulness",
-    "boardImage": "https://imagesvc.meredithcorp.io/v3/jumpstartpure/image?url=https://cf-images.us-east-1.prod.boltdns.net/v1/static/3281700261001/4bb39137-8ca5-41de-81f8-d74b590d599b/31731d39-b91a-4457-9296-6662b26b1ab4/1280x720/match/image.jpg&w=640&h=360&q=90&c=cc",
-    "boardName": "Lake Hikes",
-    "firebaseKey": "-NAX3KXZCQBSLjF826AQ",
+  "-NCBh_gTZi7z9Rpe5E7h": {
+    "boardDescription": "Hiking Through Africa",
+    "boardImage": "https://moafrikatours.com/wp-content/uploads/2022/02/mapofafrica-20200220133122.png",
+    "boardName": "Africa Hikes",
+    "firebaseKey": "-NCBh_gTZi7z9Rpe5E7h",
+    "uid": "EUSU86iwRFg35Gn0dQ3LKE9FOHY2"
+  },
+  "-NCBhkcnuTZTxkpZmSFo": {
+    "boardDescription": "Belize It Or Not!",
+    "boardImage": "https://geology.com/world/belize-map.gif",
+    "boardName": "Belize HIkes",
+    "firebaseKey": "-NCBhkcnuTZTxkpZmSFo",
+    "uid": "EUSU86iwRFg35Gn0dQ3LKE9FOHY2"
+  },
+  "-NCBi0-xb93cyY2fqboG": {
+    "boardDescription": "Jamaica Me Crazy!",
+    "boardImage": "https://www.worldatlas.com/r/w1200/upload/fc/b9/38/jamaica-parishes-map.png",
+    "boardName": "Jamaica Hikes",
+    "firebaseKey": "-NCBi0-xb93cyY2fqboG",
+    "uid": "EUSU86iwRFg35Gn0dQ3LKE9FOHY2"
+  },
+  "-NCBiIHbCS5lFkmkkLj0": {
+    "boardDescription": "Spanish Dreams",
+    "boardImage": "https://geology.com/world/spain-map.gif",
+    "boardName": "Spain Hikes",
+    "firebaseKey": "-NCBiIHbCS5lFkmkkLj0",
     "uid": "EUSU86iwRFg35Gn0dQ3LKE9FOHY2"
   }
 }
