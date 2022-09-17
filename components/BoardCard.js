@@ -1,18 +1,15 @@
 /* eslint-disable @next/next/no-img-element */
 /* eslint-disable react/prop-types */
 import React from 'react';
-// import Card from 'react-bootstrap/Card';
 import PropTypes from 'prop-types';
-import { useRouter } from 'next/router';
 import Link from 'next/link';
 import Button from 'react-bootstrap/Button';
 import { deleteBoardsHikes } from '../api/mergedData';
 
-function BoardCard({ boardObj }) {
-  const router = useRouter();
+function BoardCard({ boardObj, onUpdate }) {
   const deleteThisBoard = () => {
     if (window.confirm(`Delete ${boardObj.boardName}?`)) {
-      deleteBoardsHikes(boardObj.firebaseKey).then(() => router.push('/boards'));
+      deleteBoardsHikes(boardObj.firebaseKey).then(() => onUpdate());
     }
   };
   return (
@@ -75,14 +72,8 @@ BoardCard.propTypes = {
     boardImage: PropTypes.string,
     boardDescription: PropTypes.string,
     firebaseKey: PropTypes.string,
-  }),
+  }).isRequired,
+  onUpdate: PropTypes.func.isRequired,
 };
-BoardCard.defaultProps = {
-  boardObj: {
-    name: '',
-    image: '',
-    description: '',
-    firebaseKey: '',
-  },
-};
+
 export default BoardCard;

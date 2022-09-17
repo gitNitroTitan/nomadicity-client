@@ -5,7 +5,7 @@ import { getSingleHike } from '../../api/hikesData';
 import HikeCard from '../../components/HikeCard';
 // import { useAuth } from '../../utils/context/authContext';
 
-export default function IndHikePage(onUpdate) {
+export default function IndHikePage() {
   const [hikeDetails, setHikeDetails] = useState();
   const router = useRouter();
   const { firebaseKey } = router.query;
@@ -20,7 +20,6 @@ export default function IndHikePage(onUpdate) {
       <div className="hike-card">
         <HikeCard
           hikeObj={hikeDetails}
-          onUpdate={onUpdate}
         />
       </div>
     </>

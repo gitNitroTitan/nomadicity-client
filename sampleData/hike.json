@@ -1,20 +1,38 @@
 {
-  "-NgBygsfljguJHJGT1234" : {
-    "firebaseKey" : "-NgBygsfljguJHJGT1234",
-    "name" : "Trillium Lake Trail",
-    "date" : "07/07/2021",
-    "image" : "https://www.bestfishinginamerica.com/wp-content/uploads/2018/06/TrilliumDSC_9047.jpg",
-    "description" : "Hike around Trillium Lake Trail",
-    "board_id" : "-MayyhdkKKHHLLakk124",
-    "uid" : ""
+  "-NCBif5y5l58b3U84-6O": {
+    "board_id": "-NCBiIHbCS5lFkmkkLj0",
+    "description": "Barce Rocks!",
+    "firebaseKey": "-NCBif5y5l58b3U84-6O",
+    "latitude": 35.848192,
+    "link": "https://www.outdoorvisit.com/barcelona/hiking/",
+    "longitude": -86.7565568,
+    "name": "Barcelona HIkes",
+    "time": "9/17/2022, 1:34:05 PM",
+    "uid": "EUSU86iwRFg35Gn0dQ3LKE9FOHY2",
+    "url": "http://res.cloudinary.com/dthdp7zpl/image/upload/v1663439640/vhmn8onurcxmf8wt0qa4.jpg"
   },
-  "-NTYBygsfljguJjkajkd34" : {
-    "firebaseKey" : "-NTYBygsfljguJjkajkd34",
-    "name" : "Cape Meares",
-    "date" : "07/09/2021",
-    "image" : "https://agage.mit.edu/sites/default/files/styles/station_slideshow_image/public/stations/rand02287_1024web.jpg?itok=JVViDN4s",
-    "description" : "Hike by a cliff",
-    "board_id" : "-MayyjajjasYYh367",
-    "uid" : ""
+  "-NCBm4cTxpljmKRYKDOq": {
+    "board_id": "-NCBh_gTZi7z9Rpe5E7h",
+    "description": "Kenya",
+    "firebaseKey": "-NCBm4cTxpljmKRYKDOq",
+    "latitude": 35.8451974,
+    "link": "https://hikemaniak.co.ke/10-a-must-do-one-day-hiking-trails-near-nairobi-kenya/",
+    "longitude": -86.7498564,
+    "name": "Kenya Hike",
+    "time": "9/17/2022, 1:49:01 PM",
+    "uid": "EUSU86iwRFg35Gn0dQ3LKE9FOHY2",
+    "url": "http://res.cloudinary.com/dthdp7zpl/image/upload/v1663440540/byeurzrsfyyf6honabnd.jpg"
+  },
+  "-NCBuRydJ-N0ojUoTEg0": {
+    "board_id": "-NAX37cF25Omt7Vppw4O",
+    "description": "hikes anon",
+    "firebaseKey": "-NCBuRydJ-N0ojUoTEg0",
+    "latitude": 35.848192,
+    "link": "https://stackoverflow.com/questions/49802165/failed-prop-type-the-prop-is-marked-as-required-but-its-value-is-undefined",
+    "longitude": -86.7565568,
+    "name": "Your HIke",
+    "time": "9/17/2022, 2:25:33 PM",
+    "uid": "EUSU86iwRFg35Gn0dQ3LKE9FOHY2",
+    "url": "http://res.cloudinary.com/dthdp7zpl/image/upload/v1663442718/o5chdu5wkxytzsaqvo2f.jpg"
   }
 }
