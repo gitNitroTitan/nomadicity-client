@@ -47,16 +47,7 @@ HikeCardLite.propTypes = {
     link: PropTypes.string,
     firebaseKey: PropTypes.string,
     time: PropTypes.string,
-  }),
+  }).isRequired,
 };
-HikeCardLite.defaultProps = {
-  hikeObj: {
-    name: '',
-    url: '',
-    description: '',
-    link: '',
-    firebaseKey: '',
-    time: '',
-  },
-};
+
 export default HikeCardLite;
