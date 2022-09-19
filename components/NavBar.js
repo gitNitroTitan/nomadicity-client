@@ -9,7 +9,7 @@ import { signOut } from '../utils/auth';
 
 function NomadNavBar() {
   return (
-    <Navbar expand="lg" variant="dark" fixed="top">
+    <Navbar expand="lg" fixed="top">
       <Container>
         <Link passHref href="/">
           <Navbar.Brand href="#home">Nomadicity</Navbar.Brand>

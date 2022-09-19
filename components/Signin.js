@@ -7,13 +7,7 @@ function Signin() {
   return (
     <div className="signOutPage">
       <div
-        className="text-center d-flex flex-column justify-content-center align-content-center"
-        style={{
-          height: '90vh',
-          padding: '30px',
-          maxWidth: '90vw',
-          margin: '0 auto',
-        }}
+        className="text-center d-flex flex-column"
       />
       <div className="welcomeMsg">
         <h1>Welcome to Nomadicity!</h1>

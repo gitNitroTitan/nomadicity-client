@@ -26,10 +26,12 @@ function HikeCard({ hikeObj, onUpdate }) {
           <div
             className="card-title"
           >
-            <h5>{hikeObj?.name}</h5>
+            <h5><span className="bold-text">{hikeObj?.name}</span></h5>
           </div>
           <div
             className="card-body"
+            as="textarea"
+            rows={3}
             style={{
               height: '50px',
             }}
@@ -57,10 +59,11 @@ function HikeCard({ hikeObj, onUpdate }) {
             </Button>
           </div>
           <div className="date-created">
-            Hike created on: {hikeObj?.time}
+            <span className="bold-text">Hike created on:</span> {hikeObj?.time}
           </div>
           <div className="location-created">
-            Hike location at: {hikeObj?.latitude}/{hikeObj?.longitude}
+            <span className="bold-text"> Hike location at:</span> Lat: {hikeObj?.latitude}<br />
+            Long: {hikeObj?.longitude}
           </div>
         </div>
       </div>
