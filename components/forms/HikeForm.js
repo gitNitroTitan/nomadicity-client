@@ -1,4 +1,7 @@
-import React, { useState, useEffect, useRef } from 'react';
+/* eslint-disable @next/next/no-img-element */
+import React, {
+  useState, useEffect, useRef, useCallback,
+} from 'react';
 import { useRouter } from 'next/router';
 import PropTypes from 'prop-types';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
@@ -29,6 +32,12 @@ function HikeForm({ hikeObj }) {
   const [url, setUrl] = useState();
   const router = useRouter();
   const { user } = useAuth();
+  const FACING_MODE_USER = 'user';
+  const FACING_MODE_ENVIRONMENT = 'environment';
+  const videoConstraints = {
+    facingMode: FACING_MODE_USER,
+  };
+  const [facingMode, setFacingMode] = useState(FACING_MODE_USER);
 
   useEffect(() => {
     getBoards(user.uid).then(setBoard);
@@ -79,6 +88,14 @@ function HikeForm({ hikeObj }) {
     }
   };
 
+  const handleSwitch = useCallback(() => {
+    setFacingMode(
+      (prevState) => (prevState === FACING_MODE_USER
+        ? FACING_MODE_ENVIRONMENT
+        : FACING_MODE_USER),
+    );
+  }, []);
+
   const handleSubmit = (e) => {
     e.preventDefault();
     if (hikeObj.firebaseKey) {
@@ -102,7 +119,16 @@ function HikeForm({ hikeObj }) {
       <div className="card-header">
         <h3>Hike Form</h3>
         <div className="liveCam" id="cam">
-          <Webcam audio={false} ref={webcamRef} screenshotFormat="image/jpeg" />
+          <Button className="switch-cam" onClick={handleSwitch}>Switch Cam</Button>
+          <Webcam
+            audio={false}
+            ref={webcamRef}
+            screenshotFormat="image/jpeg"
+            videoConstraints={{
+              ...videoConstraints,
+              facingMode,
+            }}
+          />
           <Button
             className="cam-btn"
             onClick={() => {

@@ -37,7 +37,7 @@ function BoardCard({ boardObj, onUpdate }) {
               <Button
                 className="edit-btn"
                 style={{
-                  display: 'flex', justifyContent: 'center', alignSelf: 'flex-end', width: '70px', marginTop: '150px', marginLeft: '-15px', background: '#EBFBDA', color: 'black', borderRadius: '20%/50%', boxShadow: 'rgba(0, 0, 0, 0.35) 0px 5px 15px',
+                  display: 'flex', justifyContent: 'center', alignSelf: 'flex-end', width: '70px', marginTop: '150px', marginLeft: '-8px', background: '#EBFBDA', color: 'black', borderRadius: '20%/50%', boxShadow: 'rgba(0, 0, 0, 0.35) 0px 5px 15px',
                 }}
               >Edit
               </Button>

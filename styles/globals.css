@@ -163,7 +163,7 @@ img {
   color: #F8C7CC;
 }
 .formContainer{
-justify-content: center;
+  justify-content: center;
   margin: 50px 30rem;
   width: 35rem;
   align-items: center;
@@ -192,7 +192,7 @@ justify-content: center;
   text-align: center;
   margin: 2px;
 }
-.hike-card{
+.hike-card {
   margin: auto;
   gap: 10px;
 }
@@ -225,9 +225,9 @@ a:hover{
   width: 8rem;
 }
 .container{
-  margin: 5px;
+justify-content: center;
 }
-button {
+Button {
   display: block;
 }
 img,
@@ -241,10 +241,10 @@ video{
   border-radius: 20%;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
-.cam-btn, .reset-btn{
+.cam-btn, .reset-btn, .switch-cam{
   display: flex;
   justify-content: center;
-  width: 70px;
+  width: 80px;
   margin: 10px auto;
   background-color: #EBFBDA; 
   color: black; 
@@ -262,14 +262,14 @@ video{
   border-radius: 20%/50%; 
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }  
-.hikeContainer{
+.hikeContainer, .boardContainer{
   width: 30rem; 
-  height: 50vh; 
+  height: 40vh; 
   border-radius: 2%; 
   background-color: #FFFFFF; 
   display: flex;
   align-content: center;
-  margin:10px;
+  margin:15px;
 }
 .dropdown-menu{
   text-align: center;
