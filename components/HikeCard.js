@@ -33,7 +33,6 @@ function HikeCard({ hikeObj, onUpdate }) {
           </div>
           <div
             className="card-body"
-            rows={3}
             style={{
               height: '50px',
             }}
