@@ -11,17 +11,12 @@ function NomadNavBar() {
   return (
     <Navbar expand="lg" fixed="top">
       <Container>
-        <Link passHref href="/">
-          <Navbar.Brand href="#home">Nomadicity</Navbar.Brand>
-        </Link>
+        <Navbar.Brand>Nomadicity</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
             <Link passHref href="/">
               <Nav.Link href="#">Home</Nav.Link>
-            </Link>
-            <Link passHref href="/profile">
-              <Nav.Link href="#">Profile</Nav.Link>
             </Link>
             <Link passHref href="/boards">
               <Nav.Link href="#">Boards</Nav.Link>

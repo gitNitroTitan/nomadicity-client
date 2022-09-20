@@ -8,6 +8,9 @@ import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import Form from 'react-bootstrap/Form';
 import { Button } from 'react-bootstrap';
 import Webcam from 'react-webcam';
+import {
+  BsBootstrapReboot, BsCamera, BsArrowRepeat, BsCloudUpload,
+} from 'react-icons/bs';
 import { useAuth } from '../../utils/context/authContext';
 import { createHike, updateHike } from '../../api/hikesData';
 import { getBoards } from '../../api/boardsData';
@@ -77,12 +80,12 @@ function HikeForm({ hikeObj }) {
       setStatus('Located...');
       navigator.geolocation.getCurrentPosition(
         (position) => {
-          setStatus('ready to party');
+          setStatus('Ready');
           setLatitude(position.coords.latitude);
           setLongitude(position.coords.longitude);
         },
         () => {
-          setStatus('This aint your location');
+          setStatus('Have not located yet');
         },
       );
     }
@@ -117,9 +120,8 @@ function HikeForm({ hikeObj }) {
   return (
     <div className="formContainer text-center text-dark bg-light mb-3">
       <div className="card-header">
-        <h3>Hike Form</h3>
+        <h3 className="title">Hike Form </h3>
         <div className="liveCam" id="cam">
-          <Button className="switch-cam" onClick={handleSwitch}>Switch Cam</Button>
           <Webcam
             audio={false}
             ref={webcamRef}
@@ -129,47 +131,51 @@ function HikeForm({ hikeObj }) {
               facingMode,
             }}
           />
-          <Button
-            className="cam-btn"
-            onClick={() => {
-              handleCapture();
-              getLocation();
-            }}
-          >
-            Capture
-          </Button>
-          <Button className="reset-btn" onClick={uploadImage}>
-            Upload
-          </Button>
-          <Button className="reset-btn" onClick={reset}>
-            Reset
-          </Button>
+          <div className="btn-switch">
+            <Button className="switch-cam" onClick={handleSwitch}><h3><BsArrowRepeat /></h3></Button>
+          </div>
+          <div className="cam-buttons">
+            <Button
+              className="cam-btn"
+              onClick={() => {
+                handleCapture();
+                getLocation();
+              }}
+            >
+              <h3><BsCamera />
+              </h3>
+            </Button>
+            <Button className="reset-btn" onClick={uploadImage}>
+              <h3><BsCloudUpload /></h3>
+            </Button>
+            <Button className="reset-btn" onClick={reset}><h3><BsBootstrapReboot /></h3>
+            </Button>
+          </div>
         </div>
-      </div>
 
-      <div className="card-body">
-        <Form onSubmit={handleSubmit}>
-          <FloatingLabel controlId="floatingInput1" label="Hike Title" className="mb-3">
-            <Form.Control type="text" placeholder="Enter Hike Title" name="name" value={formInput.name} onChange={handleChange} required />
-          </FloatingLabel>
+        <div className="card-body">
+          <Form onSubmit={handleSubmit}>
+            <FloatingLabel controlId="floatingInput1" label="Hike Title" className="mb-3">
+              <Form.Control type="text" placeholder="Enter Hike Title" name="name" value={formInput.name} onChange={handleChange} required />
+            </FloatingLabel>
 
-          <FloatingLabel controlId="floatingInput2" label="Hike Image or Video" className="mb-3">
-            <Form.Control type="url" placeholder="Enter hike image Url" name="url" value={hikeObj.firebaseKey ? hikeObj.url : url} onChange={handleChange} required />
-          </FloatingLabel>
+            <FloatingLabel controlId="floatingInput2" label="Hike Image or Video" className="mb-3">
+              <Form.Control type="url" placeholder="Enter hike image Url" name="url" value={hikeObj.firebaseKey ? hikeObj.url : url} onChange={handleChange} required />
+            </FloatingLabel>
 
-          <FloatingLabel controlId="floatingInput3" label="Hike Description" className="mb-3">
-            <Form.Control type="text" placeholder="Enter description" name="description" value={formInput.description} onChange={handleChange} required />
-          </FloatingLabel>
-          <FloatingLabel controlId="floatingInput4" label="Link for more info" className="mb-3">
-            <Form.Control type="url" placeholder="Enter Url" name="link" value={formInput.link} onChange={handleChange} required />
-          </FloatingLabel>
-          <h5>
-            <p>{status}</p>
-            Latitude: {formInput.latitude}, Longitude: {formInput.longitude}
-          </h5>
-          <Form.Select className="mb-3" aria-label="Board" name="board_id" onChange={handleChange} required>
-            <option value="">Save to which board?</option>
-            {
+            <FloatingLabel controlId="floatingInput3" label="Hike Description" className="mb-3">
+              <Form.Control type="text" placeholder="Enter description" name="description" value={formInput.description} onChange={handleChange} required />
+            </FloatingLabel>
+            <FloatingLabel controlId="floatingInput4" label="Link for more info" className="mb-3">
+              <Form.Control type="url" placeholder="Enter Url" name="link" value={formInput.link} onChange={handleChange} required />
+            </FloatingLabel>
+            <h5>
+              <p>{status}</p>
+              Latitude: {formInput.latitude}, Longitude: {formInput.longitude}
+            </h5>
+            <Form.Select className="mb-3" aria-label="Board" name="board_id" onChange={handleChange} required>
+              <option value="">Save to which board?</option>
+              {
             board.map((boards) => (
               <option
                 key={boards.firebaseKey}
@@ -180,13 +186,15 @@ function HikeForm({ hikeObj }) {
               </option>
             ))
           }
-          </Form.Select>
-          <Button variant="secondary" type="submit">
-            {hikeObj.firebaseKey ? 'Update' : 'Create'} Hike
-          </Button>
-        </Form>
+            </Form.Select>
+            <Button className="btn-submit" variant="secondary" type="submit">
+              {hikeObj.firebaseKey ? 'Update' : 'Create'} Hike
+            </Button>
+          </Form>
+        </div>
+        <div className="card-footer text-muted">NOMADICITY &#8482;
+        </div>
       </div>
-      <div className="card-footer text-muted">NOMADICITY &#8482;</div>
     </div>
   );
 }

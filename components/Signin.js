@@ -12,11 +12,12 @@ function Signin() {
       <div className="welcomeMsg">
         <h1>Welcome to Nomadicity!</h1>
         <h3>Please log in to show your hikes</h3>
-      </div>
-      <div className="signInBtn">
-        <Button type="button" size="lg" className="btn signBtn btn-secondary btn-large" onClick={signIn}>
-          Sign In
-        </Button>
+
+        <div className="signInBtn">
+          <Button type="button" size="lg" className="btn signBtn btn-secondary btn-large" onClick={signIn}>
+            Sign In
+          </Button>
+        </div>
       </div>
     </div>
   );

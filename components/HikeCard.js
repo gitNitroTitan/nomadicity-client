@@ -28,6 +28,9 @@ function HikeCard({ hikeObj, onUpdate }) {
           >
             <h5><span className="bold-text">{hikeObj?.name}</span></h5>
           </div>
+          <div className="date-created">
+            {hikeObj?.time}
+          </div>
           <div
             className="card-body"
             as="textarea"
@@ -37,6 +40,10 @@ function HikeCard({ hikeObj, onUpdate }) {
             }}
           >
             <h6>{hikeObj?.description}</h6>
+          </div>
+          <div className="location-created">
+            <span className="bold-text"> Hike location at:</span> Lat: {hikeObj?.latitude}<br />
+            Long: {hikeObj?.longitude}
           </div>
           <div className="cardBtns">
             <Link href={`/hike/edit/${hikeObj?.firebaseKey}`} passHref>
@@ -57,13 +64,6 @@ function HikeCard({ hikeObj, onUpdate }) {
               onClick={deleteThisHike}
             >Delete
             </Button>
-          </div>
-          <div className="date-created">
-            <span className="bold-text">Hike created on:</span> {hikeObj?.time}
-          </div>
-          <div className="location-created">
-            <span className="bold-text"> Hike location at:</span> Lat: {hikeObj?.latitude}<br />
-            Long: {hikeObj?.longitude}
           </div>
         </div>
       </div>
