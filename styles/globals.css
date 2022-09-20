@@ -25,7 +25,7 @@ a {
 
 body {
   background-color: #88effd;
-  background-image: url(../public/Nomadicity3.png);
+  background-image: url(../public/Nomadicity3.png) !important;
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -81,7 +81,7 @@ body {
   margin:10px;
 }
 .signBtn {
-  background: #F8C7CC;
+  background: #F8C7CC !important;
   color: #E2FAFA;
   font-size: 1.5rem;
   width: 12rem;
