@@ -20,7 +20,6 @@ const initialState = {
   name: '',
   url: '',
   description: '',
-  link: '',
   defaultValue: '',
 };
 
@@ -122,6 +121,10 @@ function HikeForm({ hikeObj }) {
       <div className="card-header">
         <h3 className="title">Hike Form </h3>
         <div className="liveCam" id="cam">
+          {imageSrc && (
+          <img src={imageSrc} alt="snap" />
+          )}
+          {!imageSrc && (
           <Webcam
             audio={false}
             ref={webcamRef}
@@ -131,6 +134,7 @@ function HikeForm({ hikeObj }) {
               facingMode,
             }}
           />
+          )}
           <div className="btn-switch">
             <Button className="switch-cam" onClick={handleSwitch}><h3><BsArrowRepeat /></h3></Button>
           </div>
@@ -145,7 +149,7 @@ function HikeForm({ hikeObj }) {
               <h3><BsCamera />
               </h3>
             </Button>
-            <Button className="reset-btn" onClick={uploadImage}>
+            <Button className="upload-btn" onClick={uploadImage}>
               <h3><BsCloudUpload /></h3>
             </Button>
             <Button className="reset-btn" onClick={reset}><h3><BsBootstrapReboot /></h3>
@@ -165,9 +169,6 @@ function HikeForm({ hikeObj }) {
 
             <FloatingLabel controlId="floatingInput3" label="Hike Description" className="mb-3">
               <Form.Control type="text" placeholder="Enter description" name="description" value={formInput.description} onChange={handleChange} required />
-            </FloatingLabel>
-            <FloatingLabel controlId="floatingInput4" label="Link for more info" className="mb-3">
-              <Form.Control type="url" placeholder="Enter Url" name="link" value={formInput.link} onChange={handleChange} required />
             </FloatingLabel>
             <h5>
               <p>{status}</p>
@@ -204,7 +205,6 @@ HikeForm.propTypes = {
     name: PropTypes.string,
     description: PropTypes.string,
     image: PropTypes.string,
-    link: PropTypes.string,
     url: PropTypes.string,
     firebaseKey: PropTypes.string,
     latitude: PropTypes.number,
@@ -216,6 +216,5 @@ HikeForm.propTypes = {
 HikeForm.defaultProps = {
   hikeObj: initialState,
 };
-// }
 
 export default HikeForm;
