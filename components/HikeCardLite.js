@@ -20,18 +20,16 @@ function HikeCardLite({ hikeObj }) {
         <div className="columnTwo">
           <div
             className="card-body"
-            style={{
-              height: '110px',
-            }}
           >
             <Card.Body>
               <Card.Title>{hikeObj.name}</Card.Title>
+              <Card.Body className="date-created">
+                {hikeObj.time}
+              </Card.Body>
               <Card.Text className="card-description">{hikeObj.description}
               </Card.Text>
             </Card.Body>
-            <Card.Body className="date-created">
-              Hike created on: {hikeObj.time}
-            </Card.Body>
+
           </div>
         </div>
       </div>

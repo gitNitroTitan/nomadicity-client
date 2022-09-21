@@ -36,8 +36,7 @@ const deleteBoardsHikes = (boardId) => new Promise((resolve, reject) => {
       Promise.all(deleteHikesPromises).then(() => {
         deleteSingleBoard(boardId).then(resolve);
       });
-    })
-    .catch((error) => reject(error));
+    }).catch((error) => reject(error));
 });
 
 export {
