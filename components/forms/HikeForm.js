@@ -9,12 +9,12 @@ import Form from 'react-bootstrap/Form';
 import { Button } from 'react-bootstrap';
 import Webcam from 'react-webcam';
 import {
-  BsBootstrapReboot, BsCamera, BsArrowRepeat, BsCloudUpload,
+  BsBootstrapReboot, BsCamera, BsArrowRepeat,
 } from 'react-icons/bs';
 import { useAuth } from '../../utils/context/authContext';
 import { createHike, updateHike } from '../../api/hikesData';
 import { getBoards } from '../../api/boardsData';
-import uploadPhoto from '../../api/cloudinary';
+import uploadPics from '../../api/cloudinary';
 
 const initialState = {
   name: '',
@@ -54,25 +54,20 @@ function HikeForm({ hikeObj }) {
     }));
   };
 
-  function handleCapture() {
-    const imageSource = webcamRef.current.getScreenshot();
+  const uploadImage = () => {
+    const imageSource = webcamRef.current?.getScreenshot();
     setImageSrc(imageSource);
-  }
-
+    const payload = new FormData();
+    payload.append('file', imageSource);
+    payload.append('upload_preset', 'lt3pfx1n');
+    payload.append('cloud_name', 'dthdp7zpl');
+    uploadPics(payload).then(setUrl);
+  };
   const reset = () => {
     setImageSrc(undefined);
   };
 
-  const uploadImage = () => {
-    const payload = new FormData();
-    payload.append('file', imageSrc);
-    payload.append('upload_preset', 'lt3pfx1n');
-    payload.append('cloud_name', 'dthdp7zpl');
-    uploadPhoto(payload).then(setUrl);
-  };
-
-  const getLocation = () => {
-    // e.preventDefault();
+  function getLocation() {
     if (!navigator.geolocation) {
       setStatus('Your browser sucks and doesnt support geolocation');
     } else {
@@ -88,7 +83,7 @@ function HikeForm({ hikeObj }) {
         },
       );
     }
-  };
+  }
 
   const handleSwitch = useCallback(() => {
     setFacingMode(
@@ -142,19 +137,17 @@ function HikeForm({ hikeObj }) {
             <Button
               className="cam-btn"
               onClick={() => {
-                handleCapture();
+                uploadImage();
                 getLocation();
               }}
             >
               <h3><BsCamera />
               </h3>
             </Button>
-            <Button className="upload-btn" onClick={uploadImage}>
-              <h3><BsCloudUpload /></h3>
-            </Button>
             <Button className="reset-btn" onClick={reset}><h3><BsBootstrapReboot /></h3>
             </Button>
           </div>
+          <h5>{status}</h5>
         </div>
 
         <div className="card-body">
@@ -171,7 +164,6 @@ function HikeForm({ hikeObj }) {
               <Form.Control type="text" placeholder="Enter description" name="description" value={formInput.description} onChange={handleChange} required />
             </FloatingLabel>
             <h5>
-              <p>{status}</p>
               Latitude: {formInput.latitude}, Longitude: {formInput.longitude}
             </h5>
             <Form.Select className="mb-3" aria-label="Board" name="board_id" onChange={handleChange} required>
