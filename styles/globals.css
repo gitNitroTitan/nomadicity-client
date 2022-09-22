@@ -300,10 +300,10 @@ video{
   position: absolute;
   z-index: 2;
   background-color: transparent;
-  border: hidden;
+  border: hidden !important;
   color: #ffffff !important;
-  transform: translate(-460%, -340%);
-  opacity: 1.0;
+  transform: translate(-460%, -340%) !important;
+  opacity: 1.0 !important;
 }
 .btn:hover{
   background-color: white;
@@ -321,8 +321,8 @@ video{
   background:transparent  !important;
 }
 .btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open>.dropdown-toggle.btn-primary {
-  color: pink;
-  background-color: transparent;
+  color: pink !important;
+  background-color: transparent !important;
   border: hidden;
   outline: none !important;
   box-shadow: none !important;
