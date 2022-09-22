@@ -18,11 +18,9 @@ a {
   text-decoration: none;
   border-radius: 20%/50%;
 }
-
 * {
   box-sizing: border-box;
 }
-
 body {
   background-color: #88effd;
   background-image: url(../public/Nomadicity3.png);
