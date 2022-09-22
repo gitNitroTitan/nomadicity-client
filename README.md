@@ -1,4 +1,4 @@
-<p align="center"><image src="./public/logoType.png" style="height:300px;"></image></p>
+<p align="center"><image src="./public/NomadicityStatic.png" style="height:300px;"></image></p>
 
 
 
