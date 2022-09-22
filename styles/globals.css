@@ -271,7 +271,7 @@ video{
   width: 1rem;
   background: transparent !important;
   border: hidden !important;
-  color: black; 
+  color: black !impotant; 
 }
 .hikeContainer, .boardContainer{
   width: 30rem; 
