@@ -14,12 +14,10 @@ function ViewBoard() {
 
   return (
     <>
-      <div className="mapContainer">
-        <div className="hike-map">
-          {boardDetails.hikes?.map((hikes) => (
-            <HikeCard key={hikes.firebaseKey} hikeObj={hikes} />
-          ))}
-        </div>
+      <div className="mainContainer">
+        {boardDetails.hikes?.map((hikes) => (
+          <HikeCard key={hikes.firebaseKey} hikeObj={hikes} />
+        ))}
       </div>
     </>
   );
