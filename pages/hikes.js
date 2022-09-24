@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { getHikes } from '../api/hikesData';
-// import { signOut } from '../utils/auth';
 import { useAuth } from '../utils/context/authContext';
 import HikeCard from '../components/HikeCard';
 
