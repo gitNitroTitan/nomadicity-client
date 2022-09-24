@@ -8,7 +8,7 @@ import { deleteHike } from '../api/hikesData';
 function HikeCard({ hikeObj, onUpdate }) {
   const deleteThisHike = () => {
     if (window.confirm(`Delete ${hikeObj.name}?`)) {
-      deleteHike(hikeObj.firebaseKey).then(() => onUpdate());
+      deleteHike(hikeObj?.firebaseKey).then(() => onUpdate());
     }
   };
 

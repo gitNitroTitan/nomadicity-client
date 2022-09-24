@@ -57,6 +57,14 @@ const deleteHike = (firebaseKey) => new Promise((resolve, reject) => {
     .catch((error) => reject(error));
 });
 
+const deleteSingleHike = (firebaseKey, uid) => new Promise((resolve, reject) => {
+  axios.delete(`${dbUrl}/hikes/${firebaseKey}.json`, uid)
+    .then(() => {
+      getAllHikes(uid).then((hikesArray) => resolve(hikesArray));
+    })
+    .catch((error) => reject(error));
+});
+
 export {
-  getHikes, getAllHikes, updateHike, getSingleHike, deleteHike, createHike,
+  getHikes, getAllHikes, updateHike, getSingleHike, deleteHike, createHike, deleteSingleHike,
 };

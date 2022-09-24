@@ -6,10 +6,9 @@ import HikeCard from '../../components/HikeCard';
 // import { useAuth } from '../../utils/context/authContext';
 
 export default function IndHikePage(onUpdate) {
-  const [hikeDetails, setHikeDetails] = useState();
+  const [hikeDetails, setHikeDetails] = useState({});
   const router = useRouter();
   const { firebaseKey } = router.query;
-  // const { user } = useAuth();
 
   useEffect(() => {
     getSingleHike(firebaseKey).then(setHikeDetails);
