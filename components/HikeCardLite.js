@@ -10,9 +10,7 @@ function HikeCardLite({ hikeObj }) {
   return (
     <div className="hikeContainer">
       <div
-        style={{
-          width: '570px', height: '400px', borderRadius: '2%', background: '#FFFFFF', display: 'flex', alignContent: 'center',
-        }}
+        className="hike-card-lite"
       >
         <div className="columnOne">
           <img src={hikeObj.url} className="card-img-top" alt={hikeObj.link} />
