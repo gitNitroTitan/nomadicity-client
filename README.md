@@ -1,4 +1,4 @@
-<p align="center"><image src="./public/logoType.png" style="height:300px;"></image></p>
+<p align="center"><image src="./public/NomadicityStatic.png" style="height:300px;"></image></p>
 
 
 
@@ -113,7 +113,7 @@ Jeremiah King
 
 * **LOOM Videos**
 
-[Loom Link]([https://www.loom.com/](https://www.loom.com/share/af6ea40493324154b59a5f5fdb7f70b9))
+[Loom Link](https://www.loom.com/share/af6ea40493324154b59a5f5fdb7f70b9)
 
 * **Netlify Deployment Link**
 

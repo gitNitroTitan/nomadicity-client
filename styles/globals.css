@@ -19,14 +19,12 @@ a {
   text-decoration: none;
   border-radius: 20%/50%;
 }
-
 * {
   box-sizing: border-box;
 }
-
 body {
   background-color: #88effd;
-  background-image: url(../public/Nomadicity3.png);
+  background-image: url(/Nomadicity3.png);
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -167,7 +165,7 @@ img {
   justify-content: center;
 }
 .signOutBtn:hover {
-  background: #ffffff !important;
+  background-color: #ffffff !important;
   color: #F8C7CC !important;
 }
 .formContainer{
@@ -197,7 +195,7 @@ label{
 .signOutBtn{
   display:flex;
   background: #D68181 !important;
-  border: hidden;
+  border: hidden !important;
   margin-right: 15px;
 }
 .bold-text{
@@ -229,8 +227,8 @@ label{
 }
 .icons {
   border-radius: 50%;
-  background: transparent;
-  border: hidden;
+  background: transparent !important;
+  border: hidden !important;
 }
 .icons:hover{
   background: #ffffff !important;
@@ -277,9 +275,9 @@ video{
   justify-content: center;
   margin: 0px 15px;
   width: 1rem;
-  background: transparent;
-  border: hidden;
-  color: black; 
+  background: transparent !important;
+  border: hidden !important;
+  color: black !important; 
 }
 .hikeContainer, .boardContainer{
   width: 30rem;
@@ -301,17 +299,17 @@ video{
   margin: 0px;
 }
 .cam-buttons:hover{
-  background-color: hidden;
+  background-color: hidden !important;
 }
 .switch-cam{
   width: 5px;
   position: absolute;
   z-index: 2;
-  background-color: transparent;
-  border: hidden;
+  background-color: transparent !important;
+  border: hidden !important;
   color: #ffffff !important;
-  transform: translate(-460%, -340%);
-  opacity: 1.0;
+  transform: translate(-460%, -340%) !important;
+  opacity: 1.0 !important;
 }
 .btn:hover{
   background-color: white;
@@ -329,9 +327,9 @@ video{
   background:transparent  !important;
 }
 .btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open>.dropdown-toggle.btn-primary {
-  color: pink;
-  background-color: transparent;
-  border: hidden;
+  color: pink !important;
+  background-color: transparent !important;
+  border: hidden !important;
   outline: none !important;
   box-shadow: none !important;
 }
