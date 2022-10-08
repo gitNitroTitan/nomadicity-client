@@ -15,9 +15,7 @@ function BoardCard({ boardObj, onUpdate }) {
   return (
     <div className="boardContainer">
       <div
-        style={{
-          width: '570px', height: '400px', borderRadius: '2%', background: '#FFFFFF', display: 'flex', alignContent: 'center',
-        }}
+        className="board-card"
       >
         <div className="columnOne">
           <img src={boardObj.boardImage} className="card-img-top" alt={boardObj.link} />
