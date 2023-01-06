@@ -1,7 +1,7 @@
 @import 'bootstrap/dist/css/bootstrap.css';
 @import url('https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap');
 
-@media only screen and (min-width: 580px) {
+@media only screen and (min-width: 350px) {
 html,
 body {
   height: 100%;
@@ -12,7 +12,7 @@ body {
     -webkit-background-size: cover; /* For WebKit*/
     -moz-background-size: cover;    /* Mozilla*/
     -o-background-size: cover;      /* Opera*/
-    background-size: cover;   
+    background-size: cover;
 }
 a {
   color: inherit;
@@ -25,6 +25,7 @@ a {
 }
 
 body {
+  -webkit-background-size: cover; /* For WebKit*/
   background-color: #88effd;
   background-image: url(../public/Nomadicity3.png);
   background-position: center;
@@ -53,7 +54,7 @@ body {
   flex-direction: row;
   justify-content: center;
   max-width: 100vw;
-  gap: 2em;
+  gap: 4em;
   border-radius: 2%;
   margin-top: 5rem;
 }
@@ -94,10 +95,10 @@ body {
   margin-left: 1rem;
 }
 .card-img-top{
-  height: 390px;
-  width: 300px;
+  height: 320px;
+  width: 200px;
   border-radius: 8px;
-  margin-left: 5px;
+  margin-left: 10px;
 }
 .gridCard {
   margin: 10px;
@@ -154,7 +155,7 @@ img {
 }
 .columnOne {
   display: flex;
-  margin-right: 20px;
+  margin-right: 2px;
 }
 .title{
   font-family: 'Dancing Script', cursive;
@@ -211,16 +212,15 @@ label{
   text-align: center;
   margin: 2px;
 }
-.hike-card, .board-card, .hike-card-lite {
+.hike-card, .board-card, .hike-card-lite, .ind-hike-card {
   display: flex; 
-  gap: 5px;
-  width: 570px;
-  height: 400px;
+  width: 440px;
+  height: 350px;
   border-radius: 2%; 
   background: #FFFFFF;
   align-content: center;
 }
-.hike-map{
+.edit-hike-container{
   margin: 150px auto 10px 10px;
 }
 .mapContainer{
@@ -280,15 +280,6 @@ video{
   background: transparent;
   border: hidden;
   color: black; 
-}
-.hikeContainer, .boardContainer{
-  width: 30rem;
-  height: 46vh; 
-  border-radius: 2%; 
-  background-color: #FFFFFF !important; 
-  display: flex;
-  align-content: center;
-  margin:15px;
 }
 .dropdown-menu{
   text-align: center;

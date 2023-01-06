@@ -16,9 +16,9 @@ export default function IndHikePage(onUpdate) {
 
   return (
     <>
-      <div className="hike-card">
+      <div className="edit-hike-container">
         <HikeCard
-          hikeObj={hikeDetails}
+          hikeObj={hikeDetails} // try viewHikeDetails?
           onUpdate={onUpdate}
         />
       </div>
