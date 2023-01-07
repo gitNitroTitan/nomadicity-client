@@ -8,27 +8,25 @@ function HikeCardLite({ hikeObj }) {
   // const { user } = useAuth();
 
   return (
-    <div className="hikeContainer">
-      <div
-        className="hike-card-lite"
-      >
-        <div className="columnOne">
-          <img src={hikeObj.url} className="card-img-top" alt={hikeObj.link} />
-        </div>
-        <div className="columnTwo">
-          <div
-            className="card-body"
-          >
-            <Card.Body>
-              <Card.Title>{hikeObj.name}</Card.Title>
-              <Card.Body className="date-created">
-                {hikeObj.time}
-              </Card.Body>
-              <Card.Text className="card-description">{hikeObj.description}
-              </Card.Text>
+    <div
+      className="hike-card-lite"
+    >
+      <div className="columnOne">
+        <img src={hikeObj.url} className="card-img-top" alt={hikeObj.link} />
+      </div>
+      <div className="columnTwo">
+        <div
+          className="card-body"
+        >
+          <Card.Body>
+            <Card.Title>{hikeObj.name}</Card.Title>
+            <Card.Body className="date-created">
+              {hikeObj.time}
             </Card.Body>
+            <Card.Text className="card-description">{hikeObj.description}
+            </Card.Text>
+          </Card.Body>
 
-          </div>
         </div>
       </div>
     </div>
