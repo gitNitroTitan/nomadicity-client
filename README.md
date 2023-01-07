@@ -36,7 +36,7 @@ Users can get help with this project, if needed, by sending a discussion message
 
 * **Contributors**
 
-Jeremiah King
+Jeremiah King.
 
 ## ERD
 
