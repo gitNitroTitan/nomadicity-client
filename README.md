@@ -1,3 +1,4 @@
+
 <p align="center"><image src="./public/NomadicityStatic.png" style="height:300px;"></image></p>
 
 ## The Who, How, and Why

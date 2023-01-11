@@ -23,7 +23,7 @@ function Hikes() {
   return (
     <div className="mainContainer">
       {hike.map((hikes) => (
-        <HikeCard hikeObj={hikes} key={hikes.firebaseKey} onUpdate={getAllTheHikes} />
+        <HikeCard hikeObj={hikes} key={hikes.id} onUpdate={getAllTheHikes} />
       ))}
     </div>
   );

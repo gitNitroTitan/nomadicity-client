@@ -1,10 +1,7 @@
-import axios from 'axios';
 // eslint-disable-next-line import/no-cycle
 import { deleteHike, getSingleHike } from './hikesData';
 import { getBoardHikes, getSingleBoard, deleteSingleBoard } from './boardsData';
 import { clientCredentials } from '../utils/client';
-
-const dbUrl = clientCredentials.databaseURL;
 
 const viewHikeDetails = (boardFirebaseKey) => new Promise((resolve, reject) => {
   getSingleHike(boardFirebaseKey)
@@ -24,7 +21,7 @@ const viewBoardDetails = (boardFirebaseKey) => new Promise((resolve, reject) => 
 });
 
 const getBoardByFirebaseKey = (boardFirebaseKey) => new Promise((resolve, reject) => {
-  axios.get(`${dbUrl}/boards/${boardFirebaseKey}.json`)
+  axios.get(`${clientCredentials.databaseURL}/boards/${boardFirebaseKey}.json`)
     .then((response) => resolve(response.data))
     .catch((error) => reject(error));
 });
