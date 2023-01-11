@@ -3,35 +3,35 @@
     "boardDescription": "Lots of rough terrain and foliage",
     "boardImage": "https://www.travelandleisure.com/thmb/EbsDQMUxU1JqFHaherXmf_9YpKw=/1800x1012/smart/filters:no_upscale()/grand-teton-rocky-mountains-USMNTNS0720-52499caea565471a8571acdfc3dfd9fe.jpg",
     "boardName": "Mountain Hikes",
-    "firebaseKey": "-NAX37cF25Omt7Vppw4O",
+    "id": "-NAX37cF25Omt7Vppw4O",
     "uid": "EUSU86iwRFg35Gn0dQ3LKE9FOHY2"
   },
   "-NCBh_gTZi7z9Rpe5E7h": {
     "boardDescription": "Hiking Through Africa",
     "boardImage": "https://moafrikatours.com/wp-content/uploads/2022/02/mapofafrica-20200220133122.png",
     "boardName": "Africa Hikes",
-    "firebaseKey": "-NCBh_gTZi7z9Rpe5E7h",
+    "id": "-NCBh_gTZi7z9Rpe5E7h",
     "uid": "EUSU86iwRFg35Gn0dQ3LKE9FOHY2"
   },
   "-NCBhkcnuTZTxkpZmSFo": {
     "boardDescription": "Belize It Or Not!",
     "boardImage": "https://geology.com/world/belize-map.gif",
     "boardName": "Belize HIkes",
-    "firebaseKey": "-NCBhkcnuTZTxkpZmSFo",
+    "id": "-NCBhkcnuTZTxkpZmSFo",
     "uid": "EUSU86iwRFg35Gn0dQ3LKE9FOHY2"
   },
   "-NCBi0-xb93cyY2fqboG": {
     "boardDescription": "Jamaica Me Crazy!",
     "boardImage": "https://www.worldatlas.com/r/w1200/upload/fc/b9/38/jamaica-parishes-map.png",
     "boardName": "Jamaica Hikes",
-    "firebaseKey": "-NCBi0-xb93cyY2fqboG",
+    "id": "-NCBi0-xb93cyY2fqboG",
     "uid": "EUSU86iwRFg35Gn0dQ3LKE9FOHY2"
   },
   "-NCBiIHbCS5lFkmkkLj0": {
     "boardDescription": "Spanish Dreams",
     "boardImage": "https://geology.com/world/spain-map.gif",
     "boardName": "Spain Hikes",
-    "firebaseKey": "-NCBiIHbCS5lFkmkkLj0",
+    "id": "-NCBiIHbCS5lFkmkkLj0",
     "uid": "EUSU86iwRFg35Gn0dQ3LKE9FOHY2"
   }
 }

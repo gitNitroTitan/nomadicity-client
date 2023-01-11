@@ -7,11 +7,11 @@ export default function EditBOard() {
   const [editBoards, setEditBoards] = useState({});
   const router = useRouter();
 
-  const { firebaseKey } = router.query;
+  const { id } = router.query;
 
   useEffect(() => {
-    getSingleBoard(firebaseKey).then(setEditBoards);
-  }, [firebaseKey]);
+    getSingleBoard(id).then(setEditBoards);
+  }, [id]);
 
   return (
     <>

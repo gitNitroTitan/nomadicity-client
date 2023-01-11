@@ -7,15 +7,15 @@ export default function EditHike() {
   const [editHikes, setEditHikes] = useState({});
   const router = useRouter();
 
-  const { firebaseKey } = router.query;
+  const { id } = router.query;
 
   useEffect(() => {
-    getSingleHike(firebaseKey).then(setEditHikes);
-  }, [firebaseKey]);
+    getSingleHike(id).then(setEditHikes);
+  }, [id]);
 
   return (
     <>
-      <HikeForm hikeObj={editHikes} />
+      <HikeForm key={id} hikeObj={editHikes} />
     </>
   );
 }

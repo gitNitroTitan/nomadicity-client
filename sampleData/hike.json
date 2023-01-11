@@ -2,7 +2,7 @@
   "-NCBif5y5l58b3U84-6O": {
     "board_id": "-NCBiIHbCS5lFkmkkLj0",
     "description": "Barce Rocks!",
-    "firebaseKey": "-NCBif5y5l58b3U84-6O",
+    "id": "-NCBif5y5l58b3U84-6O",
     "latitude": 35.848192,
     "link": "https://www.outdoorvisit.com/barcelona/hiking/",
     "longitude": -86.7565568,
@@ -14,7 +14,7 @@
   "-NCBm4cTxpljmKRYKDOq": {
     "board_id": "-NCBh_gTZi7z9Rpe5E7h",
     "description": "Kenya",
-    "firebaseKey": "-NCBm4cTxpljmKRYKDOq",
+    "id": "-NCBm4cTxpljmKRYKDOq",
     "latitude": 35.8451974,
     "link": "https://hikemaniak.co.ke/10-a-must-do-one-day-hiking-trails-near-nairobi-kenya/",
     "longitude": -86.7498564,
@@ -26,7 +26,7 @@
   "-NCBuRydJ-N0ojUoTEg0": {
     "board_id": "-NAX37cF25Omt7Vppw4O",
     "description": "hikes anon",
-    "firebaseKey": "-NCBuRydJ-N0ojUoTEg0",
+    "id": "-NCBuRydJ-N0ojUoTEg0",
     "latitude": 35.848192,
     "link": "https://stackoverflow.com/questions/49802165/failed-prop-type-the-prop-is-marked-as-required-but-its-value-is-undefined",
     "longitude": -86.7565568,

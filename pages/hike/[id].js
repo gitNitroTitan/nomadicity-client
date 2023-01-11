@@ -8,17 +8,18 @@ import HikeCard from '../../components/HikeCard';
 export default function IndHikePage(onUpdate) {
   const [hikeDetails, setHikeDetails] = useState({});
   const router = useRouter();
-  const { firebaseKey } = router.query;
+  const { id } = router.query;
 
   useEffect(() => {
-    getSingleHike(firebaseKey).then(setHikeDetails);
-  }, [firebaseKey]);
+    getSingleHike(id).then(setHikeDetails);
+  }, [id]);
 
   return (
     <>
       <div className="edit-hike-container">
         <HikeCard
-          hikeObj={hikeDetails} // try viewHikeDetails?
+          key={id}
+          hikeObj={hikeDetails}
           onUpdate={onUpdate}
         />
       </div>

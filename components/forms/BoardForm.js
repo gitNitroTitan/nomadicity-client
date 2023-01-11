@@ -19,7 +19,7 @@ function BoardForm({ boardObj }) {
   const { user } = useAuth();
 
   useEffect(() => {
-    if (boardObj.firebaseKey) setFormInput(boardObj);
+    if (boardObj.id) setFormInput(boardObj);
   }, [boardObj, user]);
 
   const handleChange = (e) => {
@@ -32,9 +32,9 @@ function BoardForm({ boardObj }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (boardObj.firebaseKey) {
+    if (boardObj.id) {
       updateBoard(formInput)
-        .then(() => router.push(`/board/${boardObj.firebaseKey}`));
+        .then(() => router.push(`/board/${boardObj.id}`));
     } else {
       const payload = { ...formInput, uid: user.uid };
       createBoard(payload).then(() => {
@@ -61,7 +61,7 @@ function BoardForm({ boardObj }) {
             <Form.Control type="text" placeholder="Enter description" name="boardDescription" value={formInput.boardDescription} onChange={handleChange} required />
           </FloatingLabel>
 
-          <Button variant="secondary" type="submit">{boardObj.firebaseKey ? 'Update' : 'Create'} Board</Button>
+          <Button variant="secondary" type="submit">{boardObj.id ? 'Update' : 'Create'} Board</Button>
         </Form>
       </div>
       <div className="card-footer text-muted">
@@ -73,10 +73,11 @@ function BoardForm({ boardObj }) {
 
 BoardForm.propTypes = {
   boardObj: PropTypes.shape({
+    id: PropTypes.number,
     boardName: PropTypes.string,
     boardDescription: PropTypes.string,
     boardImage: PropTypes.string,
-    firebaseKey: PropTypes.string,
+    // firebaseKey: PropTypes.string,
   }),
 };
 

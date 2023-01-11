@@ -1,13 +1,68 @@
 /* eslint-disable no-unused-vars */
-import axios from 'axios';
 import { clientCredentials } from '../utils/client';
-import getUserByHandle from './userData';
-// import getBoardsThatContainGivenHike from './mergedData';
-
-const dbUrl = clientCredentials.databaseURL;
 
 const getAllHikes = () => new Promise((resolve, reject) => {
-  axios.get(`${dbUrl}/hikes.json`)
+  fetch(`${clientCredentials.databaseURL}/hikes`)
+    .then((response) => response.json())
+    .then(resolve)
+    .catch(reject);
+});
+
+const getSingleHike = (hikeId) => new Promise((resolve, reject) => {
+  fetch(`${clientCredentials.databaseURL}/hikes/${hikeId}`)
+    .then((response) => response.json())
+    .then((data) => {
+      resolve({
+        id: data.id,
+        user: data.user,
+        category: Number(data.categoryId),
+        title: data.title,
+        date: data.date,
+        description: data.description,
+      });
+    })
+    .catch((error) => reject(error));
+});
+
+const updateHike = (hike, id) => new Promise((resolve, reject) => {
+  const hikeObj = {
+    user: hike.user,
+    // category: Number(hike.categoryId),
+    title: hike.title,
+    date: hike.date,
+    description: hike.description,
+  };
+  fetch(`${clientCredentials.databaseURL}/hikes/${id}`, {
+    method: 'PUT',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(hikeObj),
+  })
+    .then((response) => resolve(response))
+    .catch((error) => reject(error));
+});
+
+const createHike = (hike) => new Promise((resolve, reject) => {
+  const hikeObj = {
+    user: hike.user,
+    // category: Number(hike.categoryId),
+    title: hike.title,
+    date: hike.date,
+    image_url: hike.imageUrl,
+    description: hike.description,
+  };
+  fetch(`${clientCredentials.databaseURL}/hikes`, {
+    method: 'POST',
+    body: JSON.stringify(hikeObj),
+    headers: {
+      'content-type': 'application/json',
+    },
+  })
+    .then((response) => resolve(response.json()))
+    .catch((error) => reject(error));
+});
+
+const getHikes = (id) => new Promise((resolve, reject) => {
+  fetch(`${clientCredentials.databaseURL}/hikes.json?orderBy="uid"&equalTo="${id}"`)
     .then((response) => {
       if (response.data) {
         resolve(Object.values(response.data));
@@ -18,47 +73,17 @@ const getAllHikes = () => new Promise((resolve, reject) => {
     .catch((error) => reject(error));
 });
 
-const getSingleHike = (firebaseKey) => new Promise((resolve, reject) => {
-  axios.get(`${dbUrl}/hikes/${firebaseKey}.json`)
-    .then((response) => resolve(response.data))
+const deleteHike = (id) => new Promise((resolve, reject) => {
+  fetch(`${clientCredentials.databaseURL}/hikes/${id}`, {
+    method: 'DELETE',
+    headers: { 'Content-Type': 'application/json' },
+  })
+    .then((response) => resolve(response))
     .catch((error) => reject(error));
 });
 
-const updateHike = (hikeObjs) => new Promise((resolve, reject) => {
-  axios.patch(`${dbUrl}/hikes/${hikeObjs.firebaseKey}.json`, hikeObjs)
-    .then(() => getAllHikes(hikeObjs.uid).then(resolve))
-    .catch((error) => reject(error));
-});
-
-const createHike = (hikeObj) => new Promise((resolve, reject) => {
-  axios.post(`${dbUrl}/hikes.json`, hikeObj)
-    .then((response) => {
-      const payload = { firebaseKey: response.data.name };
-      axios.patch(`${dbUrl}/hikes/${response.data.name}.json`, payload)
-        .then(resolve);
-    }).catch(reject);
-});
-
-const getHikes = (uid) => new Promise((resolve, reject) => {
-  axios.get(`${dbUrl}/hikes.json?orderBy="uid"&equalTo="${uid}"`)
-    .then((response) => {
-      if (response.data) {
-        resolve(Object.values(response.data));
-      } else {
-        resolve([]);
-      }
-    })
-    .catch((error) => reject(error));
-});
-
-const deleteHike = (firebaseKey) => new Promise((resolve, reject) => {
-  axios.delete(`${dbUrl}/hikes/${firebaseKey}.json`)
-    .then(() => resolve('deleted'))
-    .catch((error) => reject(error));
-});
-
-const deleteSingleHike = (firebaseKey, uid) => new Promise((resolve, reject) => {
-  axios.delete(`${dbUrl}/hikes/${firebaseKey}.json`, uid)
+const deleteSingleHike = (id, uid) => new Promise((resolve, reject) => {
+  fetch(`${clientCredentials.databaseURL}/hikes/${id}`, uid)
     .then(() => {
       getAllHikes(uid).then((hikesArray) => resolve(hikesArray));
     })

@@ -24,7 +24,7 @@ function Boards() {
   return (
     <div className="mainContainer">
       {board.map((boards) => (
-        <BoardCard boardObj={boards} key={boards.firebaseKey} onUpdate={getAllTheBoards} />
+        <BoardCard boardObj={boards} key={boards.id} onUpdate={getAllTheBoards} />
       ))}
     </div>
   );
