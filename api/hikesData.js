@@ -15,7 +15,6 @@ const getSingleHike = (hikeId) => new Promise((resolve, reject) => {
       resolve({
         id: data.id,
         user: data.user,
-        category: Number(data.categoryId),
         title: data.title,
         date: data.date,
         description: data.description,
@@ -61,16 +60,11 @@ const createHike = (hike) => new Promise((resolve, reject) => {
     .catch((error) => reject(error));
 });
 
-const getHikes = (id) => new Promise((resolve, reject) => {
-  fetch(`${clientCredentials.databaseURL}/hikes.json?orderBy="uid"&equalTo="${id}"`)
-    .then((response) => {
-      if (response.data) {
-        resolve(Object.values(response.data));
-      } else {
-        resolve([]);
-      }
-    })
-    .catch((error) => reject(error));
+const getHikes = () => new Promise((resolve, reject) => {
+  fetch(`${clientCredentials.databaseURL}/hikes`)
+    .then((response) => response.json())
+    .then(resolve)
+    .catch(reject);
 });
 
 const deleteHike = (id) => new Promise((resolve, reject) => {

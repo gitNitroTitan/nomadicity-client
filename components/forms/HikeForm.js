@@ -43,7 +43,7 @@ function HikeForm({ hikeObj }) {
 
   useEffect(() => {
     getBoards(user.uid).then(setBoard);
-    if (hikeObj.firebaseKey) setFormInput(hikeObj);
+    if (hikeObj.id) setFormInput(hikeObj);
   }, [hikeObj, user]);
 
   const handleChange = (e) => {
@@ -95,8 +95,8 @@ function HikeForm({ hikeObj }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (hikeObj.firebaseKey) {
-      updateHike(formInput).then(() => router.push(`/hike/${hikeObj.firebaseKey}`));
+    if (hikeObj.id) {
+      updateHike(formInput).then(() => router.push(`/hike/${hikeObj.id}`));
     } else {
       const payload = {
         ...formInput,
@@ -157,7 +157,7 @@ function HikeForm({ hikeObj }) {
             </FloatingLabel>
 
             <FloatingLabel controlId="floatingInput2" label="Hike Image or Video" className="mb-3">
-              <Form.Control type="url" placeholder="Enter hike image Url" name="url" value={hikeObj.firebaseKey ? hikeObj.url : url} onChange={handleChange} required />
+              <Form.Control type="url" placeholder="Enter hike image Url" name="url" value={hikeObj.id ? hikeObj.url : url} onChange={handleChange} required />
             </FloatingLabel>
 
             <FloatingLabel controlId="floatingInput3" label="Hike Description" className="mb-3">
@@ -169,19 +169,19 @@ function HikeForm({ hikeObj }) {
             <Form.Select className="mb-3" aria-label="Board" name="board_id" onChange={handleChange} required>
               <option value="">Save to which board?</option>
               {
-            board.map((boards) => (
+            board?.map((boards) => (
               <option
-                key={boards.firebaseKey}
-                value={boards.firebaseKey}
-                selected={hikeObj.board_id === boards.firebaseKey}
+                key={boards.id}
+                value={boards.id}
+                selected={hikeObj.board_id === boards.id}
               >
-                {boards.boardName}
+                {boards.title}
               </option>
             ))
           }
             </Form.Select>
             <Button className="btn-submit" variant="secondary" type="submit">
-              {hikeObj.firebaseKey ? 'Update' : 'Create'} Hike
+              {hikeObj.id ? 'Update' : 'Create'} Hike
             </Button>
           </Form>
         </div>
@@ -194,11 +194,11 @@ function HikeForm({ hikeObj }) {
 
 HikeForm.propTypes = {
   hikeObj: PropTypes.shape({
+    id: PropTypes.number,
     name: PropTypes.string,
     description: PropTypes.string,
     image: PropTypes.string,
     url: PropTypes.string,
-    firebaseKey: PropTypes.string,
     latitude: PropTypes.number,
     longitude: PropTypes.number,
     board_id: PropTypes.string,

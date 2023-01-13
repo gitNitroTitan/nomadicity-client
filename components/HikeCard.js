@@ -8,7 +8,7 @@ import { deleteHike } from '../api/hikesData';
 function HikeCard({ hikeObj, onUpdate }) {
   const deleteThisHike = () => {
     if (window.confirm(`Delete ${hikeObj.name}?`)) {
-      deleteHike(hikeObj?.firebaseKey).then(() => onUpdate());
+      deleteHike(hikeObj?.id).then(() => onUpdate());
     }
   };
 
@@ -41,7 +41,7 @@ function HikeCard({ hikeObj, onUpdate }) {
           Long: {hikeObj?.longitude}
         </div>
         <div className="cardBtns">
-          <Link href={`/hike/edit/${hikeObj?.firebaseKey}`} passHref>
+          <Link href={`/hike/edit/${hikeObj?.id}`} passHref>
             <Button
               className="edit-btn"
               style={{
@@ -67,14 +67,14 @@ function HikeCard({ hikeObj, onUpdate }) {
 
 HikeCard.propTypes = {
   hikeObj: PropTypes.shape({
+    id: PropTypes.number,
     name: PropTypes.string,
     url: PropTypes.string,
     description: PropTypes.string,
     link: PropTypes.string,
-    firebaseKey: PropTypes.string,
     time: PropTypes.string,
-    latitude: PropTypes.number,
-    longitude: PropTypes.number,
+    latitude: PropTypes.string,
+    longitude: PropTypes.string,
   }).isRequired,
   onUpdate: PropTypes.func.isRequired,
 };

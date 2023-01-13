@@ -4,8 +4,8 @@ import PropTypes from 'prop-types';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import Form from 'react-bootstrap/Form';
 import { Button } from 'react-bootstrap';
-import { useAuth } from '../../utils/context/authContext';
-import { createBoard, updateBoard } from '../../api/boardsData';
+// import { useAuth } from '../../utils/context/authContext';
+import { createBoard, getBoards, updateBoard } from '../../api/boardsData';
 
 const initialState = {
   boardName: '',
@@ -14,13 +14,15 @@ const initialState = {
 };
 
 function BoardForm({ boardObj }) {
+  const [boards, setBoards] = useState([]);
   const [formInput, setFormInput] = useState(initialState);
   const router = useRouter();
-  const { user } = useAuth();
+  // const { user } = useAuth();
 
   useEffect(() => {
+    getBoards().then(setBoards);
     if (boardObj.id) setFormInput(boardObj);
-  }, [boardObj, user]);
+  }, [boardObj]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -29,15 +31,14 @@ function BoardForm({ boardObj }) {
       [name]: value,
     }));
   };
-
+  console.warn(boards);
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (boardObj.id) {
-      updateBoard(formInput)
+    if (boardObj?.id) {
+      updateBoard(formInput, boardObj.id)
         .then(() => router.push(`/board/${boardObj.id}`));
     } else {
-      const payload = { ...formInput, uid: user.uid };
-      createBoard(payload).then(() => {
+      createBoard(formInput).then(() => {
         router.push('/boards');
       });
     }
@@ -77,7 +78,6 @@ BoardForm.propTypes = {
     boardName: PropTypes.string,
     boardDescription: PropTypes.string,
     boardImage: PropTypes.string,
-    // firebaseKey: PropTypes.string,
   }),
 };
 

@@ -8,8 +8,8 @@ import { deleteBoardsHikes } from '../api/mergedData';
 
 function BoardCard({ boardObj, onUpdate }) {
   const deleteThisBoard = () => {
-    if (window.confirm(`Delete ${boardObj.boardName}?`)) {
-      deleteBoardsHikes(boardObj?.firebaseKey).then(() => onUpdate());
+    if (window.confirm(`Delete ${boardObj.title}?`)) {
+      deleteBoardsHikes(boardObj?.id).then(() => onUpdate());
     }
   };
   return (
@@ -17,7 +17,7 @@ function BoardCard({ boardObj, onUpdate }) {
       className="board-card"
     >
       <div className="columnOne">
-        <img src={boardObj.boardImage} className="card-img-top" alt={boardObj.link} />
+        <img src={boardObj.image_url} className="card-img-top" alt={boardObj.link} />
       </div>
       <div className="columnTwo">
         <div
@@ -26,11 +26,11 @@ function BoardCard({ boardObj, onUpdate }) {
             height: '110px',
           }}
         >
-          <h5 className="card-title">{boardObj.boardName}</h5><br />
-          <div className="card-description">{boardObj.boardDescription}</div>
+          <h5 className="card-title">{boardObj.title}</h5><br />
+          <div className="card-description">{boardObj.description}</div>
         </div>
         <div className="cardBtns">
-          <Link href={`/board/edit/${boardObj.firebaseKey}`} passHref>
+          <Link href={`/board/edit/${boardObj.id}`} passHref>
             <Button
               className="edit-btn"
               style={{
@@ -39,7 +39,7 @@ function BoardCard({ boardObj, onUpdate }) {
             >Edit
             </Button>
           </Link>
-          <Link href={`/board/${boardObj.firebaseKey}`} passHref>
+          <Link href={`/board/${boardObj.id}`} passHref>
             <Button
               className="hikes-btn"
               style={{
@@ -64,10 +64,10 @@ function BoardCard({ boardObj, onUpdate }) {
 }
 BoardCard.propTypes = {
   boardObj: PropTypes.shape({
-    boardName: PropTypes.string,
-    boardImage: PropTypes.string,
-    boardDescription: PropTypes.string,
-    firebaseKey: PropTypes.string,
+    title: PropTypes.string,
+    image_url: PropTypes.string,
+    description: PropTypes.string,
+    id: PropTypes.number,
   }).isRequired,
   onUpdate: PropTypes.func.isRequired,
 };
