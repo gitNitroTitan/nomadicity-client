@@ -1,10 +1,10 @@
 // eslint-disable-next-line import/no-cycle
 import { deleteHike, getSingleHike } from './hikesData';
-import { getBoardHikes, getSingleBoard, deleteSingleBoard } from './boardsData';
+import { getSingleBoard, deleteSingleBoard } from './boardsData';
 import { clientCredentials } from '../utils/client';
 
-const viewHikeDetails = (boardFirebaseKey) => new Promise((resolve, reject) => {
-  getSingleHike(boardFirebaseKey)
+const viewHikeDetails = (boardId) => new Promise((resolve, reject) => {
+  getSingleHike(boardId)
     .then((hikeObj) => {
       getSingleBoard(hikeObj.boardId).then((boardObject) => {
         resolve({ boardObject, ...hikeObj });
@@ -13,15 +13,22 @@ const viewHikeDetails = (boardFirebaseKey) => new Promise((resolve, reject) => {
     .catch((error) => reject(error));
 });
 
-const viewBoardDetails = (boardFirebaseKey) => new Promise((resolve, reject) => {
-  Promise.all([getSingleBoard(boardFirebaseKey), getBoardHikes(boardFirebaseKey)])
+const getBoardHikes = (id) => new Promise((resolve, reject) => {
+  fetch(`${clientCredentials.databaseURL}/hikes?boards=${id}"`)
+    .then((response) => response.json())
+    .then(resolve)
+    .catch(reject);
+});
+
+const viewBoardDetails = (boardId) => new Promise((resolve, reject) => {
+  Promise.all([getSingleBoard(boardId), getBoardHikes(boardId)])
     .then(([boardObject, boardHikesArray]) => {
       resolve({ ...boardObject, hikes: boardHikesArray });
     }).catch((error) => reject(error));
 });
 
-const getBoardByFirebaseKey = (boardFirebaseKey) => new Promise((resolve, reject) => {
-  axios.get(`${clientCredentials.databaseURL}/boards/${boardFirebaseKey}.json`)
+const getBoardById = (id) => new Promise((resolve, reject) => {
+  fetch(`${clientCredentials.databaseURL}/boards/${id}`)
     .then((response) => resolve(response.data))
     .catch((error) => reject(error));
 });
@@ -37,5 +44,5 @@ const deleteBoardsHikes = (boardId) => new Promise((resolve, reject) => {
 });
 
 export {
-  getBoardByFirebaseKey, deleteBoardsHikes, viewBoardDetails, viewHikeDetails,
+  getBoardById, deleteBoardsHikes, viewBoardDetails, viewHikeDetails, getBoardHikes,
 };

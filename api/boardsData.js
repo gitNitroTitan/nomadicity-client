@@ -14,11 +14,9 @@ const getSingleBoard = (boardId) => new Promise((resolve, reject) => {
       resolve({
         id: data.id,
         user: data.user,
-        category: data.category,
         title: data.title,
-        date: data.date,
         imageUrl: data.image_url,
-        content: data.content,
+        description: data.description,
       });
     })
     .catch((error) => reject(error));
@@ -27,11 +25,10 @@ const getSingleBoard = (boardId) => new Promise((resolve, reject) => {
 const createBoard = (board) => new Promise((resolve, reject) => {
   const boardObj = {
     user: board.user,
-    // hike: Number(board.hikeId),
+    hike: Number(board.hikeId),
     title: board.title,
-    publication_date: board.publicationDate,
     image_url: board.imageUrl,
-    content: board.content,
+    description: board.description,
   };
   fetch(`${clientCredentials.databaseURL}/boards`, {
     method: 'POST',
@@ -49,9 +46,8 @@ const updateBoard = (board, id) => new Promise((resolve, reject) => {
     user: board.user,
     hike: Number(board.hikeId),
     title: board.title,
-    date: board.date,
     image_url: board.imageUrl,
-    content: board.content,
+    description: board.description,
   };
   fetch(`${clientCredentials.databaseURL}/boards/${id}`, {
     method: 'PUT',
@@ -70,12 +66,6 @@ const deleteSingleBoard = (id) => new Promise((resolve, reject) => {
     .then((response) => resolve(response))
     .catch((error) => reject(error));
 });
-
-// const getBoardHikes = (boardId) => new Promise((resolve, reject) => {
-//   fetch(`${clientCredentials.databaseURL}/hikes.json?orderBy= "board_id" &equalTo="${boardId}"`)
-//     .then((response) => resolve(Object.values(response.data)))
-//     .catch((error) => reject(error));
-// });
 
 export {
   getBoards, createBoard, updateBoard, getSingleBoard, deleteSingleBoard,
