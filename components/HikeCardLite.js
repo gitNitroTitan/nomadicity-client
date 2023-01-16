@@ -35,11 +35,11 @@ function HikeCardLite({ hikeObj }) {
 
 HikeCardLite.propTypes = {
   hikeObj: PropTypes.shape({
+    id: PropTypes.number,
     name: PropTypes.string,
     url: PropTypes.string,
     description: PropTypes.string,
     link: PropTypes.string,
-    firebaseKey: PropTypes.string,
     time: PropTypes.string,
   }).isRequired,
 };
