@@ -11,7 +11,7 @@ function HikeCard({ hikeObj, onUpdate }) {
       deleteHike(hikeObj?.id).then(() => onUpdate());
     }
   };
-
+  console.warn(hikeObj.url);
   return (
     <div
       className="hike-card"

@@ -29,6 +29,8 @@ const updateHike = (hike, id) => new Promise((resolve, reject) => {
     // category: Number(hike.categoryId),
     title: hike.title,
     date: hike.date,
+    latitude: hike.latitude,
+    longitude: hike.longitude,
     description: hike.description,
   };
   fetch(`${clientCredentials.databaseURL}/hikes/${id}`, {
@@ -43,10 +45,12 @@ const updateHike = (hike, id) => new Promise((resolve, reject) => {
 const createHike = (hike) => new Promise((resolve, reject) => {
   const hikeObj = {
     user: hike.user,
-    // category: Number(hike.categoryId),
+    board: Number(hike.boardId),
     title: hike.title,
+    latitude: hike.latitude,
+    longitude: hike.longitude,
     date: hike.date,
-    image_url: hike.imageUrl,
+    image_url: hike.image_url,
     description: hike.description,
   };
   fetch(`${clientCredentials.databaseURL}/hikes`, {

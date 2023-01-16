@@ -15,7 +15,7 @@ const getSingleBoard = (boardId) => new Promise((resolve, reject) => {
         id: data.id,
         user: data.user,
         title: data.title,
-        imageUrl: data.image_url,
+        image_url: data.image_url,
         description: data.description,
       });
     })
@@ -24,10 +24,8 @@ const getSingleBoard = (boardId) => new Promise((resolve, reject) => {
 
 const createBoard = (board) => new Promise((resolve, reject) => {
   const boardObj = {
-    user: board.user,
-    hike: Number(board.hikeId),
     title: board.title,
-    image_url: board.imageUrl,
+    image_url: board.image_url,
     description: board.description,
   };
   fetch(`${clientCredentials.databaseURL}/boards`, {
@@ -41,15 +39,14 @@ const createBoard = (board) => new Promise((resolve, reject) => {
     .catch((error) => reject(error));
 });
 
-const updateBoard = (board, id) => new Promise((resolve, reject) => {
+const updateBoard = (board) => new Promise((resolve, reject) => {
   const boardObj = {
-    user: board.user,
-    hike: Number(board.hikeId),
+    // hike: Number(board.hikeId),
     title: board.title,
-    image_url: board.imageUrl,
+    image_url: board.image_url,
     description: board.description,
   };
-  fetch(`${clientCredentials.databaseURL}/boards/${id}`, {
+  fetch(`${clientCredentials.databaseURL}/boards/${board.id}`, {
     method: 'PUT',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(boardObj),
