@@ -8,15 +8,19 @@ const getAllHikes = () => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
-const getSingleHike = (hikeId) => new Promise((resolve, reject) => {
-  fetch(`${clientCredentials.databaseURL}/hikes/${hikeId}`)
+const getSingleHike = (id) => new Promise((resolve, reject) => {
+  fetch(`${clientCredentials.databaseURL}/hikes/${id}`)
     .then((response) => response.json())
     .then((data) => {
       resolve({
         id: data.id,
-        user: data.user,
-        title: data.title,
-        date: data.date,
+        board: data.board,
+        // user: data.user,
+        name: data.name,
+        url: data.url,
+        // date: data.date,
+        latitude: Number(data.latitude),
+        longitude: Number(data.longitude),
         description: data.description,
       });
     })
@@ -25,10 +29,11 @@ const getSingleHike = (hikeId) => new Promise((resolve, reject) => {
 
 const updateHike = (hike, id) => new Promise((resolve, reject) => {
   const hikeObj = {
-    user: hike.user,
-    // category: Number(hike.categoryId),
-    title: hike.title,
-    date: hike.date,
+    // user: hike.user,
+    board: Number(hike.boardId),
+    name: hike.name,
+    // date: hike.date,
+    url: hike.url,
     latitude: hike.latitude,
     longitude: hike.longitude,
     description: hike.description,
@@ -42,16 +47,16 @@ const updateHike = (hike, id) => new Promise((resolve, reject) => {
     .catch((error) => reject(error));
 });
 
-const createHike = (hike) => new Promise((resolve, reject) => {
+const createHike = (hike, latitude, longitude, url) => new Promise((resolve, reject) => {
   const hikeObj = {
-    user: hike.user,
+    // user: hike.user,
     board: Number(hike.boardId),
-    title: hike.title,
-    latitude: hike.latitude,
-    longitude: hike.longitude,
-    date: hike.date,
-    image_url: hike.image_url,
+    name: hike.name,
     description: hike.description,
+    latitude,
+    longitude,
+    url,
+    // date: hike.date,
   };
   fetch(`${clientCredentials.databaseURL}/hikes`, {
     method: 'POST',
