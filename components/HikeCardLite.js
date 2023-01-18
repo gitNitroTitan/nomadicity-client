@@ -12,7 +12,7 @@ function HikeCardLite({ hikeObj }) {
       className="hike-card-lite"
     >
       <div className="columnOne">
-        <img src={hikeObj?.url} className="card-img-top" alt={hikeObj.link} />
+        <img src={hikeObj.url} className="card-img-top" alt={hikeObj.link} />
       </div>
       <div className="columnTwo">
         <div

@@ -11,22 +11,21 @@ function HikeCard({ hikeObj, onUpdate }) {
       deleteHike(hikeObj?.id).then(() => onUpdate());
     }
   };
-  console.warn(hikeObj.url);
   return (
     <div
       className="hike-card"
     >
       <div className="columnOne">
-        <img src={hikeObj?.url} className="card-img-top" alt={hikeObj?.link} />
+        <img src={hikeObj.url} className="card-img-top" alt={hikeObj.url} />
       </div>
       <div className="columnTwo">
         <div
           className="card-title"
         >
-          <h5><span className="bold-text">{hikeObj?.name}</span></h5>
+          <h5><span className="bold-text">{hikeObj.name}</span></h5>
         </div>
         <div className="date-created">
-          {hikeObj?.time}
+          {hikeObj.date}
         </div>
         <div
           className="card-body"
@@ -34,14 +33,14 @@ function HikeCard({ hikeObj, onUpdate }) {
             height: '50px',
           }}
         >
-          <h6>{hikeObj?.description}</h6>
+          <h6>{hikeObj.description}</h6>
         </div>
         <div className="location-created">
-          <span className="bold-text"> Hike location at:</span> Lat: {hikeObj?.latitude}<br />
+          <span className="bold-text"> Hike location at:</span> Lat: {hikeObj.latitude}<br />
           Long: {hikeObj?.longitude}
         </div>
         <div className="cardBtns">
-          <Link href={`/hike/edit/${hikeObj?.id}`} passHref>
+          <Link href={`/hike/edit/${hikeObj.id}`} passHref>
             <Button
               className="edit-btn"
               style={{
@@ -71,8 +70,7 @@ HikeCard.propTypes = {
     name: PropTypes.string,
     url: PropTypes.string,
     description: PropTypes.string,
-    link: PropTypes.string,
-    time: PropTypes.string,
+    date: PropTypes.string,
     latitude: PropTypes.string,
     longitude: PropTypes.string,
   }).isRequired,
