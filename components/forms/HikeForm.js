@@ -12,29 +12,20 @@ import Webcam from 'react-webcam';
 import {
   BsBootstrapReboot, BsCamera, BsArrowRepeat,
 } from 'react-icons/bs';
-// import { useAuth } from '../../utils/context/authContext';
 import { createHike, updateHike } from '../../api/hikesData';
 import { getBoards } from '../../api/boardsData';
 import uploadPics from '../../api/cloudinary';
 
 const initialState = {
   id: null,
-  board: ({
-    id: 0,
-    title: '',
-    description: '',
-    image_url: '',
-  }),
   name: '',
   description: '',
-  url: '',
-  latitude: 0,
-  longitude: 0,
+  boardId: null,
 };
 
-function HikeForm({ hikeObj, boardId }) {
+function HikeForm({ hikeObj, user }) {
   const [formInput, setFormInput] = useState(initialState);
-  const [board, setBoard] = useState([]);
+  const [boards, setBoards] = useState([]);
   const [latitude, setLatitude] = useState();
   const [longitude, setLongitude] = useState();
   const [status, setStatus] = useState();
@@ -42,7 +33,6 @@ function HikeForm({ hikeObj, boardId }) {
   const [imageSrc, setImageSrc] = useState();
   const [url, setUrl] = useState();
   const router = useRouter();
-  // const { user } = useAuth();
   const FACING_MODE_USER = 'user';
   const FACING_MODE_ENVIRONMENT = 'environment';
   const videoConstraints = {
@@ -51,8 +41,8 @@ function HikeForm({ hikeObj, boardId }) {
   const [facingMode, setFacingMode] = useState(FACING_MODE_USER);
 
   useEffect(() => {
-    getBoards().then(setBoard);
-    if (hikeObj.id) setFormInput(hikeObj);
+    getBoards().then(setBoards);
+    if (hikeObj?.id) setFormInput(hikeObj);
   }, [hikeObj]);
 
   const handleChange = (e) => {
@@ -104,10 +94,10 @@ function HikeForm({ hikeObj, boardId }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (hikeObj?.id) {
-      console.warn(formInput, hikeObj.id, board.id);
-      updateHike(formInput, hikeObj.id, board.id).then(() => router.push('/hikes'));
+      updateHike(formInput, hikeObj.id).then(() => router.push('/hikes'));
     } else {
       createHike(formInput, latitude, longitude, url).then(() => {
+        console.warn(user);
         router.push('/hikes');
       });
     }
@@ -158,7 +148,7 @@ function HikeForm({ hikeObj, boardId }) {
             </FloatingLabel>
 
             <FloatingLabel controlId="floatingInput2" label="Hike Image" className="mb-3">
-              <Form.Control type="url" placeholder="Enter hike image Url" name="url" value={hikeObj.id ? formInput.url : url} onChange={handleChange} required />
+              <Form.Control type="url" placeholder="Enter hike image Url" name="url" value={formInput.id ? formInput.url : url} onChange={handleChange} required />
             </FloatingLabel>
 
             <FloatingLabel controlId="floatingInput3" label="Hike Description" className="mb-3">
@@ -167,22 +157,22 @@ function HikeForm({ hikeObj, boardId }) {
             <h5>
               Latitude: {formInput.latitude}, Longitude: {formInput.longitude}
             </h5>
-            <Form.Select className="mb-3" aria-label="Board" name="boardId" defaultValue={boardId} onChange={handleChange} required>
-              {formInput.id ? <option value="">{formInput.board?.title}</option> : <option value="">Select Board</option>}
+            <Form.Select className="mb-3" aria-label="Board" name="boardId" onChange={handleChange} required>
+              {formInput.id ? <option value="">{formInput.board.title}</option> : <option value="">Select Board</option>}
               {
-            board.map((boards) => (
+            boards.map((board) => (
               <option
-                key={boards.id}
-                value={boards.id}
-                selected={boards.id === formInput.boardId}
+                key={board.id}
+                value={board.id}
+                selected={board.id === formInput.boardId}
               >
-                {boards.title}
+                {board.title}
               </option>
             ))
           }
             </Form.Select>
             <Button className="btn-submit" variant="secondary" type="submit">
-              {hikeObj.id ? 'Update' : 'Create'} Hike
+              {formInput.id ? 'Update' : 'Create'} Hike
             </Button>
           </Form>
         </div>
@@ -194,6 +184,15 @@ function HikeForm({ hikeObj, boardId }) {
 }
 
 HikeForm.propTypes = {
+  user: PropTypes.shape({
+    id: PropTypes.number,
+    uid: PropTypes.string,
+    first_name: PropTypes.string,
+    last_name: PropTypes.string,
+    bio: PropTypes.string,
+    profile_image_url: PropTypes.string,
+    email: PropTypes.string,
+  }).isRequired,
   hikeObj: PropTypes.shape({
     id: PropTypes.number,
     name: PropTypes.string,
@@ -202,19 +201,14 @@ HikeForm.propTypes = {
     url: PropTypes.string,
     latitude: PropTypes.number,
     longitude: PropTypes.number,
-    board: PropTypes.shape({
-      id: PropTypes.number,
-      title: PropTypes.string,
-      description: PropTypes.string,
-      image_url: PropTypes.string,
-    }),
-  }),
-  boardId: PropTypes.number,
-};
-
-HikeForm.defaultProps = {
-  hikeObj: initialState,
-  boardId: 1,
+    boardId: PropTypes.number,
+  }).isRequired,
+  boardId: PropTypes.shape({
+    id: PropTypes.number,
+    title: PropTypes.string,
+    description: PropTypes.string,
+    image_url: PropTypes.string,
+  }).isRequired,
 };
 
 export default HikeForm;

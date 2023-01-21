@@ -4,7 +4,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Link from 'next/link';
 import Button from 'react-bootstrap/Button';
-import { deleteBoardsHikes } from '../api/mergedData';
+import { deleteBoardsHikes } from '../api/boardsData';
 
 function BoardCard({ boardObj, onUpdate }) {
   const deleteThisBoard = () => {
@@ -39,12 +39,13 @@ function BoardCard({ boardObj, onUpdate }) {
             >Edit
             </Button>
           </Link>
-          <Link href={`/board/${boardObj.id}`} passHref>
+          <Link href={`/boards/${boardObj.id}`} passHref>
             <Button
               className="hikes-btn"
               style={{
                 display: 'flex', justifyContent: 'center', alignSelf: 'flex-end', width: '70px', marginTop: '150px', marginLeft: '10px', background: '#EBFBDA', color: 'black', borderRadius: '20%/50%', boxShadow: 'rgba(0, 0, 0, 0.35) 0px 5px 15px',
               }}
+              // onClick={getBoardHikes}
             >Hikes
             </Button>
           </Link>
@@ -64,10 +65,10 @@ function BoardCard({ boardObj, onUpdate }) {
 }
 BoardCard.propTypes = {
   boardObj: PropTypes.shape({
+    id: PropTypes.number,
     title: PropTypes.string,
     image_url: PropTypes.string,
     description: PropTypes.string,
-    id: PropTypes.number,
   }).isRequired,
   onUpdate: PropTypes.func.isRequired,
 };

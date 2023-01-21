@@ -15,7 +15,7 @@ const getSingleHike = (id) => new Promise((resolve, reject) => {
       resolve({
         id: data.id,
         board: data.board,
-        // user: data.user,
+        user: data.user,
         name: data.name,
         url: data.url,
         // date: data.date,
@@ -29,7 +29,6 @@ const getSingleHike = (id) => new Promise((resolve, reject) => {
 
 const updateHike = (hike, id) => new Promise((resolve, reject) => {
   const hikeObj = {
-    // user: hike.user,
     board: Number(hike.boardId),
     name: hike.name,
     // date: hike.date,
@@ -49,15 +48,16 @@ const updateHike = (hike, id) => new Promise((resolve, reject) => {
 
 const createHike = (hike, latitude, longitude, url) => new Promise((resolve, reject) => {
   const hikeObj = {
-    // user: hike.user,
-    board: Number(hike.boardId),
+    user: hike.user,
+    board: hike.board,
     name: hike.name,
-    description: hike.description,
+    url,
     latitude,
     longitude,
-    url,
+    description: hike.description,
     // date: hike.date,
   };
+  console.warn(hikeObj);
   fetch(`${clientCredentials.databaseURL}/hikes`, {
     method: 'POST',
     body: JSON.stringify(hikeObj),
@@ -85,14 +85,14 @@ const deleteHike = (id) => new Promise((resolve, reject) => {
     .catch((error) => reject(error));
 });
 
-const deleteSingleHike = (id, uid) => new Promise((resolve, reject) => {
-  fetch(`${clientCredentials.databaseURL}/hikes/${id}`, uid)
-    .then(() => {
-      getAllHikes(uid).then((hikesArray) => resolve(hikesArray));
-    })
-    .catch((error) => reject(error));
-});
+// const deleteSingleHike = (id, uid) => new Promise((resolve, reject) => {
+//   fetch(`${clientCredentials.databaseURL}/hikes/${id}`, uid)
+//     .then(() => {
+//       getAllHikes(uid).then((hikesArray) => resolve(hikesArray));
+//     })
+//     .catch((error) => reject(error));
+// });
 
 export {
-  getHikes, getAllHikes, updateHike, getSingleHike, deleteHike, createHike, deleteSingleHike,
+  getHikes, getAllHikes, updateHike, getSingleHike, deleteHike, createHike,
 };

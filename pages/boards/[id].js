@@ -1,15 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
-import { viewBoardDetails } from '../../api/mergedData';
+import { getSingleBoard, viewBoardDetails } from '../../api/boardsData';
+import BoardCardLite from '../../components/BoardCardLite';
 import HikeCard from '../../components/HikeCard';
 
 function ViewBoard() {
-  const [boardDetails, setBoardDetails] = useState({});
+  const [boards, setBoards] = useState([]);
   const router = useRouter();
   const { id } = router.query;
 
   const getBoardDetails = () => {
-    viewBoardDetails(id).then((response) => setBoardDetails(response));
+    getSingleBoard(id).then(setBoards);
+    viewBoardDetails(id).then((response) => setBoards(response));
   };
 
   useEffect(() => {
@@ -19,10 +21,14 @@ function ViewBoard() {
 
   return (
     <>
-      <div className="mainContainer">
-        {boardDetails.hikes?.map((hike) => (
+      <div className="boardContainer">
+        <BoardCardLite boardObj={boards} key={boards.id} />
+      </div>
+      <div className="hikesContainer">
+        {boards.hikes?.map((hike) => (
           <HikeCard key={hike.id} hikeObj={hike} onUpdate={getBoardDetails} />
         ))}
+
       </div>
     </>
   );
