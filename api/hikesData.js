@@ -46,9 +46,9 @@ const updateHike = (hike, id) => new Promise((resolve, reject) => {
     .catch((error) => reject(error));
 });
 
-const createHike = (hike, latitude, longitude, url) => new Promise((resolve, reject) => {
+const createHike = (user, hike, latitude, longitude, url) => new Promise((resolve, reject) => {
   const hikeObj = {
-    // user: hike.user,
+    user,
     board: Number(hike.boardId),
     name: hike.name,
     url,

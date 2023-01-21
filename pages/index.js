@@ -6,6 +6,7 @@ import HikeCardLite from '../components/HikeCardLite';
 
 function Home() {
   const [hike, setHikes] = useState([]);
+  // const { user } = useAuth();
 
   const getAllTheHikes = () => {
     getAllHikes().then((hikesArray) => {
@@ -20,6 +21,7 @@ function Home() {
 
   return (
     <div className="mainContainer">
+      {/* <h1>Hello {user.fbUser.displayName}! </h1> */}
       {hike.map((hikes) => (
         <HikeCardLite key={hikes.id} hikeObj={hikes} onUpdate={getAllTheHikes} />
       ))}
