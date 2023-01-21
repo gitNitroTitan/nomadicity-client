@@ -12,10 +12,10 @@ import Webcam from 'react-webcam';
 import {
   BsBootstrapReboot, BsCamera, BsArrowRepeat,
 } from 'react-icons/bs';
-// import { useAuth } from '../../utils/context/authContext';
 import { createHike, updateHike } from '../../api/hikesData';
 import { getBoards } from '../../api/boardsData';
 import uploadPics from '../../api/cloudinary';
+import { useAuth } from '../../utils/context/authContext';
 
 // const initialState = {
 //   id: null,
@@ -34,10 +34,12 @@ function HikeForm({ hikeObj, boardId }) {
       id: 0,
       title: '',
     },
-    // user: {
-    //   id: 0,
-    // },
+    user: {
+      id: 0,
+      uid: '',
+    },
   });
+  const { user } = useAuth;
   const [boards, setBoards] = useState([]);
   const [latitude, setLatitude] = useState();
   const [longitude, setLongitude] = useState();
@@ -45,7 +47,6 @@ function HikeForm({ hikeObj, boardId }) {
   const webcamRef = useRef();
   const [imageSrc, setImageSrc] = useState();
   const [url, setUrl] = useState();
-  // const { user } = useAuth;
   const router = useRouter();
   const FACING_MODE_USER = 'user';
   const FACING_MODE_ENVIRONMENT = 'environment';
@@ -57,7 +58,6 @@ function HikeForm({ hikeObj, boardId }) {
   useEffect(() => {
     getBoards().then(setBoards);
     if (hikeObj?.id) setFormInput(hikeObj);
-    console.warn(hikeObj);
   }, [hikeObj]);
 
   const handleChange = (e) => {
@@ -67,6 +67,7 @@ function HikeForm({ hikeObj, boardId }) {
       [name]: value,
     }));
   };
+
   const uploadImage = () => {
     const imageSource = webcamRef.current?.getScreenshot();
     setImageSrc(imageSource);
@@ -109,9 +110,9 @@ function HikeForm({ hikeObj, boardId }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (hikeObj?.id) {
-      updateHike(formInput, hikeObj.id, boardId).then(() => router.push('/hikes'));
+      updateHike(formInput, hikeObj.id, user, boardId).then(() => router.push('/hikes'));
     } else {
-      createHike(formInput, latitude, longitude, url).then(() => {
+      createHike(user, formInput, latitude, longitude, url).then(console.warn(user)).then(() => {
         router.push('/hikes');
       });
     }
@@ -199,10 +200,12 @@ function HikeForm({ hikeObj, boardId }) {
 }
 
 HikeForm.propTypes = {
-  user: PropTypes.shape({
-    uid: PropTypes.string,
-  }).isRequired,
+  // user: PropTypes.shape({
+  //   id: PropTypes.number,
+  //   uid: PropTypes.string,
+  // }).isRequired,
   hikeObj: PropTypes.shape({
+    id: PropTypes.number,
     user: PropTypes.shape({
       id: PropTypes.number,
       uid: PropTypes.string,
@@ -212,7 +215,6 @@ HikeForm.propTypes = {
       profile_image_url: PropTypes.string,
       email: PropTypes.string,
     }),
-    id: PropTypes.number,
     name: PropTypes.string,
     description: PropTypes.string,
     image: PropTypes.string,
