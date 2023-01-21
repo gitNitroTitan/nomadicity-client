@@ -40,7 +40,7 @@ function HikeCard({ hikeObj, onUpdate }) {
           Long: {hikeObj?.longitude}
         </div>
         <div className="cardBtns">
-          <Link href={`/hike/edit/${hikeObj.id}`} passHref>
+          <Link href={`/hikes/edit/${hikeObj.id}`} passHref>
             <Button
               className="edit-btn"
               style={{

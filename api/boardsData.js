@@ -1,4 +1,5 @@
 import { clientCredentials } from '../utils/client';
+import { deleteHike } from './hikesData';
 
 const getBoards = () => new Promise((resolve, reject) => {
   fetch(`${clientCredentials.databaseURL}/boards`)
@@ -7,13 +8,12 @@ const getBoards = () => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
-const getSingleBoard = (boardId) => new Promise((resolve, reject) => {
-  fetch(`${clientCredentials.databaseURL}/boards/${boardId}`)
+const getSingleBoard = (id) => new Promise((resolve, reject) => {
+  fetch(`${clientCredentials.databaseURL}/boards/${id}`)
     .then((response) => response.json())
     .then((data) => {
       resolve({
         id: data.id,
-        user: data.user,
         title: data.title,
         image_url: data.image_url,
         description: data.description,
@@ -64,6 +64,30 @@ const deleteSingleBoard = (id) => new Promise((resolve, reject) => {
     .catch((error) => reject(error));
 });
 
+const getBoardHikes = (id) => new Promise((resolve, reject) => {
+  fetch(`${clientCredentials.databaseURL}/hikes?board=${id}`)
+    .then((response) => response.json())
+    .then(resolve)
+    .catch(reject);
+});
+
+const viewBoardDetails = (boardId) => new Promise((resolve, reject) => {
+  Promise.all([getSingleBoard(boardId), getBoardHikes(boardId)])
+    .then(([boardObject, boardHikesArray]) => {
+      resolve({ ...boardObject, hikes: boardHikesArray });
+    }).catch((error) => reject(error));
+});
+
+const deleteBoardsHikes = (boardId) => new Promise((resolve, reject) => {
+  getBoardHikes(boardId)
+    .then((hikesArray) => {
+      const deleteHikesPromises = hikesArray.map((hike) => deleteHike(hike.id));
+      Promise.all(deleteHikesPromises).then(() => {
+        deleteSingleBoard(boardId).then(resolve);
+      });
+    }).catch((error) => reject(error));
+});
+
 export {
-  getBoards, createBoard, updateBoard, getSingleBoard, deleteSingleBoard,
+  getBoards, createBoard, updateBoard, getSingleBoard, deleteSingleBoard, viewBoardDetails, getBoardHikes, deleteBoardsHikes,
 };

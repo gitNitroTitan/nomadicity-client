@@ -25,10 +25,10 @@ function NomadNavBar() {
               <Nav.Link href="#">Hikes</Nav.Link>
             </Link>
             <NavDropdown title="Create" id="basic-nav-dropdown">
-              <Link passHref href="/board/new">
+              <Link passHref href="/boards/new">
                 <NavDropdown.Item href="#action/3.1">Create Board</NavDropdown.Item>
               </Link>
-              <Link passHref href="/hike/new">
+              <Link passHref href="/hikes/new">
                 <NavDropdown.Item href="#action/3.2">
                   Create Hike
                 </NavDropdown.Item>

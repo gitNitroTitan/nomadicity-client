@@ -211,12 +211,13 @@ label{
   margin: 2px;
 }
 .hike-card, .board-card, .hike-card-lite, .ind-hike-card {
-  display: flex; 
+  display: flex;
   width: 440px;
   height: 350px;
-  border-radius: 2%; 
+  border-radius: 2%;
   background: #FFFFFF;
   align-content: center;
+  margin: 10px;
 }
 .edit-hike-container{
   margin: 150px auto 10px 10px;
@@ -277,7 +278,7 @@ video{
   width: 1rem;
   background: transparent !important;
   border: hidden !important;
-  color: black !important; 
+  color: black !important;
 }
 .dropdown-menu{
   text-align: center;
@@ -323,5 +324,19 @@ video{
   border: hidden !important;
   outline: none !important;
   box-shadow: none !important;
+}
+.hikesContainer
+{
+display: flex;
+flex-wrap: wrap;
+align-items: center;
+margin-top: 100px;
+}
+.boardContainer
+{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 100px;
 }
 }
