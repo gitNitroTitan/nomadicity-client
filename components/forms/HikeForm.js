@@ -39,7 +39,7 @@ function HikeForm({ hikeObj, boardId }) {
       uid: '',
     },
   });
-  const { user } = useAuth;
+  const { user } = useAuth();
   const [boards, setBoards] = useState([]);
   const [latitude, setLatitude] = useState();
   const [longitude, setLongitude] = useState();
@@ -112,7 +112,7 @@ function HikeForm({ hikeObj, boardId }) {
     if (hikeObj?.id) {
       updateHike(formInput, hikeObj.id, user, boardId).then(() => router.push('/hikes'));
     } else {
-      createHike(user, formInput, latitude, longitude, url).then(console.warn(user)).then(() => {
+      createHike(user.id, formInput, latitude, longitude, url).then(console.warn(user)).then(() => {
         router.push('/hikes');
       });
     }
