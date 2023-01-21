@@ -25,8 +25,8 @@ const registerUser = (user, userInfo) => new Promise((resolve, reject) => {
     bio: userInfo?.bio,
     profile_image_url: userInfo?.profileImageUrl,
     email: userInfo?.email,
-    created_on: new Date(new Date().setDate(new Date().getDate())).toISOString().substring(0, 10),
-    active: true,
+    // created_on: new Date(new Date().setDate(new Date().getDate())).toISOString().substring(0, 10),
+    // active: true,
   };
   fetch(`${clientCredentials.databaseURL}/register`, {
     method: 'POST',

@@ -48,8 +48,8 @@ const updateHike = (hike, id) => new Promise((resolve, reject) => {
 
 const createHike = (hike, latitude, longitude, url) => new Promise((resolve, reject) => {
   const hikeObj = {
-    user: hike.user,
-    board: hike.board,
+    // user: hike.user,
+    board: Number(hike.boardId),
     name: hike.name,
     url,
     latitude,
@@ -57,7 +57,6 @@ const createHike = (hike, latitude, longitude, url) => new Promise((resolve, rej
     description: hike.description,
     // date: hike.date,
   };
-  console.warn(hikeObj);
   fetch(`${clientCredentials.databaseURL}/hikes`, {
     method: 'POST',
     body: JSON.stringify(hikeObj),
