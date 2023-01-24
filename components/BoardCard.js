@@ -6,10 +6,10 @@ import Link from 'next/link';
 import Button from 'react-bootstrap/Button';
 import { deleteBoardsHikes } from '../api/boardsData';
 
-function BoardCard({ boardObj, onUpdate }) {
+function BoardCard({ boardObj }) {
   const deleteThisBoard = () => {
     if (window.confirm(`Delete ${boardObj.title}?`)) {
-      deleteBoardsHikes(boardObj?.id).then(() => onUpdate());
+      deleteBoardsHikes(boardObj?.id).then(() => window.location.reload());
     }
   };
   return (
@@ -70,7 +70,6 @@ BoardCard.propTypes = {
     image_url: PropTypes.string,
     description: PropTypes.string,
   }).isRequired,
-  onUpdate: PropTypes.func.isRequired,
 };
 
 export default BoardCard;

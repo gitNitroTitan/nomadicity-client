@@ -25,7 +25,7 @@ import { useAuth } from '../../utils/context/authContext';
 //   user: '',
 // };
 
-function HikeForm({ hikeObj, boardId }) {
+function HikeForm({ hikeObj }) {
   const [formInput, setFormInput] = useState({
     id: 0,
     name: '',
@@ -46,7 +46,7 @@ function HikeForm({ hikeObj, boardId }) {
   const [status, setStatus] = useState();
   const webcamRef = useRef();
   const [imageSrc, setImageSrc] = useState();
-  const [url, setUrl] = useState();
+  const [url, setUrl] = useState([]);
   const router = useRouter();
   const FACING_MODE_USER = 'user';
   const FACING_MODE_ENVIRONMENT = 'environment';
@@ -110,9 +110,9 @@ function HikeForm({ hikeObj, boardId }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (hikeObj?.id) {
-      updateHike(formInput, hikeObj.id, user, boardId).then(() => router.push('/hikes'));
+      updateHike(formInput, hikeObj.id, user).then(() => router.push('/hikes'));
     } else {
-      createHike(user.id, formInput, latitude, longitude, url).then(console.warn(user)).then(() => {
+      createHike(user.uid, formInput, latitude, longitude, url).then(() => {
         router.push('/hikes');
       });
     }
@@ -174,13 +174,13 @@ function HikeForm({ hikeObj, boardId }) {
               Latitude: {formInput.latitude}, Longitude: {formInput.longitude}
             </h5>
             <Form.Select className="mb-3" aria-label="Board" name="boardId" onChange={handleChange} required>
-              {formInput.id ? <option value="">{formInput.board.title}</option> : <option value="">Select Board</option>}
+              {formInput.id ? <option value="">{formInput.board?.title}</option> : <option value="">Select Board</option>}
               {
             boards.map((board) => (
               <option
                 key={board.id}
                 value={board.id}
-                selected={board.id === formInput.boardId}
+                defaultValue={board.id === formInput.boardId}
               >
                 {board.title}
               </option>
@@ -200,10 +200,6 @@ function HikeForm({ hikeObj, boardId }) {
 }
 
 HikeForm.propTypes = {
-  // user: PropTypes.shape({
-  //   id: PropTypes.number,
-  //   uid: PropTypes.string,
-  // }).isRequired,
   hikeObj: PropTypes.shape({
     id: PropTypes.number,
     user: PropTypes.shape({
@@ -218,9 +214,10 @@ HikeForm.propTypes = {
     name: PropTypes.string,
     description: PropTypes.string,
     image: PropTypes.string,
-    url: PropTypes.string,
     latitude: PropTypes.number,
     longitude: PropTypes.number,
+    url: PropTypes.string,
+    boardId: PropTypes.number,
     board: PropTypes.shape({
       id: PropTypes.number,
       title: PropTypes.string,
@@ -228,7 +225,6 @@ HikeForm.propTypes = {
       image_url: PropTypes.string,
     }),
   }).isRequired,
-  boardId: PropTypes.number.isRequired,
 };
 
 export default HikeForm;

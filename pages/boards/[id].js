@@ -5,13 +5,14 @@ import BoardCardLite from '../../components/BoardCardLite';
 import HikeCard from '../../components/HikeCard';
 
 function ViewBoard() {
-  const [boards, setBoards] = useState([]);
+  const [boards, setBoards] = useState({});
+  const [hikes, setHikes] = useState([]);
   const router = useRouter();
   const { id } = router.query;
 
-  const getBoardDetails = () => {
+  const getBoardDetails = async () => {
     getSingleBoard(id).then(setBoards);
-    viewBoardDetails(id).then((response) => setBoards(response));
+    await viewBoardDetails(id).then((response) => setHikes(response));
   };
 
   useEffect(() => {
@@ -22,13 +23,12 @@ function ViewBoard() {
   return (
     <>
       <div className="boardContainer">
-        <BoardCardLite boardObj={boards} key={boards.id} />
-      </div>
-      <div className="hikesContainer">
-        {boards.hikes?.map((hike) => (
-          <HikeCard key={hike.id} hikeObj={hike} onUpdate={getBoardDetails} />
-        ))}
-
+        <BoardCardLite boardObj={boards} key={boards.id} /><hr />
+        <div className="hikesContainer">
+          {hikes.hikes?.map((hike) => (
+            <HikeCard key={hike.id} hikeObj={hike} onUpdate={getBoardDetails} />
+          ))}
+        </div>
       </div>
     </>
   );

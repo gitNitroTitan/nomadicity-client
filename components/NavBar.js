@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
@@ -6,8 +7,11 @@ import Button from 'react-bootstrap/Button';
 import Link from 'next/link';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import { signOut } from '../utils/auth';
+import { useAuth } from '../utils/context/authContext';
 
 function NomadNavBar() {
+  const { user } = useAuth();
+
   return (
     <Navbar expand="lg" fixed="top">
       <Container>
@@ -37,6 +41,7 @@ function NomadNavBar() {
           </Nav>
         </Navbar.Collapse>
       </Container>
+      <img src={user.profile_image_url} className="round-circle" alt="user profile pic" />
       <Button className="signOutBtn btn-med copy-btn" type="button" onClick={signOut}>
         Sign Out
       </Button>

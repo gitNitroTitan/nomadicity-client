@@ -18,7 +18,6 @@ const getSingleHike = (id) => new Promise((resolve, reject) => {
         user: data.user,
         name: data.name,
         url: data.url,
-        // date: data.date,
         latitude: Number(data.latitude),
         longitude: Number(data.longitude),
         description: data.description,
@@ -31,7 +30,6 @@ const updateHike = (hike, id) => new Promise((resolve, reject) => {
   const hikeObj = {
     board: Number(hike.boardId),
     name: hike.name,
-    // date: hike.date,
     url: hike.url,
     latitude: hike.latitude,
     longitude: hike.longitude,
@@ -55,7 +53,6 @@ const createHike = (user, hike, latitude, longitude, url) => new Promise((resolv
     latitude,
     longitude,
     description: hike.description,
-    // date: hike.date,
   };
   fetch(`${clientCredentials.databaseURL}/hikes`, {
     method: 'POST',
@@ -83,14 +80,6 @@ const deleteHike = (id) => new Promise((resolve, reject) => {
     .then((response) => resolve(response))
     .catch((error) => reject(error));
 });
-
-// const deleteSingleHike = (id, uid) => new Promise((resolve, reject) => {
-//   fetch(`${clientCredentials.databaseURL}/hikes/${id}`, uid)
-//     .then(() => {
-//       getAllHikes(uid).then((hikesArray) => resolve(hikesArray));
-//     })
-//     .catch((error) => reject(error));
-// });
 
 export {
   getHikes, getAllHikes, updateHike, getSingleHike, deleteHike, createHike,
