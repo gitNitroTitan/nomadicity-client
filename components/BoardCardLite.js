@@ -13,13 +13,13 @@ function BoardCardLite({ boardObj }) {
       </div>
       <div className="columnTwo">
         <div
-          className="card-body"
+          className="card-body-lite"
           style={{
-            height: '110px',
+            height: '100px',
           }}
         >
-          <h5 className="card-title">{boardObj.title}</h5><br />
-          <div className="card-description">{boardObj.description}</div>
+          <h5 className="card-title-lite">{boardObj.title}</h5><br />
+          <div className="card-description-lite">{boardObj.description}</div>
         </div>
 
       </div>

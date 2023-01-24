@@ -54,7 +54,7 @@ body {
   max-width: 100vw;
   gap: 4em;
   border-radius: 2%;
-  margin-top: 5rem;
+  margin-top: 100px;
 }
 .signOutPage {
   display: flex;
@@ -198,6 +198,7 @@ label{
   background: #D68181 !important;
   border: hidden !important;
   margin-right: 15px;
+  margin-left: 10px;
 }
 .bold-text{
   font-weight:bold;
@@ -325,18 +326,39 @@ video{
   outline: none !important;
   box-shadow: none !important;
 }
-.hikesContainer
-{
-display: flex;
-flex-wrap: wrap;
-align-items: center;
-margin-top: 100px;
-}
 .boardContainer
+{
+  display: flex;
+  flex-flow: column;
+  margin-top: 100px;
+  margin-left: 100px;
+}
+.hikesContainer
 {
   display: flex;
   flex-direction: row;
   align-items: center;
   margin-top: 100px;
+}
+.round-circle
+{
+  width: 100px;
+  border-radius: 40%;
+  margin-right: 0;
+}
+.card-body-lite
+{
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+.card-title-lite
+{
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  margin-top: -100px;
+  padding: 0.5em;
 }
 }

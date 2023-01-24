@@ -1,5 +1,5 @@
 
-<p align="center"><image src="./public/NomadicityStatic.png" style="height:300px;"></image></p>
+    <p align="center"><image src="./public/NomadicityStatic.png" style="height:300px;"></image></p>
 
 ## The Who, How, and Why
 
@@ -53,7 +53,7 @@ Jeremiah King.
 
 * **Nomadicity Postman Collection**
 
-[Postman Collection for Nomadicity Link](https://](https://gold-flare-64538.postman.co/workspace/Nomadicity~e2939e11-689b-487c-a031-82c0735bbd78/collection/21027394-0043796c-963e-4cf9-89e8-a97a67896f4b?ctx=documentation))
+[Postman Collection for Nomadicity Link]([https://](https://gold-flare-64538.postman.co/workspace/Nomadicity~e2939e11-689b-487c-a031-82c0735bbd78/collection/21027394-0043796c-963e-4cf9-89e8-a97a67896f4b?ctx=documentation](https://gold-flare-64538.postman.co/workspace/Rare~ab376e03-d5fb-4954-b1ab-54767d65cf83/collection/21027394-33d7ea63-d8e2-4551-83cc-7ddd3d606da5?ctx=documentation)))
 
 ## Wireframes
 
@@ -63,7 +63,7 @@ Jeremiah King.
 
 [Nomadicity Wireframe Link](https://docs.google.com/presentation/d/1KTENBgcyiVo65-ctSTHZskI1w6stKVZUgXt6m1RKNOU/edit#slide=id.g144de6fcb1f_0_4)  <--Click to view the wireframe.
 
-* Data Outline Doc for FLow
+* Data Outline Doc for Flow
 
   [Data Outline Link](https://docs.google.com/document/d/1N5pNIEKz2PE9UZ19xet_CZcsqNv5-QMZ2HK2sg0Swb0/edit)
 
@@ -81,15 +81,11 @@ Jeremiah King.
 
 * **Github Nomadicity Issue Tickets**
 
-[Nomadicity Issue Tickets Link](https://github.com/gitNitroTitan/Nomadicity/issues)
-
-* **Github Topic Nomadicity Milestones**
-
-[Nomadicity Milestones Link](https://github.com/gitNitroTitan/Nomadicity/milestones)
+[Nomadicity Issue Tickets Link](https://github.com/gitNitroTitan/nomadicity-client/issues?q=is%3Aissue+is%3Aclosed)
 
 * **Nomadicity Project Board**
 
-[Project Board Link](<https://github.com/users/gitNitroTitan/projects/5>](<https://github.com/users/gitNitroTitan/projects/7>)
+[Project Board Link](<https://github.com/users/gitNitroTitan/projects/9/views/1>](<https://github.com/users/gitNitroTitan/projects/9/views/1>)
 
 ## Descriptive video and deployment documentation
 

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { getHikes } from '../api/hikesData';
+// import { getHikes } from '../api/hikesData';
 import { useAuth } from '../utils/context/authContext';
 import HikeCard from '../components/HikeCard';
 
@@ -9,21 +9,20 @@ function Hikes() {
 
   const { user } = useAuth();
 
-  const getAllTheHikes = () => {
-    getHikes(user.uid).then((hikesArray) => {
-      setHikes(hikesArray);
-    });
+  const getUserHikes = () => {
+    setHikes(user.hikes);
+    // window.location.reload();
   };
 
   useEffect(() => {
-    getAllTheHikes();
+    getUserHikes();
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
     <div className="mainContainer">
       {hike.map((hikes) => (
-        <HikeCard hikeObj={hikes} key={hikes.id} onUpdate={getAllTheHikes} />
+        <HikeCard hikeObj={hikes} key={hikes.id} />
       ))}
     </div>
   );
