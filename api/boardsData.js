@@ -22,8 +22,9 @@ const getSingleBoard = (id) => new Promise((resolve, reject) => {
     .catch((error) => reject(error));
 });
 
-const createBoard = (board) => new Promise((resolve, reject) => {
+const createBoard = (user, board) => new Promise((resolve, reject) => {
   const boardObj = {
+    user,
     title: board.title,
     image_url: board.image_url,
     description: board.description,
