@@ -11,7 +11,7 @@ function Hikes() {
 
   const getUserHikes = () => {
     setHikes(user.hikes);
-    // window.location.reload();
+    // console.warn(user.hikes);
   };
 
   useEffect(() => {
@@ -22,7 +22,7 @@ function Hikes() {
   return (
     <div className="mainContainer">
       {hike.map((hikes) => (
-        <HikeCard hikeObj={hikes} key={hikes.id} />
+        <HikeCard hikeObj={hikes} key={hikes.id} onUpdate={getUserHikes} />
       ))}
     </div>
   );

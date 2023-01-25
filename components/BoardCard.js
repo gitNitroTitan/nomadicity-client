@@ -30,7 +30,7 @@ function BoardCard({ boardObj }) {
           <div className="card-description">{boardObj.description}</div>
         </div>
         <div className="cardBtns">
-          <Link href={`/board/edit/${boardObj.id}`} passHref>
+          <Link href={`/boards/edit/${boardObj.id}`} passHref>
             <Button
               className="edit-btn"
               style={{

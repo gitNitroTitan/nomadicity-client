@@ -3,8 +3,9 @@
 
 const getUserByUid = (id) => new Promise((resolve, reject) => {
   fetch(`$http://localhost:8088/users/${id}`)
-    .then((response) => resolve(response.data))
-    .catch((error) => reject(error));
+    .then((response) => response.json())
+    .then(resolve)
+    .catch(reject);
 });
 
 export default getUserByUid;
