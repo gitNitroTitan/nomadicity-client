@@ -5,10 +5,10 @@ import Link from 'next/link';
 import Button from 'react-bootstrap/Button';
 import { deleteHike } from '../api/hikesData';
 
-function HikeCard({ hikeObj }) {
+function HikeCard({ hikeObj, onUpdate }) {
   const deleteThisHike = () => {
     if (window.confirm(`Delete ${hikeObj.name}?`)) {
-      deleteHike(hikeObj?.id).then(() => window.location.reload());
+      deleteHike(hikeObj?.id).then(() => onUpdate());
     }
   };
   return (
@@ -74,6 +74,7 @@ HikeCard.propTypes = {
     latitude: PropTypes.string,
     longitude: PropTypes.string,
   }).isRequired,
+  onUpdate: PropTypes.func.isRequired,
 };
 
 export default HikeCard;
