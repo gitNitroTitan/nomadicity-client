@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 // import { getBoards } from '../api/boardsData';
 // import { signOut } from '../utils/auth';
+import getUserByUid from '../api/userData';
 import { useAuth } from '../utils/context/authContext';
 import BoardCard from '../components/BoardCard';
 
@@ -11,7 +12,7 @@ function Boards() {
   const { user } = useAuth();
 
   const getUserBoards = () => {
-    setBoards(user.boards);
+    getUserByUid(user.id).then((response) => setBoards(response.boards));
   };
 
   useEffect(() => {
