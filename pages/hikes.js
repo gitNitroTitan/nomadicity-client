@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-// import { getHikes } from '../api/hikesData';
+import getUserByUid from '../api/userData';
 import { useAuth } from '../utils/context/authContext';
 import HikeCard from '../components/HikeCard';
 
@@ -10,8 +10,7 @@ function Hikes() {
   const { user } = useAuth();
 
   const getUserHikes = () => {
-    setHikes(user.hikes);
-    // console.warn(user.hikes);
+    getUserByUid(user.id).then((response) => setHikes(response.hikes));
   };
 
   useEffect(() => {
